@@ -4,20 +4,17 @@ using System.Collections;
 public class EnemyLifespan : MonoBehaviour 
 {
 	private bool hasSpawn;
-	private EnemyMovement movementController;
 	private EnemyWeapon weapon;
 	
 	void Awake()
 	{
 		weapon = GetComponent<EnemyWeapon>();
-		movementController = GetComponent<EnemyMovement>();
 	}
 
 	void Start()
 	{
 		hasSpawn = false;
 		collider2D.enabled = false;
-		movementController.enabled = false;
 		weapon.enabled = false;
 	}
 	
@@ -48,7 +45,6 @@ public class EnemyLifespan : MonoBehaviour
 	{
 		hasSpawn = true;
 		collider2D.enabled = true;
-		movementController.enabled = true;
 		weapon.enabled = true;
 	}
 }

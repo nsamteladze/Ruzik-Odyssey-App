@@ -35,6 +35,7 @@
 -define:ENABLE_PROFILER
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_OSX
+'Assets/Scripts/EnemiesSpawn.cs'
 'Assets/Scripts/EnemyHealth.cs'
 'Assets/Scripts/EnemyLifespan.cs'
 'Assets/Scripts/EnemyMovement.cs'
