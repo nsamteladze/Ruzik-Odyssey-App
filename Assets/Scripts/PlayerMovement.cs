@@ -46,7 +46,8 @@ public class PlayerMovement: MonoBehaviour {
 
 	bool InControlsArea(Vector3 coordinates)
 	{
-		return ((coordinates.x > Screen.width * 0.75) && (coordinates.y < Screen.height* 0.25));
+//		return ((coordinates.x > Screen.width * 0.75) && (coordinates.y < Screen.height* 0.25));
+		return (coordinates.x > Screen.width * 0.75);
 	}
 
 }

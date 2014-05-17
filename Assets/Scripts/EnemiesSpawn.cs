@@ -41,13 +41,13 @@ public class EnemiesSpawn : MonoBehaviour
 
 	void SpawnSingle()
 	{
-		Instantiate(enemies[0], new Vector2(transform.position.x + 1, Random.Range(-3.8f, 3.8f)), transform.rotation);
+		Instantiate(enemies[0], new Vector2(transform.position.x + 1, Random.Range(-3.8f, 3.5f)), transform.rotation);
 	}
 
 	void SpawnPair()
 	{
 		Instantiate(enemies[0], new Vector2(transform.position.x + 1, Random.Range(-3.8f, 0)), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 3, Random.Range(-0, 3.8f)), transform.rotation);
+		Instantiate(enemies[0], new Vector2(transform.position.x + 3, Random.Range(-0, 3.5f)), transform.rotation);
 	}
 
 	void SpawnDiagonalPack()

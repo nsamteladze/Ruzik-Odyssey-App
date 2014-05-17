@@ -15,14 +15,13 @@ public class ButtonsRenderer : MonoBehaviour {
 	void OnGUI()
 	{
 
-		int buttonWidth = Screen.width / 6;
-		int buttonHeight = Screen.height / 8;
-		int buttonX = Screen.width - buttonWidth;
+		int buttonWidth = Screen.width / 3;
+		int buttonHeight = Screen.height / 4;
+		int buttonX = (int) (Screen.width - 0.75 * buttonWidth);
 		int buttonY = Screen.height - buttonHeight;
 
 		GUI.backgroundColor = Color.clear;
 
-		// Draw a button to start the game
 		if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight), fireSecondWeaponTexture))
 		{
 			playerWeapon.AttackWithSecondWeapon();

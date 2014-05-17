@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
 	void Update ()
 	{
 		// Set the score text.
-		guiText.text = "Score: " + score;
+		guiText.text = score.ToString();
 
 	}
 

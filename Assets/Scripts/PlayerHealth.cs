@@ -16,12 +16,12 @@ public class PlayerHealth : MonoBehaviour
 
 	void Awake()
 	{
-		healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
-		healthBarBackground = GameObject.Find("HealthBarBackground").GetComponent<SpriteRenderer>();
-
-		// Getting the intial scale of the healthbar (whilst the player has full health).
-		healthScale = healthBar.transform.localScale;
-		defaultHealth = health;
+//		healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
+//		healthBarBackground = GameObject.Find("HealthBarBackground").GetComponent<SpriteRenderer>();
+//
+//		// Getting the intial scale of the healthbar (whilst the player has full health).
+//		healthScale = healthBar.transform.localScale;
+//		defaultHealth = health;
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCollider)
@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		health -= damage;
 
-		UpdateHealthBar ();
+//		UpdateHealthBar();
 
 		if (health <= 0) Death();
 	}
@@ -55,10 +55,6 @@ public class PlayerHealth : MonoBehaviour
 	{
 		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
 		healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.1f);
-
-		Debug.Log("Position X: " + healthBar.transform.localPosition.x);
-		Debug.Log("Position Y: " + healthBar.transform.localPosition.y);
-		Debug.Log("Scale X: " + healthBar.transform.localScale.x);
 
 		// Set the scale of the health bar to be proportional to the player's health.
 		healthBar.transform.localScale = new Vector3(healthScale.x * health * (1 / defaultHealth), 1, 1);
@@ -70,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
 	private void Death()
 	{
 		Destroy (gameObject);
-		Destroy (healthBar.gameObject);
-		Destroy (healthBarBackground.gameObject);
+//		Destroy (healthBar.gameObject);
+//		Destroy (healthBarBackground.gameObject);
 	}
 }
