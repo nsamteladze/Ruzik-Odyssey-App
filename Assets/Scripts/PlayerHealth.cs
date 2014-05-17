@@ -26,11 +26,12 @@ public class PlayerHealth : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D otherCollider)
 	{
-		EnemyWeaponHit enemyWeaponShot = otherCollider.gameObject.GetComponent<EnemyWeaponHit>();
-		if (enemyWeaponShot != null)
+		// If collided with a weapon
+		Weapon weapon = otherCollider.gameObject.GetComponent<Weapon>();
+		if ((weapon != null) && (weapon.isEnemyShot == true))
 		{
-			TakeDamage(enemyWeaponShot.damage);
-			Destroy(enemyWeaponShot.gameObject);
+			TakeDamage(weapon.damage);
+			Destroy(weapon.gameObject);
 		}
 
 		EnemyMovement enemyController = otherCollider.gameObject.GetComponent<EnemyMovement>();
