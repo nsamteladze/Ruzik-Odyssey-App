@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\EnemyLifespan.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
+     <Compile Include="Assets\Scripts\PlayerDeltaMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerWeaponsController.cs" />
