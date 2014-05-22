@@ -10,9 +10,6 @@ public class TextResize : MonoBehaviour {
 	
 	public void Start()
 	{
-		Debug.Log (Screen.width);
-		Debug.Log (Screen.height);
-
 		GameObject ui = GameObject.Find ("UI");
 
 		foreach (GUIText guiText in ui.GetComponentsInChildren<GUIText>())

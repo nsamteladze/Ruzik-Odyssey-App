@@ -35,15 +35,11 @@ public class Scrolling : MonoBehaviour
 	// 3 - Get all the children
 	void Start()
 	{
-		Debug.Log("In scrolling start");
-
 		// For infinite background only
 		if (isLooping)
 		{
 			// Get all the children of the layer with a renderer
 			backgroundPart = new List<Transform>();
-
-			Debug.Log(transform.childCount);
 
 			for (int i = 0; i < transform.childCount; i++)
 			{
