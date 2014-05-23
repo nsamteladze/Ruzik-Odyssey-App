@@ -15,7 +15,7 @@ public class EnemyLifespan : MonoBehaviour
 	{
 		hasSpawn = false;
 		collider2D.enabled = false;
-		weapon.enabled = false;
+		if (weapon != null) weapon.enabled = false;
 	}
 	
 	void Update()
@@ -45,6 +45,6 @@ public class EnemyLifespan : MonoBehaviour
 	{
 		hasSpawn = true;
 		collider2D.enabled = true;
-		weapon.enabled = true;
+		if (weapon != null) weapon.enabled = true;
 	}
 }

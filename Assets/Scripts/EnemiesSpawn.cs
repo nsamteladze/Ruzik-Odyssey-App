@@ -41,27 +41,37 @@ public class EnemiesSpawn : MonoBehaviour
 
 	void SpawnSingle()
 	{
-		Instantiate(enemies[0], new Vector2(transform.position.x + 1, Random.Range(-3.8f, 3.5f)), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 1, Random.Range(-3.8f, 3.5f)), transform.rotation);
 	}
 
 	void SpawnPair()
 	{
-		Instantiate(enemies[0], new Vector2(transform.position.x + 1, Random.Range(-3.8f, 0)), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 3, Random.Range(-0, 3.5f)), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 1, Random.Range(-3.8f, 0)), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 3, Random.Range(-0, 3.5f)), transform.rotation);
 	}
 
 	void SpawnDiagonalPack()
 	{
-		Instantiate(enemies[0], new Vector2(transform.position.x + 1, -3f), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 2.5f, 0f), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 4, 3f), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 1, -3f), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 2.5f, 0f), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 4, 3f), transform.rotation);
 	}
 
 	void SpawnFour()
 	{
-		Instantiate(enemies[0], new Vector2(transform.position.x + 3, -2.5f), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 3, 2.5f), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 1, 0), transform.rotation);
-		Instantiate(enemies[0], new Vector2(transform.position.x + 5, 0), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 3, -2.5f), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 3, 2.5f), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 1, 0), transform.rotation);
+		Instantiate(enemies[Random.Range(0, enemies.Length)], 
+		            new Vector2(transform.position.x + 5, 0), transform.rotation);
 	}
 }
