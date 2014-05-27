@@ -39,6 +39,8 @@ public class PlayerWeaponsController : MonoBehaviour {
 		var shotTransform = (Transform) Instantiate(secondWeaponPrefab);
 		shotTransform.position = new Vector2(transform.position.x + secondWeaponsXAdjustment,
 		                                     transform.position.y + secondWeaponsYAdjustment);
+
+		SoundEffectsController.Instance.PlayMissileShot();
 	}
 
 	public bool CanAttack()

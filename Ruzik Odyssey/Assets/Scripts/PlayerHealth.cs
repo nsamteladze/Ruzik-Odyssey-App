@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
 	private SpriteRenderer healthBarBackground;
 	private Vector3 healthScale;
 
+	private HealthBarController healthBarController;
+
 	private GameObject ui;
 
 	private void Start()
@@ -22,6 +24,11 @@ public class PlayerHealth : MonoBehaviour
 		ui = GameObject.Find("UI");
 		if (ui == null)
 			throw new Exception("Failed to find game object named 'ui' in the hierarchy");
+
+		healthBarController = ui.GetComponentInChildren<HealthBarController>();
+		if (healthBarController == null) throw new UnityException("Failed to find a health bar controller");
+
+		defaultHealth = health;
 	}
 
 	void Awake()
@@ -56,7 +63,8 @@ public class PlayerHealth : MonoBehaviour
 	{
 		health -= damage;
 
-//		UpdateHealthBar();
+		int healthLevel = (int)(100 * health / defaultHealth);
+		healthBarController.ShowHealthLevel(healthLevel);
 
 		if (health <= 0) Death();
 	}
@@ -75,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private void Death()
 	{
+		SoundEffectsController.Instance.PlayPlayerExplosion();
 		Destroy (gameObject);
 //		Destroy (healthBar.gameObject);
 //		Destroy (healthBarBackground.gameObject);

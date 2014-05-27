@@ -36,6 +36,8 @@ public class EnemyHealth : MonoBehaviour
 	{
 		Destroy(gameObject);
 
+		SoundEffectsController.Instance.PlayPlayerTaunt();
+
 		Score score = GameObject.Find("Score").GetComponent<Score>();
 		score.score += 1;
 	}

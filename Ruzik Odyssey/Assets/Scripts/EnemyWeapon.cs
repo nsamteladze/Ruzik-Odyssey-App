@@ -32,6 +32,8 @@ public class EnemyWeapon : MonoBehaviour
 			var playerPosition = transform.position;
 			shotTransform.position = new Vector2(playerPosition.x + positionXAdjustment,
 			                                     playerPosition.y + positionYAdjustment);
+
+			SoundEffectsController.Instance.PlayLaserShot();
 		}
 	}
 

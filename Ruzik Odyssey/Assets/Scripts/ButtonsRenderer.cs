@@ -4,18 +4,18 @@ using System;
 
 public class ButtonsRenderer : MonoBehaviour 
 {
-	private PlayerWeaponsController playerWeapon;
+//	private PlayerWeaponsController playerWeapon;
 	private GameObject ui;
 	
 	void Start()
 	{
-		GameObject player = GameObject.Find("player");
-		if (player == null) 
-			throw new Exception("Failed to find game object named 'player' in the hierarchy");
-
-		playerWeapon = player.GetComponent<PlayerWeaponsController>();
-		if (playerWeapon == null) 
-			throw new Exception("Failed to retrieve PlayerWeaponsController from the player game object");
+//		GameObject player = GameObject.Find("player");
+//		if (player == null) 
+//			throw new Exception("Failed to find game object named 'player' in the hierarchy");
+//
+//		playerWeapon = player.GetComponent<PlayerWeaponsController>();
+//		if (playerWeapon == null) 
+//			throw new Exception("Failed to retrieve PlayerWeaponsController from the player game object");
 
 		ui = GameObject.Find("UI");
 		if (ui == null)
@@ -34,10 +34,10 @@ public class ButtonsRenderer : MonoBehaviour
 			}
 		}
 
-		if (GUI.Button(new Rect(1830 * Environment.ScaleOffset.x, 950 * Environment.ScaleOffset.y, 
-		                        195 * Environment.Scale, 200 * Environment.Scale), 
-		               "", GUIStyle.none) ){
-			playerWeapon.AttackWithSecondWeapon();
-		}
+//		if (GUI.Button(new Rect(1830 * Environment.ScaleOffset.x, 950 * Environment.ScaleOffset.y, 
+//		                        195 * Environment.Scale, 200 * Environment.Scale), 
+//		               "", GUIStyle.none) ){
+//			playerWeapon.AttackWithSecondWeapon();
+//		}
 	}
 }

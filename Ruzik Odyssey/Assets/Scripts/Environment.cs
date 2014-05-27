@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class Environment
 { 
@@ -9,10 +10,14 @@ public static class Environment
 	public static GUISkin DefaultSkin;
 	public static GUIStyle DefaultButtonStyle;
 
+	private static HashSet<int> buttonTouches;
+
 	public static bool IsPaused { get; private set; }
 
 	static Environment()
 	{
+		buttonTouches = new HashSet<int>();
+
 		ScaleOffset.x = Screen.width / DesignWidth;
 		ScaleOffset.y = Screen.height / DesignHeight;
 		Scale = Mathf.Max(ScaleOffset.x, ScaleOffset.y); 
@@ -31,6 +36,11 @@ public static class Environment
 	{
 		Time.timeScale = 1;
 		IsPaused = false;
+	}
+
+	public static void AddButtonTouch(Touch touch)
+	{
+		buttonTouches.Add(touch.fingerId);
 	}
 }
 
