@@ -31,16 +31,6 @@ public class PlayerHealth : MonoBehaviour
 		defaultHealth = health;
 	}
 
-	void Awake()
-	{
-//		healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
-//		healthBarBackground = GameObject.Find("HealthBarBackground").GetComponent<SpriteRenderer>();
-//
-//		// Getting the intial scale of the healthbar (whilst the player has full health).
-//		healthScale = healthBar.transform.localScale;
-//		defaultHealth = health;
-	}
-
 	void OnTriggerEnter2D(Collider2D otherCollider)
 	{
 		// If collided with a weapon
@@ -69,24 +59,16 @@ public class PlayerHealth : MonoBehaviour
 		if (health <= 0) Death();
 	}
 
-	public void UpdateHealthBar ()
-	{
-		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
-		healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.1f);
-
-		// Set the scale of the health bar to be proportional to the player's health.
-		healthBar.transform.localScale = new Vector3(healthScale.x * health * (1 / defaultHealth), 1, 1);
-		healthBar.transform.localPosition = 
-			new Vector2 (healthBar.transform.localPosition.x - (healthBarWidth / defaultHealth), 
-			             healthBar.transform.localPosition.y);
-	}
 
 	private void Death()
 	{
 		SoundEffectsController.Instance.PlayPlayerExplosion();
 		Destroy (gameObject);
-//		Destroy (healthBar.gameObject);
-//		Destroy (healthBarBackground.gameObject);
-		ui.AddComponent<GameOverMenu>();
+
+		if (!Environment.IsGameOver)
+		{
+			Environment.GameOver();
+			ui.AddComponent<GameOverMenu>();
+		}
 	}
 }

@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
 	public Vector2 direction = new Vector2(-1, 0);
 	
 	private Vector2 movement;
-	
+
 	void Update()
 	{
 		// 2 - Movement

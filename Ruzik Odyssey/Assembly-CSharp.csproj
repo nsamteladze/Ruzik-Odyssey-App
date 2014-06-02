@@ -46,31 +46,49 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ButtonsRenderer.cs" />
-     <Compile Include="Assets\Scripts\EnemiesSpawn.cs" />
+     <Compile Include="Assets\Scripts\AI\AlienController.cs" />
+     <Compile Include="Assets\Scripts\AI\HoldPositionMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\AI\IMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\AI\MoveToRandomPositionMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\AI\MovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\AI\MovementStrategyFactory.cs" />
+     <Compile Include="Assets\Scripts\AI\PassByMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\Characters\GameCharacterController.cs" />
+     <Compile Include="Assets\Scripts\Characters\LimitedForceDeltaMovementController.cs" />
+     <Compile Include="Assets\Scripts\Characters\LimitedSpeedDeltaMovementController.cs" />
+     <Compile Include="Assets\Scripts\Characters\MovementController.cs" />
+     <Compile Include="Assets\Scripts\Characters\SpeedMultiplierDeltaMovementController.cs" />
+     <Compile Include="Assets\Scripts\Characters\WeaponController.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\EnemyLifespan.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
-     <Compile Include="Assets\Scripts\Environment.cs" />
-     <Compile Include="Assets\Scripts\FireSecondWeaponTouchButton.cs" />
-     <Compile Include="Assets\Scripts\GameOverMenu.cs" />
-     <Compile Include="Assets\Scripts\HealthBarController.cs" />
-     <Compile Include="Assets\Scripts\InnerHealthBarController.cs" />
-     <Compile Include="Assets\Scripts\LevelBoundariesController.cs" />
-     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\Level\EnemiesSpawn.cs" />
+     <Compile Include="Assets\Scripts\Level\Environment.cs" />
+     <Compile Include="Assets\Scripts\Level\FireSecondaryWeaponTouchButton.cs" />
+     <Compile Include="Assets\Scripts\Level\Game.cs" />
+     <Compile Include="Assets\Scripts\Level\GameInputController.cs" />
+     <Compile Include="Assets\Scripts\Level\GameOverMenu.cs" />
+     <Compile Include="Assets\Scripts\Level\HealthBarController.cs" />
+     <Compile Include="Assets\Scripts\Level\ITouchButton.cs" />
+     <Compile Include="Assets\Scripts\Level\InnerHealthBarController.cs" />
+     <Compile Include="Assets\Scripts\Level\LevelBoundariesController.cs" />
+     <Compile Include="Assets\Scripts\Level\PauseButton.cs" />
+     <Compile Include="Assets\Scripts\Level\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\Level\RendererExtensions.cs" />
+     <Compile Include="Assets\Scripts\Level\ScoreController.cs" />
+     <Compile Include="Assets\Scripts\Level\Scrolling.cs" />
+     <Compile Include="Assets\Scripts\Level\SoundEffectsController.cs" />
+     <Compile Include="Assets\Scripts\Level\StartMenu.cs" />
+     <Compile Include="Assets\Scripts\Level\TextResize.cs" />
+     <Compile Include="Assets\Scripts\Level\TouchButton.cs" />
      <Compile Include="Assets\Scripts\PlayerDeltaMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerWeaponsController.cs" />
-     <Compile Include="Assets\Scripts\RendererExtensions.cs" />
-     <Compile Include="Assets\Scripts\Score.cs" />
-     <Compile Include="Assets\Scripts\Scrolling.cs" />
-     <Compile Include="Assets\Scripts\SoundEffectsController.cs" />
-     <Compile Include="Assets\Scripts\StartMenu.cs" />
-     <Compile Include="Assets\Scripts\TextResize.cs" />
-     <Compile Include="Assets\Scripts\TouchButtonBase.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\WeaponBase.cs" />
+     <Compile Include="Assets\WarzoneBoundaryController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

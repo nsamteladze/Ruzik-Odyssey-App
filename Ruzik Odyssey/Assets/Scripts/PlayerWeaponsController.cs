@@ -13,7 +13,7 @@ public class PlayerWeaponsController : MonoBehaviour {
 	public float secondWeaponsXAdjustment = 0.635f;
 	public float secondWeaponsYAdjustment = -0.7f;
 	private float shootCooldown = 0f;
-	
+
 	void Update()
 	{
 		if (shootCooldown > 0)

@@ -19,6 +19,7 @@ public class PlayerDeltaMovement : MonoBehaviour
 
 	private int movementTouchFingerId = -1;
 
+	private Animator animator;
 
 	private void Start()
 	{
@@ -32,13 +33,17 @@ public class PlayerDeltaMovement : MonoBehaviour
 		{
 			throw new UnityException("Failed to aquire player's weapon");
 		}
+
+		animator = GetComponent<Animator>();
 	}
 
 	private void Update () 
 	{	
-		IEnumerable<Touch> movedTouches = Input.touches.Where(x => x.phase == TouchPhase.Moved);
+		var movedTouches = Input.touches.Where(x => x.phase == TouchPhase.Moved);
 		if (movedTouches.Count() > 0)
 		{
+			animator.SetBool("IsShooting", true);
+
 			playerWeaponsController.AttackWithMainWeapon();
 			Move(movedTouches.First().deltaPosition);
 			movementTouchFingerId = movedTouches.First().fingerId;
@@ -51,13 +56,18 @@ public class PlayerDeltaMovement : MonoBehaviour
 		{
 			movement = Vector2.zero;
 			movementTouchFingerId = -1;
+
+			animator.SetBool("IsShooting", false);
 		}
 
 		if (Input.touches.Where(x => x.phase == TouchPhase.Stationary).Count() > 0)
 		{
+			animator.SetBool("IsShooting", true);
 			playerWeaponsController.AttackWithMainWeapon();
 			return;
 		}
+
+		animator.SetBool("IsShooting", false);
 	}
 
 	private void Move(Vector2 deltaMovement)

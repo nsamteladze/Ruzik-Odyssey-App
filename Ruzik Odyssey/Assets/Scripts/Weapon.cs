@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RuzikOdyssey.Ai;
+using RuzikOdyssey.Characters;
 
 public class Weapon : MonoBehaviour 
 {
@@ -9,11 +11,6 @@ public class Weapon : MonoBehaviour
 	public bool isEnemyShot = false;
 
 	private Vector2 movement;
-	
-	void Start()
-	{
-		Destroy(gameObject, 10);
-	}
 
 	void Update()
 	{
@@ -23,5 +20,15 @@ public class Weapon : MonoBehaviour
 	void FixedUpdate()
 	{
 		rigidbody2D.velocity = movement;
+	}
+
+	private void OnTriggerEnter2D(Collider2D otherCollider)
+	{
+		if (otherCollider.tag.Equals("Enemy") && !isEnemyShot)
+	    {
+			var alienController = otherCollider.gameObject.GetComponent<AlienController>();
+			alienController.ApplyDamage(damage);
+			Destroy(this.gameObject);
+		}
 	}
 }

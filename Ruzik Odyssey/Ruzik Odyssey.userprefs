@@ -1,26 +1,39 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SoundEffectsUtility.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyHealth.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="22" Column="11" />
-      <File FileName="Assets/Scripts/PlayerDeltaMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TouchButtonBase.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RendererExtensions.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Environment.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PlayerWeaponsController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/HealthBarController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/InnerHealthBarController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Scrolling.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PlayerHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelBoundariesController.cs" Line="9" Column="28" />
-      <File FileName="Assets/Scripts/SoundEffectsUtility.cs" Line="8" Column="56" />
+      <File FileName="Assets/Scripts/Characters/LimitedForceDeltaMovementController.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Characters/GameCharacterController.cs" Line="5" Column="31" />
+      <File FileName="Assets/Scripts/Level/GameInputController.cs" Line="66" Column="8" />
+      <File FileName="Assets/Scripts/Level/StartMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameOverMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/HealthBarController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="35" Column="3" />
+      <File FileName="Assets/Scripts/AI/MovementStrategyFactory.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI/HoldPositionMovementStrategy.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyHealth.cs" Line="42" Column="20" />
+      <File FileName="Assets/Scripts/EnemyMovement.cs" Line="31" Column="3" />
+      <File FileName="Assets/WarzoneBoundaryController.cs" Line="18" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelBoundariesController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyLifespan.cs" Line="17" Column="3" />
+      <File FileName="Assets/Scripts/AI/IMovementStrategy.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Weapon.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyWeapon.cs" Line="49" Column="23" />
+      <File FileName="Assets/Scripts/Characters/WeaponController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Characters/MovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/ScoreController.cs" Line="30" Column="3" />
+      <File FileName="Assets/Scripts/Level/Game.cs" Line="20" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="SoundEffectsUtility.cs" selected="True" />
+              <Node name="AI" expanded="True" />
+              <Node name="Characters" expanded="True" />
+              <Node name="Level" expanded="True" />
+              <Node name="Weapons" expanded="True" />
+              <Node name="EnemyHealth.cs" selected="True" />
             </Node>
           </Node>
         </State>
