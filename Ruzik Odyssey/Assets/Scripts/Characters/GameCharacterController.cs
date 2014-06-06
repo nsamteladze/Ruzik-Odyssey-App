@@ -29,6 +29,7 @@ namespace RuzikOdyssey.Characters
 		public void Stop()
 		{
 			movementController.Stop();
+			weaponController.FinishShootingMainWeapon();
 		}
 
 	}

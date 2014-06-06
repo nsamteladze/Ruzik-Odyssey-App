@@ -53,7 +53,6 @@ namespace RuzikOdyssey.Characters
 			if (!attackIsControlledFromAnimator) 
 			{
 				ShootMainWeapon();
-				FinishShootingMainWeapon();
 			}
 		}
 
@@ -67,7 +66,7 @@ namespace RuzikOdyssey.Characters
 				SoundEffectsController.Instance.Play(mainWeaponSoundEffect, mainWeaponSoundEffectVolume);
 		}
 
-		private void FinishShootingMainWeapon()
+		public void FinishShootingMainWeapon()
 		{
 			if (animator != null) animator.SetBool("IsShooting", false);
 		}
