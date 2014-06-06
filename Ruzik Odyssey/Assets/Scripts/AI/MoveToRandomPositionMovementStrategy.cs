@@ -19,5 +19,10 @@ namespace RuzikOdyssey.Ai
 				? (targetPosition - currentPosition).normalized
 				: Vector2.zero;
 		}
+
+		public override Vector2 GetTargetPosition (Vector2 currentPosition, bool isInWarzone)
+		{
+			return targetPosition;
+		}
 	}
 }

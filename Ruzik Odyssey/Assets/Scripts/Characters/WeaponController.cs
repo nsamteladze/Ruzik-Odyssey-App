@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace RuzikOdyssey.Characters
 {
@@ -12,44 +13,81 @@ namespace RuzikOdyssey.Characters
 		
 		public Vector2 mainWeaponPosition = Vector2.zero;
 		public Vector2 secondaryWeaponPosition = Vector2.zero;
+
+		public bool attackIsControlledFromAnimator = true;
+
+		public AudioClip mainWeaponSoundEffect;
+		public AudioClip secondaryWeaponSoundEffect;
+		public float mainWeaponSoundEffectVolume = 1.0f;
+		public float secondWeaponSoundEffectVolume = 1.0f;
 	
-		private float mainWeaponCooldown = 0f;
-		private float secondaryWeaponCooldown = 0f;
-		
+		private float mainWeaponCooldown = 0.25f;
+		private float secondaryWeaponCooldown = 0.5f;
+
+		private Animator animator;
+
+		private void Start()
+		{
+			animator = this.gameObject.GetComponent<Animator>();
+			if (animator == null)
+			{
+				Debug.LogWarning(String.Format(
+					"Failed to initialize an animator for game object with tag {0}", gameObject.name));
+			}
+		}
+
 		private void Update()
 		{
-			if (mainWeaponCooldown > 0)
-			{
-				mainWeaponCooldown -= Time.deltaTime;
-			}
-			if (secondaryWeaponCooldown > 0)
-			{
-				secondaryWeaponCooldown -= Time.deltaTime;
-			}
+			if (mainWeaponCooldown > 0) mainWeaponCooldown -= Time.deltaTime;
+			if (secondaryWeaponCooldown > 0) secondaryWeaponCooldown -= Time.deltaTime;
 		}
 		
 		public void AttackWithMainWeapon()
 		{
-			if (!CanAttackWithMainWeapon()) return;
+			if (!CanAttackWithMainWeapon() || mainWeaponPrefab == null) return;
+
+			if (animator != null) animator.SetBool("IsShooting", true);
 
 			mainWeaponCooldown = mainWeaponShootingRate;
-			
+
+			if (!attackIsControlledFromAnimator) 
+			{
+				ShootMainWeapon();
+				FinishShootingMainWeapon();
+			}
+		}
+
+		private void ShootMainWeapon()
+		{
 			var shot = (Transform)Instantiate(mainWeaponPrefab);
 			shot.position = new Vector2(transform.position.x + mainWeaponPosition.x,
-	                                    transform.position.y + mainWeaponPosition.y);
+			                            transform.position.y + mainWeaponPosition.y);
+
+			if (mainWeaponSoundEffect != null) 
+				SoundEffectsController.Instance.Play(mainWeaponSoundEffect, mainWeaponSoundEffectVolume);
+		}
+
+		private void FinishShootingMainWeapon()
+		{
+			if (animator != null) animator.SetBool("IsShooting", false);
 		}
 		
 		public void AttackWithSecondaryWeapon()
 		{
-			if (!CanAttackWithSecondaryWeapon()) return;
+			if (!CanAttackWithSecondaryWeapon() || secondaryWeaponPrefab == null) return;
 
 			secondaryWeaponCooldown = secondaryWeaponShootingRate;
-			
+
+
+
 			var shot = (Transform)Instantiate(secondaryWeaponPrefab);
 			shot.position = new Vector2(transform.position.x + secondaryWeaponPosition.x,
 			                            transform.position.y + secondaryWeaponPosition.y);
+
+			Debug.Log("Transform: " + transform.position + "Shot: " + shot.position);
 			
-			SoundEffectsController.Instance.PlayMissileShot();
+			if (secondaryWeaponSoundEffect != null) 
+				SoundEffectsController.Instance.Play(secondaryWeaponSoundEffect, secondWeaponSoundEffectVolume);
 		}
 		
 		private bool CanAttackWithMainWeapon()

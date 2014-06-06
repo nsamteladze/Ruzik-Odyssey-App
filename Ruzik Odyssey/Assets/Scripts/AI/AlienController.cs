@@ -7,7 +7,7 @@ namespace RuzikOdyssey.Ai
 {
 	public class AlienController : MonoBehaviour
 	{
-		public float warzoneSpeed = 5f;
+		public float warzoneSpeed = 50f;
 		public int scoreForKill = 1;
 
 		private bool isInWarzone;
@@ -62,7 +62,9 @@ namespace RuzikOdyssey.Ai
 		private void Die()
 		{
 			Destroy(gameObject);
-			Game.AddScore(scoreForKill);
+			SoundEffectsController.Instance.PlayPlayerExplosion();
+			SoundEffectsController.Instance.PlayPlayerTaunt();
+			GameController.Instance.AddScore(scoreForKill);
 		}
 
 		private void Update()
@@ -70,12 +72,14 @@ namespace RuzikOdyssey.Ai
 			if (isInWarzone && weaponController != null)
 			{
 				weaponController.AttackWithMainWeapon();
+				weaponController.AttackWithSecondaryWeapon();
 			}
 		}
 
 		private void FixedUpdate()
 		{
 			var movementDirection = movementStrategy.GetMovementDirection(transform.localPosition, isInWarzone);
+			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.AddForce(movementDirection * speed);
 		}
 	}

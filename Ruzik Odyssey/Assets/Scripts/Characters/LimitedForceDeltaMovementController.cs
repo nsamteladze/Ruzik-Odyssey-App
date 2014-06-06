@@ -54,6 +54,7 @@ namespace RuzikOdyssey.Characters
 			if (Math.Abs(force.x) > maximumForce) force.x = Math.Sign(force.x) * maximumForce;
 			if (Math.Abs(force.y) > maximumForce) force.y = Math.Sign(force.y) * maximumForce;
 
+			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.AddForce(force);
 
 			var currentPosition = (Vector2)Camera.main.WorldToScreenPoint(transform.position);

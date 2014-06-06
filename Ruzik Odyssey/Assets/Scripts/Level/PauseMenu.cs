@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
 		               "Restart") )
 		{
 			Environment.Resume();
+			Environment.StartMission();
 			Application.LoadLevel("default_level");  
 		}
 		

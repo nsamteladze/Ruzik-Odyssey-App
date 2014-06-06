@@ -10,6 +10,8 @@ namespace RuzikOdyssey.Ai
 			return CalculateMovementDirection(currentPosition);
 		}
 
+		public abstract Vector2 GetTargetPosition(Vector2 currentPosition, bool isInWarzone);
+
 		protected abstract Vector2 CalculateMovementDirection(Vector2 currentPosition);
 	}
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fedba958aa48d4475afbd1b242c2eb76
+guid: 1963bf490cb42495a8a9557c0caaaf24
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -35,6 +35,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 128
   alphaIsTransparency: 1
   textureType: 8
@@ -49,109 +50,121 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 717
-        width: 218
-        height: 239
+        y: 498
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_1
       rect:
         serializedVersion: 2
-        x: 218
-        y: 717
-        width: 218
-        height: 239
+        x: 228
+        y: 498
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_2
       rect:
         serializedVersion: 2
-        x: 436
-        y: 717
-        width: 218
-        height: 239
+        x: 456
+        y: 498
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 478
-        width: 218
-        height: 239
+        x: 684
+        y: 498
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_4
       rect:
         serializedVersion: 2
-        x: 218
-        y: 478
-        width: 218
-        height: 239
+        x: 0
+        y: 249
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_5
       rect:
         serializedVersion: 2
-        x: 436
-        y: 478
-        width: 218
-        height: 239
+        x: 228
+        y: 249
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 239
-        width: 218
-        height: 239
+        x: 456
+        y: 249
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_7
       rect:
         serializedVersion: 2
-        x: 218
-        y: 239
-        width: 218
-        height: 239
+        x: 684
+        y: 249
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_8
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 239
-        width: 218
-        height: 239
-      alignment: 0
-      pivot: {x: 0, y: 0}
-    - name: alien_worker_idle_sprite_sheet_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 218
-        height: 239
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: alien_worker_idle_sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 228
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_10
       rect:
         serializedVersion: 2
-        x: 218
+        x: 456
         y: 0
-        width: 218
-        height: 239
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: alien_worker_idle_sprite_sheet_11
       rect:
         serializedVersion: 2
-        x: 436
+        x: 684
         y: 0
-        width: 218
-        height: 239
+        width: 228
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

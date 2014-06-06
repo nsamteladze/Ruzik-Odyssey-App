@@ -12,14 +12,9 @@ public class Weapon : MonoBehaviour
 
 	private Vector2 movement;
 
-	void Update()
+	private void Start()
 	{
-		movement = new Vector2(speed.x * direction.x, speed.y * direction.y);
-	}
-	
-	void FixedUpdate()
-	{
-		rigidbody2D.velocity = movement;
+		rigidbody2D.velocity = new Vector2(speed.x * direction.x, speed.y * direction.y);
 	}
 
 	private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -28,7 +23,12 @@ public class Weapon : MonoBehaviour
 	    {
 			var alienController = otherCollider.gameObject.GetComponent<AlienController>();
 			alienController.ApplyDamage(damage);
+			Debug.Log("Destroying " + this.gameObject.name);
 			Destroy(this.gameObject);
+		}
+		else if (otherCollider.tag.Equals("Player") && isEnemyShot) 
+		{
+
 		}
 	}
 }

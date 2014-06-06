@@ -16,9 +16,15 @@ public class SoundEffectsController : MonoBehaviour
 
 	public static SoundEffectsController Instance { get; private set; }
 
+	public void Play(AudioClip audioClip, float volume = 1.0f)
+	{
+		if (audioClip == null) return;
+		PlayAudioClip(audioClip, volume);
+	}
+
 	public void PlayLaserShot()
 	{
-		PlayAudioClip(laserShot);
+		PlayAudioClip(laserShot, 0.5f);
 	}
 
 	public void PlayMissileShot()
@@ -39,9 +45,9 @@ public class SoundEffectsController : MonoBehaviour
 		}
 	}
 
-	private void PlayAudioClip(AudioClip audioClip)
+	private void PlayAudioClip(AudioClip audioClip, float volume = 1.0f)
 	{
-		AudioSource.PlayClipAtPoint(audioClip, Vector3.zero);
+		AudioSource.PlayClipAtPoint(audioClip, Vector3.zero, volume);
 	}
 
 }
