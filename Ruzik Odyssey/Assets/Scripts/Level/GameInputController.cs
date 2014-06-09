@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
-using RuzikOdyssey.Characters;
+using RuzikOdyssey.Player;
 using System;
 
 namespace RuzikOdyssey
@@ -11,7 +11,7 @@ namespace RuzikOdyssey
 	public class GameInputController : MonoBehaviour 
 	{
 		private IList<TouchButton> buttons;
-		private GameCharacterController playerController;
+		private RuzikController playerController;
 
 		private int movementTouchId;
 
@@ -22,7 +22,7 @@ namespace RuzikOdyssey
 				.ToList();
 
 			playerController = GameObject.FindGameObjectWithTag("Player")
-				.GetComponent<GameCharacterController>();
+				.GetComponent<RuzikController>();
 			if (playerController == null) throw new UnityException("Failed to initialize player controller");
 
 			movementTouchId = -1;

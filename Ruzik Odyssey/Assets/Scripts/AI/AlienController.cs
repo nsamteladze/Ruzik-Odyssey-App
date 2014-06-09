@@ -1,6 +1,6 @@
 using UnityEngine;
 using RuzikOdyssey.Weapons;
-using RuzikOdyssey.Characters;
+using RuzikOdyssey.Player;
 using RuzikOdyssey.Level;
 
 namespace RuzikOdyssey.Ai
@@ -10,11 +10,13 @@ namespace RuzikOdyssey.Ai
 		public float warzoneSpeed = 50f;
 		public int scoreForKill = 1;
 
+		public float damageFromCollision = 1.0f;
+
 		private bool isInWarzone;
 
 		private float nonWarzoneSpeed = 100f;
 
-		public int health;
+		public float health;
 
 		private WeaponController weaponController;
 		private MovementStrategy movementStrategy;
@@ -22,7 +24,7 @@ namespace RuzikOdyssey.Ai
 		private float speed;
 
 
-		public void ApplyDamage(int damage)
+		public void ApplyDamage(float damage)
 		{
 			TakeDamage(damage);
 		}
@@ -39,6 +41,10 @@ namespace RuzikOdyssey.Ai
 		private void OnTriggerEnter2D(Collider2D otherCollider)
 		{
 			if (otherCollider.tag.Equals("WarzoneBoundary")) OnEnterWarzone();
+
+			if (otherCollider.CompareTag("Player"))
+				otherCollider.gameObject.GetComponent<RuzikController>()
+										.ApplyDamage(damageFromCollision);
 		}
 
 		private void OnWeaponHit(GameObject gameObject)
@@ -53,18 +59,17 @@ namespace RuzikOdyssey.Ai
 			rigidbody2D.velocity = Vector2.zero;
 		}
 
-		private void TakeDamage(int damage)
+		private void TakeDamage(float damage)
 		{
 			health -= damage;
-			if (health < 0) Die();
+			if (health <= 0) Die();
 		}
 
 		private void Die()
 		{
 			Destroy(gameObject);
-			SoundEffectsController.Instance.PlayPlayerExplosion();
 			SoundEffectsController.Instance.PlayPlayerTaunt();
-			GameController.Instance.AddScore(scoreForKill);
+			GameHelper.Instance.AddScore(scoreForKill);
 		}
 
 		private void Update()

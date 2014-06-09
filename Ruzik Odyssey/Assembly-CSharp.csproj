@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_5_0;UNITY_4_5;UNITY_IPHONE;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;UNITY_IPHONE_API;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;UNITY_IOS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_0;UNITY_4_5;UNITY_IPHONE;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;UNITY_IPHONE_API;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;UNITY_IOS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -53,42 +53,41 @@
      <Compile Include="Assets\Scripts\AI\MovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\MovementStrategyFactory.cs" />
      <Compile Include="Assets\Scripts\AI\PassByMovementStrategy.cs" />
-     <Compile Include="Assets\Scripts\Characters\GameCharacterController.cs" />
-     <Compile Include="Assets\Scripts\Characters\LimitedForceDeltaMovementController.cs" />
-     <Compile Include="Assets\Scripts\Characters\LimitedSpeedDeltaMovementController.cs" />
-     <Compile Include="Assets\Scripts\Characters\MovementController.cs" />
-     <Compile Include="Assets\Scripts\Characters\SpeedMultiplierDeltaMovementController.cs" />
-     <Compile Include="Assets\Scripts\Characters\WeaponController.cs" />
-     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
-     <Compile Include="Assets\Scripts\EnemyLifespan.cs" />
-     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
-     <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
+     <Compile Include="Assets\Scripts\Level\BarController.cs" />
      <Compile Include="Assets\Scripts\Level\EnemiesSpawn.cs" />
      <Compile Include="Assets\Scripts\Level\Environment.cs" />
      <Compile Include="Assets\Scripts\Level\FireSecondaryWeaponTouchButton.cs" />
-     <Compile Include="Assets\Scripts\Level\GameController.cs" />
+     <Compile Include="Assets\Scripts\Level\ForceField.cs" />
+     <Compile Include="Assets\Scripts\Level\GameHelper.cs" />
      <Compile Include="Assets\Scripts\Level\GameInputController.cs" />
      <Compile Include="Assets\Scripts\Level\GameOverMenu.cs" />
      <Compile Include="Assets\Scripts\Level\HealthBarController.cs" />
      <Compile Include="Assets\Scripts\Level\ITouchButton.cs" />
      <Compile Include="Assets\Scripts\Level\InnerHealthBarController.cs" />
      <Compile Include="Assets\Scripts\Level\LevelBoundariesController.cs" />
+     <Compile Include="Assets\Scripts\Level\Menu.cs" />
+     <Compile Include="Assets\Scripts\Level\MenuController.cs" />
+     <Compile Include="Assets\Scripts\Level\ObstaclesSpawnController.cs" />
      <Compile Include="Assets\Scripts\Level\PauseButton.cs" />
      <Compile Include="Assets\Scripts\Level\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Level\RendererExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\ScoreController.cs" />
      <Compile Include="Assets\Scripts\Level\Scrolling.cs" />
+     <Compile Include="Assets\Scripts\Level\SlowDownEffect.cs" />
      <Compile Include="Assets\Scripts\Level\SoundEffectsController.cs" />
      <Compile Include="Assets\Scripts\Level\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Level\TextResize.cs" />
      <Compile Include="Assets\Scripts\Level\TouchButton.cs" />
-     <Compile Include="Assets\Scripts\PlayerDeltaMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerWeaponsController.cs" />
-     <Compile Include="Assets\Scripts\Weapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\WeaponBase.cs" />
-     <Compile Include="Assets\WarzoneBoundaryController.cs" />
+     <Compile Include="Assets\Scripts\Player\HealthController.cs" />
+     <Compile Include="Assets\Scripts\Player\LimitedForceDeltaMovementController.cs" />
+     <Compile Include="Assets\Scripts\Player\LimitedSpeedDeltaMovementController.cs" />
+     <Compile Include="Assets\Scripts\Player\MovementController.cs" />
+     <Compile Include="Assets\Scripts\Player\RuzikController.cs" />
+     <Compile Include="Assets\Scripts\Player\ShieldController.cs" />
+     <Compile Include="Assets\Scripts\Player\SpeedMultiplierDeltaMovementController.cs" />
+     <Compile Include="Assets\Scripts\Player\WeaponController.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\WeaponWithDetonator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

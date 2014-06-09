@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using RuzikOdyssey.Characters;
+using RuzikOdyssey.Player;
 
 public class FireSecondaryWeaponTouchButton : TouchButton 
 {	

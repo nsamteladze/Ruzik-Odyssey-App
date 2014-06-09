@@ -11,6 +11,8 @@ public static class Environment
 	public static GUISkin DefaultSkin;
 	public static GUIStyle DefaultButtonStyle;
 
+	public static Vector2 ForegroundSpeed = new Vector2(-1, 0);
+
 	public static bool IsPaused { get; private set; }
 	public static bool IsGameOver { get; private set; }
 

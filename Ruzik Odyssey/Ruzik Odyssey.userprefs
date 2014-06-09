@@ -1,33 +1,24 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI/AlienController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/HealthController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Level/GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/GameOverMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/StartMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/PauseMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/FireSecondaryWeaponTouchButton.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/SoundEffectsController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/Environment.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="19" Column="22" />
-      <File FileName="Assets/Scripts/AI/PassByMovementStrategy.cs" Line="14" Column="31" />
-      <File FileName="Assets/Scripts/AI/MovementStrategy.cs" Line="13" Column="88" />
-      <File FileName="Assets/Scripts/Characters/WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Characters/GameCharacterController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Characters/LimitedForceDeltaMovementController.cs" Line="57" Column="40" />
-      <File FileName="Assets/Scripts/AI/MoveToRandomPositionMovementStrategy.cs" Line="25" Column="26" />
-      <File FileName="Assets/Scripts/Characters/MovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/MovementController.cs" Line="23" Column="44" />
+      <File FileName="Assets/Scripts/Level/BarController.cs" Line="40" Column="64" />
+      <File FileName="Assets/Scripts/Player/ShieldController.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/Player/RuzikController.cs" Line="48" Column="18" />
+      <File FileName="Assets/Scripts/Player/HealthController.cs" Line="36" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="AI" expanded="True">
-                <Node name="AlienController.cs" selected="True" />
-              </Node>
-              <Node name="Characters" expanded="True" />
+              <Node name="AI" expanded="True" />
               <Node name="Level" expanded="True" />
+              <Node name="Player" expanded="True">
+                <Node name="HealthController.cs" selected="True" />
+              </Node>
+              <Node name="Weapons" expanded="True" />
             </Node>
           </Node>
         </State>
