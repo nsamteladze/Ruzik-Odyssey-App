@@ -10,16 +10,18 @@ namespace RuzikOdyssey
 
 	public class GameInputController : MonoBehaviour 
 	{
-		private IList<TouchButton> buttons;
+		private IList<ITouchControl> buttons;
 		private RuzikController playerController;
 
 		private int movementTouchId;
 
 		private void Start()
 		{
-			buttons = GameObject.FindGameObjectsWithTag("TouchButton")
-				.Select(x => x.GetComponent<TouchButton>())
+			buttons = GameObject.FindGameObjectsWithTag("TouchControl")
+				.Select(x => (ITouchControl)x.GetComponent(typeof(ITouchControl)))
 				.ToList();
+
+			Debug.Log("Found touch controls: " + buttons.Count);
 
 			playerController = GameObject.FindGameObjectWithTag("Player")
 				.GetComponent<RuzikController>();
@@ -46,7 +48,7 @@ namespace RuzikOdyssey
 						isButtonTouch = true;
 						if (touch.phase == TouchPhase.Began)
 						{
-							button.Touch();
+							button.TriggerTouch();
 						}
 						else if (touch.fingerId == movementTouchId) ProcessMovementTouch(touch);
 					}

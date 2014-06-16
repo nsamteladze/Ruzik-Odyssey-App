@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace RuzikOdyssey
 {
-	public interface ITouchButton
+	public interface ITouchControl
 	{
-		void Touch();
+		void TriggerTouch();
 		bool HitTest(Vector2 position);
 	}
 }

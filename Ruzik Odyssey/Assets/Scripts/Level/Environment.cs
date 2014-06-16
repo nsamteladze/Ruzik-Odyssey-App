@@ -44,6 +44,7 @@ public static class Environment
 	public static void StartMission()
 	{
 		IsGameOver = false;
+		EventBroker.ClearSubscribtions();
 	}
 
 	public static void GameOver()

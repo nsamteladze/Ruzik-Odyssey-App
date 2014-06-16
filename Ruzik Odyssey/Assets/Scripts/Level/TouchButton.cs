@@ -1,9 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using RuzikOdyssey;
+using RuzikOdyssey.Level;
+using System;
 
-public abstract class TouchButton : MonoBehaviour
+public class TouchButton : MonoBehaviour, ITouchControl
 {
+	public string buttonName;
+
 	private GUITexture buttonTexture;
 
 	protected void Start()
@@ -18,13 +22,24 @@ public abstract class TouchButton : MonoBehaviour
 		                                    initialPixelInset.width * Environment.ScaleOffset.x,
 		                                    initialPixelInset.height * Environment.ScaleOffset.y);
 
+		RegisterEvents();
 	}
 
-	protected abstract void OnButtonTouch();
-
-	public virtual void Touch()
+	protected virtual void RegisterEvents()
 	{
-		OnButtonTouch();
+		EventBroker.Publish(String.Format("{0}_Touch", buttonName), ref Touch);
+	}
+
+	public event EventHandler<EventArgs> Touch;
+
+	protected virtual void OnTouch()
+	{
+		Touch(this, EventArgs.Empty);
+	}
+
+	public void TriggerTouch()
+	{
+		OnTouch();
 	}
 	
 	public bool HitTest(Vector2 position)

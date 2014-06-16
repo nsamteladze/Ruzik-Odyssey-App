@@ -1,6 +1,7 @@
 using UnityEngine;
 using RuzikOdyssey.Level;
 using RuzikOdyssey.Ai;
+using System;
 
 namespace RuzikOdyssey.Player
 {
@@ -13,6 +14,8 @@ namespace RuzikOdyssey.Player
 
 		private HealthController healthController;
 		private ShieldController shieldController;
+
+		private bool shieldEnabled = false;
 
 		private void Start()
 		{
@@ -27,6 +30,26 @@ namespace RuzikOdyssey.Player
 
 			shieldController = this.GetComponent<ShieldController>();
 			if (shieldController == null) throw new UnityException("Failed to initialize shield controller");
+
+			SubscribeToEvents();
+		}
+
+		private void SubscribeToEvents()
+		{
+			EventBroker.Subscribe<EventArgs>("FireSecondaryWeaponButton_Touch", FireSecondaryWeaponButton_Touch);
+			EventBroker.Subscribe<ToggleStateChangedEventArgs>("ShieldToggle_StateChanged", ShieldToggle_StateChanged);
+		}
+
+		private void ShieldToggle_StateChanged(object sender, ToggleStateChangedEventArgs e)
+		{
+			Debug.Log("Shield is " + e.ToggleIsOn);
+
+			shieldEnabled = e.ToggleIsOn;
+		}
+
+		private void FireSecondaryWeaponButton_Touch(object sender, EventArgs e)
+		{
+			weaponController.AttackWithSecondaryWeapon();
 		}
 
 		private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -54,7 +77,7 @@ namespace RuzikOdyssey.Player
 
 		public void ApplyDamage(float damage)
 		{
-			var remainingDamage = shieldController.ShieldDamage(damage);
+			var remainingDamage = shieldEnabled ? shieldController.ShieldDamage(damage) : damage;
 			var healthLeft = healthController.TakeDamage(remainingDamage);
 
 			Debug.Log(string.Format("Shielded: {0}, Taken: {1}, Left: {2}", damage - remainingDamage, remainingDamage, healthLeft));
@@ -77,5 +100,6 @@ namespace RuzikOdyssey.Player
 		{
 			movementController.ResetAccelarationMultiplier();
 		}
+
 	}
 }

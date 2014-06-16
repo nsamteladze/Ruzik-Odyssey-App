@@ -14,7 +14,7 @@ public class PauseButton : TouchButton
 			throw new UnityException("Failed to find game object named 'ui' in the hierarchy");
 	}
 	
-	protected override void OnButtonTouch()
+	protected override void OnTouch()
 	{
 		if (!Environment.IsPaused) 
 		{
