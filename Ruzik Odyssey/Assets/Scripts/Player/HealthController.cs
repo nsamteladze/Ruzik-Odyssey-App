@@ -25,6 +25,12 @@ namespace RuzikOdyssey.Player
 			defaultHealth = health;
 		}
 
+		public void AddHealth(float health)
+		{
+			this.health += health;
+			if (this.health > defaultHealth) this.health = defaultHealth;
+		}
+
 		public float TakeDamage(float damage)
 		{
 			health -= damage;

@@ -55,8 +55,24 @@ namespace RuzikOdyssey.Player
 		private void OnTriggerEnter2D(Collider2D otherCollider)
 		{
 			if (otherCollider.CompareTag("Enemy"))
+			{
 				otherCollider.gameObject.GetComponent<AlienController>()
 										.ApplyDamage(damageFromCollision);
+			} 
+			else if (otherCollider.CompareTag("PickUp"))
+			{
+				var pickUp = otherCollider.gameObject.GetComponent<PickUp>();
+				if (pickUp == null) throw new UnityException("Pick Up lacks PickUp component");
+
+				switch (pickUp.type)
+				{
+					case PickUpType.Health:
+						healthController.AddHealth(pickUp.amount);
+						break;
+					
+				}
+				Destroy(pickUp.gameObject);
+			}
 		}
 
 		public void AttackWithMainWeapon()

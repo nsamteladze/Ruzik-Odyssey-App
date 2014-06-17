@@ -62,6 +62,7 @@
 'Assets/Scripts/Level/ObstaclesSpawnController.cs'
 'Assets/Scripts/Level/PauseButton.cs'
 'Assets/Scripts/Level/PauseMenu.cs'
+'Assets/Scripts/Level/PickUpsSpawnController.cs'
 'Assets/Scripts/Level/RendererExtensions.cs'
 'Assets/Scripts/Level/ScoreController.cs'
 'Assets/Scripts/Level/Scrolling.cs'

@@ -72,6 +72,8 @@
      <Compile Include="Assets\Scripts\Level\ObstaclesSpawnController.cs" />
      <Compile Include="Assets\Scripts\Level\PauseButton.cs" />
      <Compile Include="Assets\Scripts\Level\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\Level\PickUp.cs" />
+     <Compile Include="Assets\Scripts\Level\PickUpsSpawnController.cs" />
      <Compile Include="Assets\Scripts\Level\RendererExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\ScoreController.cs" />
      <Compile Include="Assets\Scripts\Level\Scrolling.cs" />
