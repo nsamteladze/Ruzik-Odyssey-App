@@ -2,8 +2,7 @@
 -target:library
 -nowarn:0169
 -out:'Temp/Assembly-CSharp.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
+-r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/Managed/UnityEngine.dll'
 -define:UNITY_4_5_0
 -define:UNITY_4_5
 -define:UNITY_IPHONE
@@ -33,9 +32,6 @@
 -define:ENABLE_AUDIO
 -define:ENABLE_NAVMESH_CARVING
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
--define:ENABLE_PROFILER
--define:UNITY_EDITOR
--define:UNITY_EDITOR_OSX
 'Assets/Scripts/AI/AlienController.cs'
 'Assets/Scripts/AI/HoldPositionMovementStrategy.cs'
 'Assets/Scripts/AI/IMovementStrategy.cs'
@@ -62,10 +58,12 @@
 'Assets/Scripts/Level/ObstaclesSpawnController.cs'
 'Assets/Scripts/Level/PauseButton.cs'
 'Assets/Scripts/Level/PauseMenu.cs'
+'Assets/Scripts/Level/PickUp.cs'
 'Assets/Scripts/Level/PickUpsSpawnController.cs'
 'Assets/Scripts/Level/RendererExtensions.cs'
 'Assets/Scripts/Level/ScoreController.cs'
 'Assets/Scripts/Level/Scrolling.cs'
+'Assets/Scripts/Level/Shield.cs'
 'Assets/Scripts/Level/SlowDownEffect.cs'
 'Assets/Scripts/Level/SoundEffectsController.cs'
 'Assets/Scripts/Level/StartMenu.cs'

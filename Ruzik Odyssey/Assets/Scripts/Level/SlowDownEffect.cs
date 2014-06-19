@@ -13,7 +13,7 @@ namespace RuzikOdyssey.Level
 
 		private void Start()
 		{
-			playerController = this.gameObject.GetComponent<RuzikController>();
+			playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<RuzikController>();
 			if (playerController == null) throw new UnityException("Failed to slow down game object");
 
 			playerController.SlowDown(speedDecrease);
@@ -23,7 +23,7 @@ namespace RuzikOdyssey.Level
 		private void CancelEffect()
 		{
 			playerController.CancelSlowDown();
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 	}
 }

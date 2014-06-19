@@ -1,8 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/PickUp.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/ShieldController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Level/PickUp.cs" Line="16" Column="3" />
+      <File FileName="Assets/Scripts/Level/PickUp.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/PickUpsSpawnController.cs" Line="26" Column="43" />
+      <File FileName="Assets/Scripts/Player/RuzikController.cs" Line="70" Column="28" />
+      <File FileName="Assets/Scripts/Player/HealthController.cs" Line="33" Column="28" />
+      <File FileName="Assets/Scripts/Level/ForceField.cs" Line="27" Column="5" />
+      <File FileName="Assets/Scripts/Level/SlowDownEffect.cs" Line="20" Column="39" />
+      <File FileName="Assets/Scripts/Level/Shield.cs" Line="6" Column="2" />
+      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/WeaponController.cs" Line="31" Column="1" />
+      <File FileName="Assets/Scripts/Player/ShieldController.cs" Line="34" Column="73" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +20,9 @@
             <Node name="Scripts" expanded="True">
               <Node name="AI" expanded="True" />
               <Node name="Level" expanded="True" />
-              <Node name="Player" expanded="True" />
+              <Node name="Player" expanded="True">
+                <Node name="ShieldController.cs" selected="True" />
+              </Node>
               <Node name="Weapons" expanded="True" />
             </Node>
           </Node>

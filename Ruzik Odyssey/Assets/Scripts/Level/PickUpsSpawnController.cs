@@ -25,7 +25,7 @@ namespace RuzikOdyssey.Level
 
 			var pickUpTypeDice = Random.Range(0, 10);
 
-			if (pickUpTypeDice < 3) InstantiateWithinWarzone(healthPickUp);
+			if (pickUpTypeDice < 5) InstantiateWithinWarzone(healthPickUp);
 			else InstantiateWithinWarzone(secondaryWeaponPickUp);
 		}
 

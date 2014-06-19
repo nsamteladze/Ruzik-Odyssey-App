@@ -45,6 +45,7 @@ namespace RuzikOdyssey.Player
 			Debug.Log("Shield is " + e.ToggleIsOn);
 
 			shieldEnabled = e.ToggleIsOn;
+			shieldController.ChangeShieldVisibility(shieldEnabled);
 		}
 
 		private void FireSecondaryWeaponButton_Touch(object sender, EventArgs e)

@@ -29,16 +29,23 @@ namespace RuzikOdyssey.Player
 		{
 			this.health += health;
 			if (this.health > defaultHealth) this.health = defaultHealth;
+
+			UpdateHealthBar(health);
 		}
 
 		public float TakeDamage(float damage)
 		{
 			health -= damage;
 
-			int healthLevel = (int)(100 * health / defaultHealth);
-			healthBarController.ShowLevel(healthLevel);
+			UpdateHealthBar(health);
 
 			return health;
+		}
+
+		private void UpdateHealthBar(float health)
+		{
+			int healthLevel = (int)(100 * health / defaultHealth);
+			healthBarController.ShowLevel(healthLevel);
 		}
 	}
 }
