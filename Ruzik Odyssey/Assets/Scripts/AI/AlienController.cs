@@ -2,11 +2,14 @@ using UnityEngine;
 using RuzikOdyssey.Weapons;
 using RuzikOdyssey.Player;
 using RuzikOdyssey.Level;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Ai
 {
 	public class AlienController : MonoBehaviour
 	{
+		public GameObject energyBall;
+
 		public float warzoneSpeed = 50f;
 		public int scoreForKill = 1;
 
@@ -67,9 +70,26 @@ namespace RuzikOdyssey.Ai
 
 		private void Die()
 		{
-			Destroy(gameObject);
+			DropEnergy();
+
 			SoundEffectsController.Instance.PlayPlayerTaunt();
 			GameHelper.Instance.AddScore(scoreForKill);
+
+			Destroy(gameObject);
+		}
+
+		private void DropEnergy()
+		{
+			var energyAmount = Random.Range(0, 7);
+
+			Debug.Log("Dropped energy: " + energyAmount);
+
+			for (int i = 0; i < energyAmount; i++)
+			{
+				energyBall.InstantiateAtPosition(
+					this.transform.position,
+					5.0f * Vector2.one.RandomNormilazed(), ForceMode2D.Impulse);
+			}
 		}
 
 		private void Update()

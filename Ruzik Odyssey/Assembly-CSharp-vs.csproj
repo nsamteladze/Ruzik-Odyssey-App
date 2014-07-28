@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_5_0;UNITY_4_5;UNITY_IPHONE;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;UNITY_IPHONE_API;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;UNITY_IOS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_1;UNITY_4_5;UNITY_IPHONE;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;UNITY_IPHONE_API;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;UNITY_IOS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,6 +46,26 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdRequest.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\AdSize.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\BannerView.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\Gender.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Api\InterstitialAd.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\DummyClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\IAdListener.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\IGoogleMobileAdsBannerClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Common\IGoogleMobileAdsInterstitialClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AdListener.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AndroidBannerClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AndroidInterstitialClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\Utils.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\GoogleMobileAdsClientFactory.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Externs.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\IOSBannerClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\IOSInterstitialClient.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
      <Compile Include="Assets\Scripts\AI\AlienController.cs" />
      <Compile Include="Assets\Scripts\AI\HoldPositionMovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\IMovementStrategy.cs" />
@@ -53,29 +73,48 @@
      <Compile Include="Assets\Scripts\AI\MovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\MovementStrategyFactory.cs" />
      <Compile Include="Assets\Scripts\AI\PassByMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\AdMobScript.cs" />
+     <Compile Include="Assets\Scripts\Ads\AdMobAdsService.cs" />
+     <Compile Include="Assets\Scripts\Common\BarController.cs" />
+     <Compile Include="Assets\Scripts\Common\EnumUtility.cs" />
+     <Compile Include="Assets\Scripts\Common\EssenceController.cs" />
+     <Compile Include="Assets\Scripts\Common\Log.cs" />
+     <Compile Include="Assets\Scripts\Common\LogMessageType.cs" />
      <Compile Include="Assets\Scripts\Level\ActivateShieldButton.cs" />
-     <Compile Include="Assets\Scripts\Level\BarController.cs" />
+     <Compile Include="Assets\Scripts\Level\BoundsExtensions.cs" />
+     <Compile Include="Assets\Scripts\Level\Chapter1MapScreenUI.cs" />
      <Compile Include="Assets\Scripts\Level\EnemiesSpawn.cs" />
      <Compile Include="Assets\Scripts\Level\Environment.cs" />
      <Compile Include="Assets\Scripts\Level\EventBroker.cs" />
+     <Compile Include="Assets\Scripts\Level\ExtendedMonoBehaviour.cs" />
      <Compile Include="Assets\Scripts\Level\FireSecondaryWeaponButton.cs" />
      <Compile Include="Assets\Scripts\Level\ForceField.cs" />
      <Compile Include="Assets\Scripts\Level\GameHelper.cs" />
      <Compile Include="Assets\Scripts\Level\GameInputController.cs" />
+     <Compile Include="Assets\Scripts\Level\GameObjectExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\GameOverMenu.cs" />
+     <Compile Include="Assets\Scripts\Level\GlobalMapScreenUI.cs" />
      <Compile Include="Assets\Scripts\Level\HealthBarController.cs" />
      <Compile Include="Assets\Scripts\Level\ITouchControl.cs" />
      <Compile Include="Assets\Scripts\Level\InnerHealthBarController.cs" />
      <Compile Include="Assets\Scripts\Level\LevelBoundariesController.cs" />
+     <Compile Include="Assets\Scripts\Level\LevelLoadingScreenUI.cs" />
+     <Compile Include="Assets\Scripts\Level\MainScreenUI.cs" />
      <Compile Include="Assets\Scripts\Level\Menu.cs" />
      <Compile Include="Assets\Scripts\Level\MenuController.cs" />
+     <Compile Include="Assets\Scripts\Level\MonoBehaviourExtensions.cs" />
+     <Compile Include="Assets\Scripts\Level\Obstacle.cs" />
      <Compile Include="Assets\Scripts\Level\ObstaclesSpawnController.cs" />
+     <Compile Include="Assets\Scripts\Level\OtherExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\PauseButton.cs" />
      <Compile Include="Assets\Scripts\Level\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Level\PickUp.cs" />
+     <Compile Include="Assets\Scripts\Level\PickUpType.cs" />
      <Compile Include="Assets\Scripts\Level\PickUpsSpawnController.cs" />
+     <Compile Include="Assets\Scripts\Level\Range.cs" />
      <Compile Include="Assets\Scripts\Level\RendererExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\ScoreController.cs" />
+     <Compile Include="Assets\Scripts\Level\ScreenUIBase.cs" />
      <Compile Include="Assets\Scripts\Level\Scrolling.cs" />
      <Compile Include="Assets\Scripts\Level\Shield.cs" />
      <Compile Include="Assets\Scripts\Level\SlowDownEffect.cs" />
@@ -85,6 +124,7 @@
      <Compile Include="Assets\Scripts\Level\ToggleStateChangedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Level\TouchButton.cs" />
      <Compile Include="Assets\Scripts\Level\TouchToggle.cs" />
+     <Compile Include="Assets\Scripts\Player\EnergyController.cs" />
      <Compile Include="Assets\Scripts\Player\HealthController.cs" />
      <Compile Include="Assets\Scripts\Player\LimitedForceDeltaMovementController.cs" />
      <Compile Include="Assets\Scripts\Player\LimitedSpeedDeltaMovementController.cs" />
@@ -93,8 +133,21 @@
      <Compile Include="Assets\Scripts\Player\ShieldController.cs" />
      <Compile Include="Assets\Scripts\Player\SpeedMultiplierDeltaMovementController.cs" />
      <Compile Include="Assets\Scripts\Player\WeaponController.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\DeltaWithLimitedForceMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\Events.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\GameObjectExtensions.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\IMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\ITouchControl.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\InputChangedEventArgs.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\PlayerModel.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\PlayerViewModel.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\PlayerWeaponController.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\PlayerWeaponModel.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\UserInputProcessor.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponWithDetonator.cs" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

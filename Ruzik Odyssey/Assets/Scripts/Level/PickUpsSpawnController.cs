@@ -1,4 +1,5 @@
 using UnityEngine;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Level
 {
@@ -25,21 +26,11 @@ namespace RuzikOdyssey.Level
 
 			var pickUpTypeDice = Random.Range(0, 10);
 
-			if (pickUpTypeDice < 5) InstantiateWithinWarzone(healthPickUp);
-			else InstantiateWithinWarzone(secondaryWeaponPickUp);
+			if (pickUpTypeDice < 5) healthPickUp.InstantiateAtBoundsEntrance(Game.WarzoneBounds);
+			else secondaryWeaponPickUp.InstantiateAtBoundsEntrance(Game.WarzoneBounds);
 		}
 
-		private void InstantiateWithinWarzone(GameObject gameObject)
-		{
-			Instantiate(
-				gameObject, 
-				new Vector2(Game.WarzoneBounds.Right() + gameObject.RendererSize().x / 2,
-			            	Random.Range(Game.WarzoneBounds.Top() - gameObject.RendererSize().y / 2,
-			       				   	     Game.WarzoneBounds.Bottom() + gameObject.RendererSize().y / 2
-			       				  		)
-			            	),
-				transform.rotation);
-		}
+
 	}
 }
 

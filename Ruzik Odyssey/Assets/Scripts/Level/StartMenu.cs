@@ -15,11 +15,10 @@ public class StartMenu : MonoBehaviour
 	
 	void OnGUI()
 	{
-		if (GUI.Button(new Rect(925 * scaleOffset.x, 510 * scaleOffset.y, 785 * scale, 345 * scale), 
+		if (GUI.Button(new Rect(938 * scaleOffset.x, 458 * scaleOffset.y, 580 * scale, 270 * scale), 
 		               "", GUIStyle.none))
 		{
-			Environment.StartMission();
-			Application.LoadLevel("default_level"); 
+			Application.LoadLevel("main_screen"); 
 		}
 	}
 }

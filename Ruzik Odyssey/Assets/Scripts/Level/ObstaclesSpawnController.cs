@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Level
 {
@@ -45,75 +46,11 @@ namespace RuzikOdyssey.Level
 		}
 	}
 
-	public class Range
-	{
-		public float Min { get; set; }
-		public float Max { get; set; }
-
-		public float GetNumberInRange()
-		{
-			return Random.Range(Min, Max);
-		}
-	}
-
-	public class ExtendedMonoBehaviour : MonoBehaviour
-	{
-		protected GameHelper Game
-		{
-			get { return GameHelper.Instance; }
-		}
-	}
-
-	public static class CustomExtensions
-	{
-		public static Vector2 RendererSize(this GameObject gameObject)
-		{
-			return gameObject.renderer.bounds.size;
-		}
-
-		public static float Top(this Bounds bounds)
-		{
-			return bounds.max.y;
-		}
-
-		public static float Bottom(this Bounds bounds)
-		{
-			return bounds.min.y;
-		}
-
-		public static float Left(this Bounds bounds)
-		{
-			return bounds.min.x;
-		}
-
-		public static float Right(this Bounds bounds)
-		{
-			return bounds.max.x;
-		}
 
 
-	}
 
-	internal class Obstacle
-	{
-		public GameObject ObstacleObject { get; set; }
-		public Range PositionRange { get; set; }
 
-		public Obstacle(GameObject obstacleObject, Bounds bounds)
-		{
-			this.ObstacleObject = obstacleObject;
-			this.PositionRange = new Range()
-			{
-				Min = bounds.Bottom() + ObstacleObject.RendererSize().y / 2,
-				Max = bounds.Top() - ObstacleObject.RendererSize().y / 2,
-			};
-		}
 
-		public Vector2 Size()
-		{
-			return ObstacleObject.RendererSize();
-		}
-	}
 
 	internal class ObstacleGroup
 	{

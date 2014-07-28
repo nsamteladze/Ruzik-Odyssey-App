@@ -1,29 +1,32 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/ShieldController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/MainScreenUI.cs">
     <Files>
-      <File FileName="Assets/Scripts/Level/PickUp.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/PickUpsSpawnController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player/RuzikController.cs" Line="52" Column="4" />
-      <File FileName="Assets/Scripts/Player/HealthController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/ForceField.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/SlowDownEffect.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/Shield.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player/WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player/ShieldController.cs" Line="61" Column="35" />
+      <File FileName="Assets/Scripts/Level/LevelLoadingScreenUI.cs" Line="11" Column="4" />
+      <File FileName="Assets/Scripts/Level/MainScreenUI.cs" Line="88" Column="3" />
+      <File FileName="Assets/Scripts/Level/Chapter1MapScreenUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/AdMobScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleMobileAds/Api/InterstitialAd.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleMobileAds/Common/DummyClient.cs" Line="19" Column="10" />
+      <File FileName="Assets/Scripts/AdMobScript.cs" Line="64" Column="4" />
+      <File FileName="Assets/Scripts/Ads/AdMobAdsService.cs" Line="50" Column="1" />
+      <File FileName="Assets/Scripts/Level/TouchToggle.cs" Line="62" Column="3" />
+      <File FileName="Assets/Scripts/Player/RuzikController.cs" Line="35" Column="34" />
+      <File FileName="Assets/Scripts/Level/ScreenUIBase.cs" Line="25" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="GoogleMobileAds" expanded="True">
+              <Node name="Api" expanded="True" />
+            </Node>
             <Node name="Scripts" expanded="True">
-              <Node name="AI" expanded="True" />
-              <Node name="Level" expanded="True" />
-              <Node name="Player" expanded="True">
-                <Node name="ShieldController.cs" selected="True" />
+              <Node name="Ads" expanded="True" />
+              <Node name="Level" expanded="True">
+                <Node name="MainScreenUI.cs" selected="True" />
               </Node>
-              <Node name="Weapons" expanded="True" />
+              <Node name="Player" expanded="True" />
             </Node>
           </Node>
         </State>

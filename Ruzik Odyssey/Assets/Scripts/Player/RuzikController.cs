@@ -2,6 +2,7 @@ using UnityEngine;
 using RuzikOdyssey.Level;
 using RuzikOdyssey.Ai;
 using System;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Player
 {
@@ -13,23 +14,18 @@ namespace RuzikOdyssey.Player
 		private WeaponController weaponController;
 
 		private HealthController healthController;
+		private EnergyController energyController;
 		private ShieldController shieldController;
 
 		private bool shieldEnabled = false;
 
 		private void Start()
 		{
-			movementController = this.gameObject.GetComponent<MovementController>();
-			if (movementController == null) throw new UnityException("Failed to initialize movement controller");
-
-			weaponController = this.GetComponent<WeaponController>();
-			if (weaponController == null) throw new UnityException("Failed to initialize weapon controller");
-
-			healthController = this.GetComponent<HealthController>();
-			if (healthController == null) throw new UnityException("Failed to initialize health controller");
-
-			shieldController = this.GetComponent<ShieldController>();
-			if (shieldController == null) throw new UnityException("Failed to initialize shield controller");
+			movementController = gameObject.GetComponentOrThrow<MovementController>();
+			weaponController = gameObject.GetComponentOrThrow<WeaponController>();
+			healthController = gameObject.GetComponentOrThrow<HealthController>();
+			energyController = gameObject.GetComponentOrThrow<EnergyController>();
+			shieldController = gameObject.GetComponentOrThrow<ShieldController>();
 
 			SubscribeToEvents();
 		}
@@ -44,7 +40,12 @@ namespace RuzikOdyssey.Player
 		{
 			Debug.Log("Shield is " + e.ToggleIsOn);
 
-			shieldEnabled = e.ToggleIsOn;
+//			if (e.ToggleIsOn)
+//			{
+//				if (energyController.amount > 0) 
+//			}
+
+			shieldEnabled = e.ToggleIsOn;  
 			shieldController.ChangeShieldVisibility(shieldEnabled);
 		}
 
@@ -68,9 +69,16 @@ namespace RuzikOdyssey.Player
 				switch (pickUp.type)
 				{
 					case PickUpType.Health:
-						healthController.AddHealth(pickUp.amount);
+						healthController.Change(pickUp.amount);
 						break;
-					
+					case PickUpType.Energy:
+						energyController.Change(pickUp.amount);
+						break;
+					case PickUpType.Weapon:
+						break;
+					default:
+						Debug.LogWarning("Unrecognized pick up type");
+						break;
 				}
 				Destroy(pickUp.gameObject);
 			}
@@ -94,10 +102,24 @@ namespace RuzikOdyssey.Player
 
 		public void ApplyDamage(float damage)
 		{
-			var remainingDamage = shieldEnabled ? shieldController.ShieldDamage(damage) : damage;
-			var healthLeft = healthController.TakeDamage(remainingDamage);
+			var remainingDamage = (energyController.amount > 0 && shieldEnabled)
+				? shieldController.ShieldDamage(damage) 
+				: damage;
+			var energyLeft = energyController.Change(remainingDamage - damage);
 
-			Debug.Log(string.Format("Shielded: {0}, Taken: {1}, Left: {2}", damage - remainingDamage, remainingDamage, healthLeft));
+			if (energyLeft <= 0) 
+			{
+				/* TODO
+				 * Notify UI control that it must change state to off.
+				 */
+
+				shieldEnabled = false;
+				shieldController.ChangeShieldVisibility(shieldEnabled);
+			}
+
+			var healthLeft = healthController.Change(-remainingDamage);
+
+			Log.Debug("Shielded: {0}, Taken: {1}, Left: {2}", damage - remainingDamage, remainingDamage, healthLeft);
 
 			if (healthLeft < 0) Die ();
 		}
