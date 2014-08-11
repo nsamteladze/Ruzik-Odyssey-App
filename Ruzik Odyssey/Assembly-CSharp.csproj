@@ -66,7 +66,9 @@
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\IOSBannerClient.cs" />
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\IOSInterstitialClient.cs" />
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
+     <Compile Include="Assets\ParticleScaler\ParticleScaler.cs" />
      <Compile Include="Assets\Scripts\AI\AlienController.cs" />
+     <Compile Include="Assets\Scripts\AI\AlienWeaponController.cs" />
      <Compile Include="Assets\Scripts\AI\HoldPositionMovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\IMovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\MoveToRandomPositionMovementStrategy.cs" />
@@ -78,6 +80,8 @@
      <Compile Include="Assets\Scripts\Common\BarController.cs" />
      <Compile Include="Assets\Scripts\Common\EnumUtility.cs" />
      <Compile Include="Assets\Scripts\Common\EssenceController.cs" />
+     <Compile Include="Assets\Scripts\Common\ExtendedMonoBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Common\Label.cs" />
      <Compile Include="Assets\Scripts\Common\Log.cs" />
      <Compile Include="Assets\Scripts\Common\LogMessageType.cs" />
      <Compile Include="Assets\Scripts\Level\ActivateShieldButton.cs" />
@@ -86,7 +90,6 @@
      <Compile Include="Assets\Scripts\Level\EnemiesSpawn.cs" />
      <Compile Include="Assets\Scripts\Level\Environment.cs" />
      <Compile Include="Assets\Scripts\Level\EventBroker.cs" />
-     <Compile Include="Assets\Scripts\Level\ExtendedMonoBehaviour.cs" />
      <Compile Include="Assets\Scripts\Level\FireSecondaryWeaponButton.cs" />
      <Compile Include="Assets\Scripts\Level\ForceField.cs" />
      <Compile Include="Assets\Scripts\Level\GameHelper.cs" />
@@ -124,6 +127,7 @@
      <Compile Include="Assets\Scripts\Level\ToggleStateChangedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Level\TouchButton.cs" />
      <Compile Include="Assets\Scripts\Level\TouchToggle.cs" />
+     <Compile Include="Assets\Scripts\LevelDesign\Chapter1Level1Design.cs" />
      <Compile Include="Assets\Scripts\Player\EnergyController.cs" />
      <Compile Include="Assets\Scripts\Player\HealthController.cs" />
      <Compile Include="Assets\Scripts\Player\LimitedForceDeltaMovementController.cs" />
@@ -147,6 +151,8 @@
      <Compile Include="Assets\Scripts\Sandbox\UserInputProcessor.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponWithDetonator.cs" />
+     <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
+     <None Include="Assets\ParticleScaler\How_to_use.txt" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using RuzikOdyssey.Level;
 
 namespace RuzikOdyssey.Player
 {
@@ -16,13 +17,21 @@ namespace RuzikOdyssey.Player
 
 		public bool attackIsControlledFromAnimator = true;
 
-		public AudioClip mainWeaponSoundEffect;
-		public AudioClip secondaryWeaponSoundEffect;
-		public float mainWeaponSoundEffectVolume = 1.0f;
-		public float secondWeaponSoundEffectVolume = 1.0f;
+		public AudioClip cannonSFX;
+		public AudioClip missileSFX;
+		public float cannonSfxVolume = 1.0f;
+		public float missileSfxVolume = 1.0f;
+
+		public int cannonSfxRate = 3;
 	
-		private float mainWeaponCooldown = 0.25f;
-		private float secondaryWeaponCooldown = 0.5f;
+		private float cannonCooldown = 0.25f;
+		private float missileCooldown = 0.5f;
+
+		private int cannonSFXCooldown;
+
+		public bool hasAmmo = false;
+
+		public int missileAmmo = 0;
 
 		private Animator animator;
 
@@ -34,21 +43,31 @@ namespace RuzikOdyssey.Player
 				Debug.LogWarning(String.Format(
 					"Failed to initialize an animator for game object with tag {0}", gameObject.name));
 			}
+
+			cannonSFXCooldown = 0;
 		}
 
 		private void Update()
 		{
-			if (mainWeaponCooldown > 0) mainWeaponCooldown -= Time.deltaTime;
-			if (secondaryWeaponCooldown > 0) secondaryWeaponCooldown -= Time.deltaTime;
+			if (cannonCooldown > 0) cannonCooldown -= Time.deltaTime;
+			if (missileCooldown > 0) missileCooldown -= Time.deltaTime;
 		}
-		
+
+		public void ChangeMissileAmmo(int delta)
+		{
+			if (!hasAmmo) return;
+
+			missileAmmo += delta;
+			GameHelper.Instance.DisplayMissileAmmo(missileAmmo);
+		}
+
 		public void AttackWithMainWeapon()
 		{
 			if (!CanAttackWithMainWeapon() || mainWeaponPrefab == null) return;
 
 			if (animator != null) animator.SetBool("IsShooting", true);
 
-			mainWeaponCooldown = mainWeaponShootingRate;
+			cannonCooldown = mainWeaponShootingRate;
 
 			if (!attackIsControlledFromAnimator) 
 			{
@@ -62,44 +81,57 @@ namespace RuzikOdyssey.Player
 			shot.position = new Vector2(transform.position.x + mainWeaponPosition.x,
 			                            transform.position.y + mainWeaponPosition.y);
 
-			if (mainWeaponSoundEffect != null) 
-				SoundEffectsController.Instance.Play(mainWeaponSoundEffect, mainWeaponSoundEffectVolume);
+			if (ShouldPlayCannonSfx()) 
+			{
+				SoundEffectsController.Instance.Play(cannonSFX, cannonSfxVolume);
+				cannonSFXCooldown = cannonSfxRate;
+			}
+			else 
+			{
+				cannonSFXCooldown -= 1;
+			}
 		}
 
 		public void FinishShootingMainWeapon()
 		{
 			if (animator != null) animator.SetBool("IsShooting", false);
+			cannonSFXCooldown = 0;
 		}
 		
 		public void AttackWithSecondaryWeapon()
 		{
-			if (!CanAttackWithSecondaryWeapon() || secondaryWeaponPrefab == null) return;
+			if (!CanAttackWithSecondaryWeapon() || !HasSecondaryWeapon()) return;
 
-			secondaryWeaponCooldown = secondaryWeaponShootingRate;
+			missileCooldown = secondaryWeaponShootingRate;
 
-
+			ChangeMissileAmmo(-1);
 
 			var shot = (Transform)Instantiate(secondaryWeaponPrefab);
 			shot.position = new Vector2(transform.position.x + secondaryWeaponPosition.x,
 			                            transform.position.y + secondaryWeaponPosition.y);
 
-			if (secondaryWeaponSoundEffect != null) 
-				SoundEffectsController.Instance.Play(secondaryWeaponSoundEffect, secondWeaponSoundEffectVolume);
+			if (missileSFX != null) 
+				SoundEffectsController.Instance.Play(missileSFX, missileSfxVolume);
 		}
 		
 		private bool CanAttackWithMainWeapon()
 		{
-			return mainWeaponCooldown <= 0f;
+			return cannonCooldown <= 0f;
 		}
 
 		private bool CanAttackWithSecondaryWeapon()
 		{
-			return secondaryWeaponCooldown <= 0f;
+			return missileCooldown <= 0f && missileAmmo > 0;
 		}
 
 		public bool HasSecondaryWeapon()
 		{
 			return secondaryWeaponPrefab != null;
+		}
+
+		public bool ShouldPlayCannonSfx()
+		{
+			return cannonSFXCooldown <= 0 && cannonSFX != null;
 		}
 	}
 }

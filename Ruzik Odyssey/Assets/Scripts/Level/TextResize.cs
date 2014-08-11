@@ -14,7 +14,7 @@ public class TextResize : MonoBehaviour {
 
 		foreach (GUIText guiText in ui.GetComponentsInChildren<GUIText>())
 		{
-			guiText.fontSize = (int) (30 * Screen.width / originalWidth);
+			guiText.fontSize = (int) (guiText.fontSize * Screen.width / originalWidth);
 		}
 	}
 }

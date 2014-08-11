@@ -22,14 +22,10 @@ namespace RuzikOdyssey.Common
 		
 		public float Change(float delta)
 		{
-			Log.Debug("Changing amount {0} by {1}", amount, delta);
-			
 			amount += delta;
 			
 			if (amount > initialAmount) amount = initialAmount;
 			if (amount < 0) amount = 0;
-			
-			Log.Debug("Updating bar with value {0}", amount);
 			
 			UpdateBar(amount);
 
@@ -39,8 +35,6 @@ namespace RuzikOdyssey.Common
 		private void UpdateBar(float currentAmount)
 		{
 			int level = (int)(100 * currentAmount / initialAmount);
-			
-			Log.Debug("Showing level {0} for value {1}", level, currentAmount);
 			
 			barController.ShowLevel(level);
 		}

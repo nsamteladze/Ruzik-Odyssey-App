@@ -10,6 +10,8 @@ namespace RuzikOdyssey.Player
 	{
 		public float damageFromCollision;
 
+		public AudioClip explosionSfx;
+
 		private MovementController movementController;
 		private WeaponController weaponController;
 
@@ -26,6 +28,8 @@ namespace RuzikOdyssey.Player
 			healthController = gameObject.GetComponentOrThrow<HealthController>();
 			energyController = gameObject.GetComponentOrThrow<EnergyController>();
 			shieldController = gameObject.GetComponentOrThrow<ShieldController>();
+
+			GameHelper.Instance.DisplayMissileAmmo(weaponController.missileAmmo);
 
 			SubscribeToEvents();
 		}
@@ -75,6 +79,7 @@ namespace RuzikOdyssey.Player
 						energyController.Change(pickUp.amount);
 						break;
 					case PickUpType.Weapon:
+						weaponController.ChangeMissileAmmo(10);
 						break;
 					default:
 						Debug.LogWarning("Unrecognized pick up type");
@@ -121,7 +126,7 @@ namespace RuzikOdyssey.Player
 
 			Log.Debug("Shielded: {0}, Taken: {1}, Left: {2}", damage - remainingDamage, remainingDamage, healthLeft);
 
-			if (healthLeft < 0) Die ();
+			if (healthLeft < 0.1) Die ();
 		}
 
 		private void Die()

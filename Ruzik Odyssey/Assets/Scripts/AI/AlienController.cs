@@ -15,17 +15,27 @@ namespace RuzikOdyssey.Ai
 
 		public float damageFromCollision = 1.0f;
 
+		public GameObject deathExplosion;
+		public float deathExplosionDuration = 2.0f;
+		public float deathDelay = 0.0f;
+
+		public AudioClip deathExplosionSfx;
+		public float deathExplosionSfxVolume = 0.5f;
+
 		private bool isInWarzone;
 
 		private float nonWarzoneSpeed = 100f;
 
 		public float health;
 
-		private WeaponController weaponController;
+		public int maxEnergyDrop = 2;
+
+		private AlienWeaponController weaponController;
 		private MovementStrategy movementStrategy;
 
 		private float speed;
 
+		private bool isDying = false;
 
 		public void ApplyDamage(float damage)
 		{
@@ -34,7 +44,7 @@ namespace RuzikOdyssey.Ai
 
 		private void Start()
 		{
-			weaponController = GetComponent<WeaponController>();
+			weaponController = GetComponent<AlienWeaponController>();
 			movementStrategy = GetComponent<MovementStrategy>();
 
 			isInWarzone = false;
@@ -64,25 +74,40 @@ namespace RuzikOdyssey.Ai
 
 		private void TakeDamage(float damage)
 		{
+			if (isDying) return;
+
 			health -= damage;
-			if (health <= 0) Die();
+			if (health <= 0) Die ();
 		}
 
 		private void Die()
 		{
+			isDying = true;
+
 			DropEnergy();
 
 			SoundEffectsController.Instance.PlayPlayerTaunt();
 			GameHelper.Instance.AddScore(scoreForKill);
 
-			Destroy(gameObject);
+			if (deathExplosion != null) 
+			{
+				var explosion = Instantiate(deathExplosion, gameObject.transform.position, gameObject.transform.rotation);
+				Destroy(explosion, deathExplosionDuration);
+			}
+
+			Invoke("DestroySelf", deathDelay);
+		}
+
+		private void DestroySelf()
+		{
+			if (deathExplosionSfx != null) 
+				SoundEffectsController.Instance.Play(deathExplosionSfx, deathExplosionSfxVolume);
+			Destroy(this.gameObject);
 		}
 
 		private void DropEnergy()
 		{
-			var energyAmount = Random.Range(0, 7);
-
-			Debug.Log("Dropped energy: " + energyAmount);
+			var energyAmount = Random.Range(0, maxEnergyDrop);
 
 			for (int i = 0; i < energyAmount; i++)
 			{
@@ -94,7 +119,7 @@ namespace RuzikOdyssey.Ai
 
 		private void Update()
 		{
-			if (isInWarzone && weaponController != null)
+			if (isInWarzone && weaponController != null && !isDying)
 			{
 				weaponController.AttackWithMainWeapon();
 				weaponController.AttackWithSecondaryWeapon();
@@ -103,6 +128,12 @@ namespace RuzikOdyssey.Ai
 
 		private void FixedUpdate()
 		{
+			if (isDying)
+			{
+				rigidbody2D.velocity = Vector2.zero;
+				return;
+			}
+
 			var movementDirection = movementStrategy.GetMovementDirection(transform.localPosition, isInWarzone);
 			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.AddForce(movementDirection * speed);

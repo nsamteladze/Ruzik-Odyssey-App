@@ -13,7 +13,16 @@ namespace RuzikOdyssey.Common
 		public static T GetComponentOrThrow<T>(this GameObject gameObject) where T : Component
 		{
 			var component = gameObject.GetComponent<T>();
-			if (component == null) throw new Exception(String.Format("GameObject {0} is missing mandatory component {1}",
+			if (component == null) throw new Exception(String.Format("GameObject {0} is missing a mandatory component {1}",
+			                                                         gameObject.name, typeof(T).Name));
+			
+			return component;
+		}
+
+		public static T GetComponentInChildrenOrThrow<T>(this GameObject gameObject) where T : Component
+		{
+			var component = gameObject.GetComponentInChildren<T>();
+			if (component == null) throw new Exception(String.Format("GameObject {0}'s children are missing a mandatory component {1}",
 			                                                         gameObject.name, typeof(T).Name));
 			
 			return component;

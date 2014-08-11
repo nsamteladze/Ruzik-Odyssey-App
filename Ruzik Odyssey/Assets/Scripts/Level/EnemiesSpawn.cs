@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RuzikOdyssey.Common;
+using RuzikOdyssey.LevelDesign;
 
-public class EnemiesSpawn : MonoBehaviour
+public class EnemiesSpawn : ExtendedMonoBehaviour
 {
 	public GameObject[] enemies;		// Array of enemy prefabs.
 
@@ -9,13 +11,44 @@ public class EnemiesSpawn : MonoBehaviour
 	private int wavesCounter = 0;
 	private int enemiesLevel = 1;
 
+	private LevelDesign levelDesign; 
+
+	private void Awake()
+	{
+		levelDesign = this.gameObject.GetComponentOrThrow<LevelDesign>();
+	}
+
 	void Start ()
 	{
-		InvokeRepeating("Spawn", 5f, spawningInterval);
+		// InvokeRepeating("Spawn", 10.0f, spawningInterval);
+
+		SpawnFromLevelDesign();
+	}
+
+	private void SpawnFromLevelDesign()
+	{
+		var enemyPack = levelDesign.GetNext();
+
+		InstantiateEnemyPackDesign(enemyPack);
+
+		Invoke("SpawnFromLevelDesign", enemyPack.NextPackAppearance);
+	}
+
+	private void InstantiateEnemyPackDesign(EnemyPackDesign design)
+	{
+		foreach (var enemy in design.Enemies)
+		{
+			var position = new Vector2(transform.position.x + Random.Range(3, 20), 
+			                           Random.Range(Game.WarzoneBounds.Bottom() + enemy.RendererSize().y / 2, 
+			             							Game.WarzoneBounds.Top() - enemy.RendererSize().y / 2));
+			Instantiate(enemy, position, transform.rotation);
+		}
 	}
 
 	void Spawn()
 	{
+		if (Environment.IsGameOver) return;
+
 		int packIndex = Random.Range (0, enemiesLevel);
 
 		switch (packIndex)
