@@ -58,5 +58,12 @@ namespace RuzikOdyssey.Common
 			
 			return gameObject.InstantiateAtPosition(position, force, forceMode);
 		}
+
+		public static GameObject InstantiateNearSelf(this GameObject gameObject, GameObject instance)
+		{
+			return (GameObject)Object.Instantiate(instance, 
+			                                      gameObject.transform.position, 
+			                                      gameObject.transform.rotation);
+		}
 	}
 }

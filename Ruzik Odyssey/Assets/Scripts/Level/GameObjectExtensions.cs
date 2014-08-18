@@ -36,5 +36,11 @@ namespace RuzikOdyssey.Common
 
 			return gameObject;
 		}
+
+		public static float Scale2D(this GameObject gameObject)
+		{
+			return Math.Min(gameObject.transform.lossyScale.x, 
+			                gameObject.transform.lossyScale.y);
+		}
 	}
 }

@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelDesign/Chapter1Level1Design.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Aliens/AlienMine.cs">
     <Files>
-      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="103" Column="35" />
+      <File FileName="Assets/JsonDotNet/Source/JsonTextWriter.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="92" Column="4" />
       <File FileName="../../../Unity/Demo.SimpleParticlesPack/Assets/SimpleParticlePack/Scripts/ParticleTester.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Player/WeaponController.cs" Line="1" Column="1" />
       <File FileName="Assets/SimpleParticlePack/Scripts/ParticleTester.cs" Line="1" Column="1" />
@@ -10,28 +11,45 @@
       <File FileName="Assets/Scripts/AI/MovementStrategy.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Log.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/EssenceController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/EnemiesSpawn.cs" Line="46" Column="3" />
-      <File FileName="Assets/Scripts/Level/Environment.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/EnemiesSpawn.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameEnvironment.cs" Line="39" Column="3" />
       <File FileName="Assets/Scripts/AI/AlienWeaponController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Player/RuzikController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelDesign/Chapter1Level1Design.cs" Line="184" Column="15" />
-      <File FileName="Assets/Scripts/Level/Chapter1MapScreenUI.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/LevelDesign/Chapter1Level1Design.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/Chapter1MapScreenUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/ForceField.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameInputController.cs" Line="58" Column="41" />
+      <File FileName="Assets/Scripts/Level/GameOverMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelLoadingScreenUI.cs" Line="12" Column="23" />
+      <File FileName="Assets/Scripts/Level/MainScreenUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/MenuController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/PauseButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/PickUp.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/ScreenUIBase.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/StartMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/TouchButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/TouchToggle.cs" Line="43" Column="16" />
+      <File FileName="Assets/Scripts/Aliens/AlienMine.cs" Line="41" Column="26" />
+      <File FileName="Assets/Scripts/Level/GameHelper.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/ExtendedMonoBehaviour.cs" Line="13" Column="3" />
+      <File FileName="Assets/Scripts/Level/GameObjectExtensions.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelBoundariesController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/MonoBehaviourExtensions.cs" Line="66" Column="65" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="GoogleMobileAds" expanded="True" />
-            <Node name="ParticleScaler" expanded="True" />
             <Node name="Scripts" expanded="True">
-              <Node name="Ads" expanded="True" />
               <Node name="AI" expanded="True" />
+              <Node name="Aliens" expanded="True">
+                <Node name="AlienMine.cs" selected="True" />
+              </Node>
               <Node name="Common" expanded="True" />
               <Node name="Level" expanded="True" />
-              <Node name="LevelDesign" expanded="True">
-                <Node name="Chapter1Level1Design.cs" selected="True" />
-              </Node>
-              <Node name="Player" expanded="True" />
+              <Node name="Weapons" expanded="True" />
             </Node>
           </Node>
         </State>

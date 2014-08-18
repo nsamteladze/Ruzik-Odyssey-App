@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Level
 {
@@ -23,9 +24,9 @@ namespace RuzikOdyssey.Level
 
 		public void ShowGameOverMenu()
 		{
-			if (!Environment.IsGameOver)
+			if (!GameEnvironment.IsGameOver)
 			{
-				Environment.GameOver();
+				GameEnvironment.GameOver();
 				ui.AddComponent<GameOverMenu>();
 			}
 		}

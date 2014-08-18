@@ -48,7 +48,7 @@ public class MainScreenUI : ScreenUIBase
 			}
 			else 
 			{
-				Environment.StartMission();
+				GameEnvironment.StartMission();
 				Application.LoadLevel("default_level"); 
 			}
 		}
@@ -89,7 +89,7 @@ public class MainScreenUI : ScreenUIBase
 	
 	private void InterstitialAd_Closed(object sender, EventArgs args)
 	{
-		Environment.StartMission();
+		GameEnvironment.StartMission();
 		Application.LoadLevel("default_level"); 
 	}
 	

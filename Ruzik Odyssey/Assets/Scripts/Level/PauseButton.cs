@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using RuzikOdyssey.Common;
 
 public class PauseButton : TouchButton 
 {
@@ -16,10 +17,10 @@ public class PauseButton : TouchButton
 	
 	protected override void OnTouch()
 	{
-		if (!Environment.IsPaused) 
+		if (!GameEnvironment.IsPaused) 
 		{
 			ui.AddComponent<PauseMenu>();
-			Environment.Pause();
+			GameEnvironment.Pause();
 		}
 	}
 

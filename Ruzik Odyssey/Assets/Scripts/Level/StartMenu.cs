@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using RuzikOdyssey.Common;
 
 public class StartMenu : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class StartMenu : MonoBehaviour
 	
 	void Start()
 	{
-		scaleOffset.x = Screen.width / Environment.DesignWidth;
-		scaleOffset.y = Screen.height / Environment.DesignHeight;
+		scaleOffset.x = Screen.width / GameEnvironment.DesignWidth;
+		scaleOffset.y = Screen.height / GameEnvironment.DesignHeight;
 		scale = Mathf.Max(scaleOffset.x, scaleOffset.y); 
 	}
 	

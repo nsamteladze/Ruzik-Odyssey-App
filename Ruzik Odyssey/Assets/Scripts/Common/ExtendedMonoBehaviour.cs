@@ -9,5 +9,7 @@ namespace RuzikOdyssey.Common
 		{
 			get { return GameHelper.Instance; }
 		}
+
+
 	}
 }

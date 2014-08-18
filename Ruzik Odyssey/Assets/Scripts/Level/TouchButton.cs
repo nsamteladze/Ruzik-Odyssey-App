@@ -3,6 +3,7 @@ using System.Collections;
 using RuzikOdyssey;
 using RuzikOdyssey.Level;
 using System;
+using RuzikOdyssey.Common;
 
 public class TouchButton : MonoBehaviour, ITouchControl
 {
@@ -17,10 +18,10 @@ public class TouchButton : MonoBehaviour, ITouchControl
 
 		Rect initialPixelInset = buttonTexture.pixelInset;
 		// Scale pixel inset recrangle
-		buttonTexture.pixelInset = new Rect(initialPixelInset.x * Environment.ScaleOffset.x,
-		                                    initialPixelInset.y * Environment.ScaleOffset.y,
-		                                    initialPixelInset.width * Environment.ScaleOffset.x,
-		                                    initialPixelInset.height * Environment.ScaleOffset.y);
+		buttonTexture.pixelInset = new Rect(initialPixelInset.x * GameEnvironment.ScaleOffset.x,
+		                                    initialPixelInset.y * GameEnvironment.ScaleOffset.y,
+		                                    initialPixelInset.width * GameEnvironment.ScaleOffset.x,
+		                                    initialPixelInset.height * GameEnvironment.ScaleOffset.y);
 
 		RegisterEvents();
 	}

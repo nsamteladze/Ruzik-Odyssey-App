@@ -1,4 +1,5 @@
 using UnityEngine;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Level
 {
@@ -11,7 +12,7 @@ namespace RuzikOdyssey.Level
 
 		private void Start()
 		{
-			this.gameObject.rigidbody2D.velocity = Environment.ForegroundSpeed;
+			this.gameObject.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
 		}
 
 		private void OnTriggerEnter2D(Collider2D otherCollider)

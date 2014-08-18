@@ -42,13 +42,6 @@ namespace RuzikOdyssey.Player
 
 		private void ShieldToggle_StateChanged(object sender, ToggleStateChangedEventArgs e)
 		{
-			Debug.Log("Shield is " + e.ToggleIsOn);
-
-//			if (e.ToggleIsOn)
-//			{
-//				if (energyController.amount > 0) 
-//			}
-
 			shieldEnabled = e.ToggleIsOn;  
 			shieldController.ChangeShieldVisibility(shieldEnabled);
 		}
@@ -67,8 +60,7 @@ namespace RuzikOdyssey.Player
 			} 
 			else if (otherCollider.CompareTag("PickUp"))
 			{
-				var pickUp = otherCollider.gameObject.GetComponent<PickUp>();
-				if (pickUp == null) throw new UnityException("Pick Up lacks PickUp component");
+				var pickUp = otherCollider.gameObject.GetComponentOrThrow<PickUp>();
 
 				switch (pickUp.type)
 				{
@@ -123,8 +115,6 @@ namespace RuzikOdyssey.Player
 			}
 
 			var healthLeft = healthController.Change(-remainingDamage);
-
-			Log.Debug("Shielded: {0}, Taken: {1}, Left: {2}", damage - remainingDamage, remainingDamage, healthLeft);
 
 			if (healthLeft < 0.1) Die ();
 		}

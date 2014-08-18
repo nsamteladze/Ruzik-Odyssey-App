@@ -47,7 +47,7 @@ public class EnemiesSpawn : ExtendedMonoBehaviour
 
 	void Spawn()
 	{
-		if (Environment.IsGameOver) return;
+		if (GameEnvironment.IsGameOver) return;
 
 		int packIndex = Random.Range (0, enemiesLevel);
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Level
 {
@@ -16,7 +17,7 @@ namespace RuzikOdyssey.Level
 		private void MoveWithEnvironment()
 		{
 			gameObject.rigidbody2D.drag = 0.0f;
-			gameObject.rigidbody2D.velocity = Environment.ForegroundSpeed;
+			gameObject.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
 		}
 	}
 }

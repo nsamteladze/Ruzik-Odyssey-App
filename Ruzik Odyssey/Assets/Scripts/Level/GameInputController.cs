@@ -4,10 +4,10 @@ using System.Linq;
 using System.Collections.Generic;
 using RuzikOdyssey.Player;
 using System;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey
 {
-
 	public class GameInputController : MonoBehaviour 
 	{
 		private IList<ITouchControl> buttons;
@@ -55,7 +55,7 @@ namespace RuzikOdyssey
 				}
 
 				if (isButtonTouch && Input.touchCount == 1) playerController.Stop();
-				if (isButtonTouch || Environment.IsGameOver) continue;
+				if (isButtonTouch || GameEnvironment.IsGameOver) continue;
 
 
 				if (movementTouchId < 0 && (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved))
@@ -70,7 +70,7 @@ namespace RuzikOdyssey
 
 		private void ProcessMovementTouch(Touch touch)
 		{
-			if (Environment.IsGameOver) return;
+			if (GameEnvironment.IsGameOver) return;
 
 			if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
 			{

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using RuzikOdyssey.Common;
 
 public abstract class ScreenUIBase : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public abstract class ScreenUIBase : MonoBehaviour
 	
 	private void Awake()
 	{
-		scaleOffset.x = Screen.width / Environment.DesignWidth;
-		scaleOffset.y = Screen.height / Environment.DesignHeight;
+		scaleOffset.x = Screen.width / GameEnvironment.DesignWidth;
+		scaleOffset.y = Screen.height / GameEnvironment.DesignHeight;
 		scale = Mathf.Max(scaleOffset.x, scaleOffset.y); 
 
 		Initialize();

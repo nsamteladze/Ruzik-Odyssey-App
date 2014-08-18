@@ -1,34 +1,35 @@
 using UnityEngine;
 using System.Collections;
+using RuzikOdyssey.Common;
 
 public class PauseMenu : MonoBehaviour
 {	
 	private void OnGUI()
 	{
-		GUI.skin.button = Environment.DefaultButtonStyle;
+		GUI.skin.button = GameEnvironment.DefaultButtonStyle;
 
-		if (GUI.Button(new Rect(724 * Environment.ScaleOffset.x, 202 * Environment.ScaleOffset.y, 
-		                        600 * Environment.Scale, 200 * Environment.Scale), 
+		if (GUI.Button(new Rect(724 * GameEnvironment.ScaleOffset.x, 202 * GameEnvironment.ScaleOffset.y, 
+		                        600 * GameEnvironment.Scale, 200 * GameEnvironment.Scale), 
 		               "Resume") )
 		{
-			Environment.Resume();
+			GameEnvironment.Resume();
 			Destroy(gameObject.GetComponent<PauseMenu>());
 		}
 
-		if (GUI.Button(new Rect(724 * Environment.ScaleOffset.x, 452 * Environment.ScaleOffset.y, 
-		                        600 * Environment.Scale, 200 * Environment.Scale), 
+		if (GUI.Button(new Rect(724 * GameEnvironment.ScaleOffset.x, 452 * GameEnvironment.ScaleOffset.y, 
+		                        600 * GameEnvironment.Scale, 200 * GameEnvironment.Scale), 
 		               "Restart") )
 		{
-			Environment.Resume();
-			Environment.StartMission();
+			GameEnvironment.Resume();
+			GameEnvironment.StartMission();
 			Application.LoadLevel("default_level");  
 		}
 		
-		if (GUI.Button(new Rect(724 * Environment.ScaleOffset.x, 702 * Environment.ScaleOffset.y, 
-		                        600 * Environment.Scale, 200 * Environment.Scale), 
+		if (GUI.Button(new Rect(724 * GameEnvironment.ScaleOffset.x, 702 * GameEnvironment.ScaleOffset.y, 
+		                        600 * GameEnvironment.Scale, 200 * GameEnvironment.Scale), 
 		               "Main menu") )
 		{
-			Environment.Resume();
+			GameEnvironment.Resume();
 			Application.LoadLevel("start_screen");  
 		}
 	}

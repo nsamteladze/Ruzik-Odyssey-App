@@ -30,8 +30,6 @@ namespace RuzikOdyssey.Common
 			if (healthLevel <= 0) numberOfBarFragmentsToShow = 0;
 			if (healthLevel >= 100) numberOfBarFragmentsToShow = totalFragmentsInBar;
 
-			Log.Debug("Showing {0} bar fragments for level {1}", numberOfBarFragmentsToShow, healthLevel);
-
 			ShowHealthBarFragments(numberOfBarFragmentsToShow);
 		}
 		

@@ -3,6 +3,7 @@ using System.Collections;
 using RuzikOdyssey;
 using RuzikOdyssey.Level;
 using System;
+using RuzikOdyssey.Common;
 
 public class TouchToggle : MonoBehaviour, ITouchControl
 {
@@ -26,17 +27,17 @@ public class TouchToggle : MonoBehaviour, ITouchControl
 		
 		var onStateTextureInitialPixelInset = toggleOnTexture.pixelInset;
 		// Scale pixel inset recrangle
-		toggleOnTexture.pixelInset = new Rect(onStateTextureInitialPixelInset.x * Environment.ScaleOffset.x,
-		                                      onStateTextureInitialPixelInset.y * Environment.ScaleOffset.y,
-		                                      onStateTextureInitialPixelInset.width * Environment.ScaleOffset.x,
-		                                      onStateTextureInitialPixelInset.height * Environment.ScaleOffset.y);
+		toggleOnTexture.pixelInset = new Rect(onStateTextureInitialPixelInset.x * GameEnvironment.ScaleOffset.x,
+		                                      onStateTextureInitialPixelInset.y * GameEnvironment.ScaleOffset.y,
+		                                      onStateTextureInitialPixelInset.width * GameEnvironment.ScaleOffset.x,
+		                                      onStateTextureInitialPixelInset.height * GameEnvironment.ScaleOffset.y);
 
 		var offStateTextureInitialPixelInset = toggleOffTexture.pixelInset;
 		// Scale pixel inset recrangle
-		toggleOffTexture.pixelInset = new Rect(offStateTextureInitialPixelInset.x * Environment.ScaleOffset.x,
-		                                       offStateTextureInitialPixelInset.y * Environment.ScaleOffset.y,
-		                                       offStateTextureInitialPixelInset.width * Environment.ScaleOffset.x,
-		                                       offStateTextureInitialPixelInset.height * Environment.ScaleOffset.y);
+		toggleOffTexture.pixelInset = new Rect(offStateTextureInitialPixelInset.x * GameEnvironment.ScaleOffset.x,
+		                                       offStateTextureInitialPixelInset.y * GameEnvironment.ScaleOffset.y,
+		                                       offStateTextureInitialPixelInset.width * GameEnvironment.ScaleOffset.x,
+		                                       offStateTextureInitialPixelInset.height * GameEnvironment.ScaleOffset.y);
 
 		Render();
 		RegisterEvents();
