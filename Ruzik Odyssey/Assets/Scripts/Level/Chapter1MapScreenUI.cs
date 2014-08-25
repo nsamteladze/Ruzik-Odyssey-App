@@ -1,15 +1,28 @@
 using UnityEngine;
 using System;
 
-public class Chapter1MapScreenUI : ScreenUIBase
+public class Chapter1MapScreenUI : MonoBehaviour
 {	
-	protected override void InitializeUI()
+	public GameObject levelDescriptionPopup;
+
+	public void ShowLevelDescriptionPopup()
 	{
-		if (GUI.Button(new Rect(0 * scaleOffset.x, 0 * scaleOffset.y, 2048 * scale, 1152 * scale), 
-		               "", GUIStyle.none))
-		{
-			Application.LoadLevel("main_screen"); 
-		}
+		levelDescriptionPopup.SetActive(true);
+	}
+
+	public void HideLevelDescriptionPopup()
+	{
+		levelDescriptionPopup.SetActive(false);
+	}
+
+	public void ReturnToMainScreen()
+	{
+		Application.LoadLevel("main_screen");
+	}
+
+	public void ChooseLevel()
+	{
+		Application.LoadLevel("main_screen");
 	}
 }
 

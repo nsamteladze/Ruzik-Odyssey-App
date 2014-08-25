@@ -3,7 +3,7 @@ using System;
 using GoogleMobileAds.Api;
 using RuzikOdyssey.Common;
 
-public class MainScreenUI : ScreenUIBase
+public class MainScreenUI : MonoBehaviour
 {	
 	#if UNITY_EDITOR
 	private string adUnitId = "unused";
@@ -17,7 +17,9 @@ public class MainScreenUI : ScreenUIBase
 
 	private InterstitialAd interstitialAd;
 
-	protected override void Initialize()
+	public GameObject storePopup;
+
+	private void Awake()
 	{
 		interstitialAd = new InterstitialAd(adUnitId);
 		
@@ -31,27 +33,32 @@ public class MainScreenUI : ScreenUIBase
 		interstitialAd.LoadAd(CreateAdRequest());
 	}
 
-	protected override void InitializeUI()
+	public void StartMission()
 	{
-		if (GUI.Button(new Rect(870 * scaleOffset.x, 970 * scaleOffset.y, 320 * scale, 160 * scale), 
-		               "", GUIStyle.none))
+		if (interstitialAd.IsLoaded()) 
 		{
-			Application.LoadLevel("global_map_screen"); 
+			interstitialAd.Show();
 		}
+		else 
+		{
+			GameEnvironment.StartMission();
+			Application.LoadLevel("default_level"); 
+		}
+	}
 
-		if (GUI.Button(new Rect(1625 * scaleOffset.x, 970 * scaleOffset.y, 320 * scale, 160 * scale), 
-		               "", GUIStyle.none))
-		{
-			if (interstitialAd.IsLoaded()) 
-			{
-				interstitialAd.Show();
-			}
-			else 
-			{
-				GameEnvironment.StartMission();
-				Application.LoadLevel("default_level"); 
-			}
-		}
+	public void ShowGlobalMap()
+	{
+		Application.LoadLevel("global_map_screen"); 
+	}
+
+	public void ShowStoreCategoriesPopup()
+	{
+		storePopup.SetActive(true);
+	}
+
+	public void HideStoreCategoriesPopup()
+	{
+		storePopup.SetActive(false);
 	}
 
 	private AdRequest CreateAdRequest()
