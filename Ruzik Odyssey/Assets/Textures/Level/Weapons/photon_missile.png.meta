@@ -1,6 +1,19 @@
 fileFormatVersion: 2
 guid: f6fcaf73e8e2f42c08094620f4423118
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: photon_missile_0
+    21300002: photon_missile_1
+    21300004: photon_missile_2
+    21300006: photon_missile_3
+    21300008: photon_missile_4
+    21300010: photon_missile_5
+    21300012: photon_missile_6
+    21300014: photon_missile_7
+    21300016: photon_missile_8
+    21300018: photon_missile_9
+    21300020: photon_missile_10
+    21300022: photon_missile_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -16,11 +29,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -37,7 +50,7 @@ TextureImporter:
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 128
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone

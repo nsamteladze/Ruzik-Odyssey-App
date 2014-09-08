@@ -1,6 +1,19 @@
 fileFormatVersion: 2
 guid: 166674574b239422a84e7176b36bfc8c
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: alien_destroyer_idle_0
+    21300002: alien_destroyer_idle_1
+    21300004: alien_destroyer_idle_2
+    21300006: alien_destroyer_idle_3
+    21300008: alien_destroyer_idle_4
+    21300010: alien_destroyer_idle_5
+    21300012: alien_destroyer_idle_6
+    21300014: alien_destroyer_idle_7
+    21300016: alien_destroyer_idle_8
+    21300018: alien_destroyer_idle_9
+    21300020: alien_destroyer_idle_10
+    21300022: alien_destroyer_idle_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -16,11 +29,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -37,7 +50,7 @@ TextureImporter:
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 128
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone

@@ -10,6 +10,9 @@ namespace RuzikOdyssey.Common
 			get { return GameHelper.Instance; }
 		}
 
-
+		protected GameModel GlobalModel
+		{
+			get { return GameModel.Instance; }
+		}
 	}
 }

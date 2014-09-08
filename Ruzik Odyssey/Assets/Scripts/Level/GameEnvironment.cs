@@ -53,6 +53,9 @@ namespace RuzikOdyssey.Common
 		{
 			IsGameOver = true;
 		}
+
+
+
 	}
 }
 

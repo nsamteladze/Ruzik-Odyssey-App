@@ -1,6 +1,19 @@
 fileFormatVersion: 2
 guid: 1963bf490cb42495a8a9557c0caaaf24
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: alien_worker_idle_sprite_sheet_0
+    21300002: alien_worker_idle_sprite_sheet_1
+    21300004: alien_worker_idle_sprite_sheet_2
+    21300006: alien_worker_idle_sprite_sheet_3
+    21300008: alien_worker_idle_sprite_sheet_4
+    21300010: alien_worker_idle_sprite_sheet_5
+    21300012: alien_worker_idle_sprite_sheet_6
+    21300014: alien_worker_idle_sprite_sheet_7
+    21300016: alien_worker_idle_sprite_sheet_8
+    21300018: alien_worker_idle_sprite_sheet_9
+    21300020: alien_worker_idle_sprite_sheet_10
+    21300022: alien_worker_idle_sprite_sheet_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -16,11 +29,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -37,7 +50,7 @@ TextureImporter:
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 128
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone

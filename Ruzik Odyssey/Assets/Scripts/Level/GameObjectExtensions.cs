@@ -7,7 +7,20 @@ namespace RuzikOdyssey.Common
 	{
 		public static Vector2 RendererSize(this GameObject gameObject)
 		{
-			return gameObject.renderer.bounds.size;
+			try
+			{
+				return gameObject.renderer.bounds.size.ToVector2();
+			}
+			catch (Exception ex)
+			{
+				Log.Error("Failed to determine renderer size for {0}. Exception: {1}", gameObject.name, ex);
+				return Vector2.zero;
+			}
+		}
+
+		public static Vector2 ToVector2(this Vector3 vector)
+		{
+			return (Vector2)vector;
 		}
 
 		public static T GetComponentOrThrow<T>(this GameObject gameObject) where T : Component

@@ -1,36 +1,47 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/GlobalMapScreenUI.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/LevelViewModel.cs">
     <Files>
-      <File FileName="Assets/NGUI/Scripts/Editor/NGUIEditorTools.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/EssenceController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/BarController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Aliens/AlienMine.cs" Line="47" Column="4" />
-      <File FileName="Assets/Scripts/Level/GameObjectExtensions.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/Interaction/UIButton.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/MainScreenUI.cs" Line="35" Column="2" />
-      <File FileName="Assets/Scripts/Level/ScreenUIBase.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/Level/GlobalMapScreenUI.cs" Line="6" Column="43" />
+      <File FileName="Assets/Scripts/Global/Events.cs" Line="15" Column="58" />
+      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="114" Column="1" />
+      <File FileName="Assets/Scripts/Level/Tags.cs" Line="4" Column="2" />
+      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="194" Column="7" />
+      <File FileName="Assets/Scripts/Level/LevelView.cs" Line="42" Column="1" />
+      <File FileName="Assets/Scripts/Common/ExtendedMonoBehaviour.cs" Line="15" Column="23" />
+      <File FileName="Assets/Scripts/Global/GameModel.cs" Line="64" Column="3" />
+      <File FileName="Assets/Scripts/Level/LevelModel.cs" Line="12" Column="4" />
+      <File FileName="Assets/Scripts/Level/MainScreenView.cs" Line="56" Column="3" />
+      <File FileName="Assets/Scripts/Global/Property.cs" Line="40" Column="47" />
+      <File FileName="Assets/Scripts/Level/LevelBoundariesController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="165" Column="18" />
+      <File FileName="Assets/Scripts/Global/GameContext.cs" Line="20" Column="12" />
+      <File FileName="Assets/JsonDotNet/Source/ConstructorHandling.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameEnvironment.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="GoogleMobileAds" expanded="True" />
-            <Node name="NGUI" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Interaction" expanded="True" />
-              </Node>
+            <Node name="JsonDotNet" expanded="True">
+              <Node name="Source" expanded="True" />
             </Node>
             <Node name="Scripts" expanded="True">
               <Node name="AI" expanded="True" />
               <Node name="Aliens" expanded="True" />
               <Node name="Common" expanded="True" />
+              <Node name="Enemies" expanded="True" />
+              <Node name="Global" expanded="True" />
               <Node name="Level" expanded="True">
-                <Node name="GlobalMapScreenUI.cs" selected="True" />
+                <Node name="LevelViewModel.cs" selected="True" />
               </Node>
-              <Node name="Player" expanded="True" />
-              <Node name="Weapons" expanded="True" />
+              <Node name="Sandbox" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-CSharp-Editor" expanded="True">
+            <Node name="NGUI" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Editor" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>

@@ -1,6 +1,16 @@
 fileFormatVersion: 2
 guid: d10a1661f2db94bb58ca3e7894a2a6c9
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: heron_idle_sprite_sheet_0
+    21300002: heron_idle_sprite_sheet_1
+    21300004: heron_idle_sprite_sheet_2
+    21300006: heron_idle_sprite_sheet_3
+    21300008: heron_idle_sprite_sheet_4
+    21300010: heron_idle_sprite_sheet_5
+    21300012: heron_idle_sprite_sheet_6
+    21300014: heron_idle_sprite_sheet_7
+    21300016: heron_idle_sprite_sheet_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -16,11 +26,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -37,7 +47,7 @@ TextureImporter:
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 128
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone

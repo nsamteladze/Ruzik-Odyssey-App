@@ -3,6 +3,10 @@ using RuzikOdyssey.Weapons;
 using RuzikOdyssey.Player;
 using RuzikOdyssey.Level;
 using RuzikOdyssey.Common;
+using System;
+using RuzikOdyssey.Enemies;
+
+using Random = UnityEngine.Random;
 
 namespace RuzikOdyssey.Ai
 {
@@ -36,6 +40,20 @@ namespace RuzikOdyssey.Ai
 		private float speed;
 
 		private bool isDying = false;
+
+		public event EventHandler<EventArgs> Destroyed;
+
+		protected virtual void OnDestroyed()
+		{
+			if (Destroyed != null) Destroyed(this, EventArgs.Empty);
+		}
+
+		public event EventHandler<EnemyDiedEventArgs> Died;
+
+		protected virtual void OnDied()
+		{
+			if (Died != null) Died(this, new EnemyDiedEventArgs { ScoreForKill = scoreForKill });
+		}
 
 		public void ApplyDamage(float damage)
 		{
@@ -77,12 +95,14 @@ namespace RuzikOdyssey.Ai
 			if (isDying) return;
 
 			health -= damage;
-			if (health <= 0) Die ();
+			if (health <= 0) Die();
 		}
 
 		private void Die()
 		{
 			isDying = true;
+
+			OnDied();
 
 			DropEnergy();
 
@@ -102,6 +122,7 @@ namespace RuzikOdyssey.Ai
 		{
 			if (deathExplosionSfx != null) 
 				SoundEffectsController.Instance.Play(deathExplosionSfx, deathExplosionSfxVolume);
+
 			Destroy(this.gameObject);
 		}
 
@@ -137,6 +158,11 @@ namespace RuzikOdyssey.Ai
 			var movementDirection = movementStrategy.GetMovementDirection(transform.localPosition, isInWarzone);
 			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.AddForce(movementDirection * speed);
+		}
+
+		private void OnDestroy()
+		{
+			OnDestroyed();
 		}
 	}
 }
