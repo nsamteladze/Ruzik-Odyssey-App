@@ -25,6 +25,9 @@ public class MainScreenView : ExtendedMonoBehaviour
 	public UILabel cornAmountLabel;
 	public UILabel gasAmountLabel;
 
+	public UILabel storeGoldAmountLabel;
+	public UILabel storeCornAmountLabel;
+
 	private void Awake()
 	{
 		interstitialAd = new InterstitialAd(adUnitId);
@@ -97,6 +100,9 @@ public class MainScreenView : ExtendedMonoBehaviour
 
 	public void ShowStoreCategoriesPopup()
 	{
+		storeGoldAmountLabel.text = GlobalModel.Gold.Value.ToString();
+		storeCornAmountLabel.text = GlobalModel.Corn.Value.ToString();
+
 		storePopup.SetActive(true);
 	}
 
