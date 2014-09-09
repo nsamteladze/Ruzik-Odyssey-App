@@ -566,6 +566,7 @@
      <Compile Include="Assets\Scripts\Level\HealthBarController.cs" />
      <Compile Include="Assets\Scripts\Level\ITouchControl.cs" />
      <Compile Include="Assets\Scripts\Level\InnerHealthBarController.cs" />
+     <Compile Include="Assets\Scripts\Level\LargeStoreScreenView.cs" />
      <Compile Include="Assets\Scripts\Level\LevelBoundariesController.cs" />
      <Compile Include="Assets\Scripts\Level\LevelEnemiesDesign.cs" />
      <Compile Include="Assets\Scripts\Level\LevelLoadingScreenUI.cs" />

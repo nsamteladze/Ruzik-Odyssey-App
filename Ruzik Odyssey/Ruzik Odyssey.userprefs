@@ -1,22 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/LevelViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/LargeStoreScreenView.cs">
     <Files>
-      <File FileName="Assets/Scripts/Global/Events.cs" Line="15" Column="58" />
-      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="114" Column="1" />
-      <File FileName="Assets/Scripts/Level/Tags.cs" Line="4" Column="2" />
-      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="194" Column="7" />
-      <File FileName="Assets/Scripts/Level/LevelView.cs" Line="42" Column="1" />
-      <File FileName="Assets/Scripts/Common/ExtendedMonoBehaviour.cs" Line="15" Column="23" />
-      <File FileName="Assets/Scripts/Global/GameModel.cs" Line="64" Column="3" />
-      <File FileName="Assets/Scripts/Level/LevelModel.cs" Line="12" Column="4" />
-      <File FileName="Assets/Scripts/Level/MainScreenView.cs" Line="56" Column="3" />
-      <File FileName="Assets/Scripts/Global/Property.cs" Line="40" Column="47" />
+      <File FileName="Assets/Scripts/Global/Events.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/Tags.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/ExtendedMonoBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Global/GameModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/MainScreenView.cs" Line="105" Column="3" />
+      <File FileName="Assets/Scripts/Global/Property.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Level/LevelBoundariesController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="165" Column="18" />
-      <File FileName="Assets/Scripts/Global/GameContext.cs" Line="20" Column="12" />
+      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Global/GameContext.cs" Line="1" Column="1" />
       <File FileName="Assets/JsonDotNet/Source/ConstructorHandling.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Level/GameEnvironment.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LargeStoreScreenView.cs" Line="5" Column="58" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,7 +33,7 @@
               <Node name="Enemies" expanded="True" />
               <Node name="Global" expanded="True" />
               <Node name="Level" expanded="True">
-                <Node name="LevelViewModel.cs" selected="True" />
+                <Node name="LargeStoreScreenView.cs" selected="True" />
               </Node>
               <Node name="Sandbox" expanded="True" />
             </Node>

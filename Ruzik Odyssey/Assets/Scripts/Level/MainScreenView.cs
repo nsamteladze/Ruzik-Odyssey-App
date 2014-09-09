@@ -106,6 +106,11 @@ public class MainScreenView : ExtendedMonoBehaviour
 		storePopup.SetActive(true);
 	}
 
+	public void OpenGoldStore()
+	{
+		Application.LoadLevel("LargeStoreScreen");
+	}
+
 	public void HideStoreCategoriesPopup()
 	{
 		storePopup.SetActive(false);
