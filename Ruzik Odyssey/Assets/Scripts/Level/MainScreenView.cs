@@ -50,9 +50,6 @@ public class MainScreenView : ExtendedMonoBehaviour
 
 	private void InitializeUI()
 	{
-		Log.Debug("Initializing UI with Gold: {0}, Corn: {1}, Gas: {2}", 
-		          GlobalModel.Gold.Value, GlobalModel.Corn.Value, GlobalModel.Gas.Value);
-
 		goldAmountLabel.text = GlobalModel.Gold.Value.ToString();
 		cornAmountLabel.text = GlobalModel.Corn.Value.ToString();
 		gasAmountLabel.text = String.Format("{0}/10", GlobalModel.Gas.Value);
@@ -109,6 +106,11 @@ public class MainScreenView : ExtendedMonoBehaviour
 	public void OpenGoldStore()
 	{
 		Application.LoadLevel("LargeStoreScreen");
+	}
+
+	public void OpenCornStore()
+	{
+		Application.LoadLevel("CornStoreScreen");
 	}
 
 	public void HideStoreCategoriesPopup()

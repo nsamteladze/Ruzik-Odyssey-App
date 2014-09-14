@@ -622,6 +622,7 @@
      <Compile Include="Assets\Scripts\Sandbox\PlayerWeaponController.cs" />
      <Compile Include="Assets\Scripts\Sandbox\PlayerWeaponModel.cs" />
      <Compile Include="Assets\Scripts\Sandbox\UserInputProcessor.cs" />
+     <Compile Include="Assets\Scripts\UI\CornStoreView.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
