@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 namespace RuzikOdyssey.Common
 {
@@ -54,6 +55,51 @@ namespace RuzikOdyssey.Common
 		{
 			return Math.Min(gameObject.transform.lossyScale.x, 
 			                gameObject.transform.lossyScale.y);
+		}
+
+		public static GameObject SingleChild(this GameObject gameObject)
+		{
+			if (gameObject.transform == null) return null;
+			if (gameObject.transform.childCount > 1) 
+				throw new UnityException(String.Format("{0} has more than one child."));
+
+			return gameObject.transform.GetChild(0).gameObject;
+		}
+
+		public static IList<GameObject> Children(this GameObject gameObject)
+		{
+			if (gameObject.transform == null) return null;
+
+			var children = new List<GameObject>();
+
+			for (int i = 0; i < gameObject.transform.childCount; i++)
+			{
+				children.Add(gameObject.transform.GetChild(i).gameObject);
+			}
+
+			return children;
+		}
+
+		public static GameObject GetChild(this GameObject gameObject, int childIndex)
+		{
+			if (gameObject.transform == null) return null;
+			if (gameObject.transform.childCount < childIndex + 1) return null;
+
+			return gameObject.transform.GetChild(childIndex).gameObject;
+		}
+
+		public static int ChildCount(this GameObject gameObject)
+		{
+			return gameObject.transform == null ? 0 : gameObject.transform.childCount;
+		}
+
+		public static void DestroyAllChildren(this GameObject gameObject)
+		{
+			var childCount = gameObject.ChildCount();
+			for (int i = 0; i < childCount; i++)
+			{
+				UnityEngine.Object.Destroy(gameObject.GetChild(i));
+			}
 		}
 	}
 }

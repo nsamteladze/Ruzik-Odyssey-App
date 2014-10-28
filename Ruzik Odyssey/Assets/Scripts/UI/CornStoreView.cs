@@ -5,7 +5,7 @@ using RuzikOdyssey.Level;
 
 namespace RuzikOdyssey.UI
 {
-	public sealed class CornStoreView : ExtendedMonoBehaviour
+	public class CornStoreView : ExtendedMonoBehaviour
 	{
 		public UILabel goldAmountLabel;
 		public UILabel cornAmountLabel;

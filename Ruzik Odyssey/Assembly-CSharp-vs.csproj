@@ -623,6 +623,10 @@
      <Compile Include="Assets\Scripts\Sandbox\PlayerWeaponModel.cs" />
      <Compile Include="Assets\Scripts\Sandbox\UserInputProcessor.cs" />
      <Compile Include="Assets\Scripts\UI\CornStoreView.cs" />
+     <Compile Include="Assets\Scripts\UI\ItemsStoreTab.cs" />
+     <Compile Include="Assets\Scripts\UI\ItemsStoreView.cs" />
+     <Compile Include="Assets\Scripts\UI\StoreItem.cs" />
+     <Compile Include="Assets\Scripts\UI\StoreItemsCategory.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />

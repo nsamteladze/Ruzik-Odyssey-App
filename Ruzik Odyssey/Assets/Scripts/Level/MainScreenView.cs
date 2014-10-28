@@ -113,6 +113,11 @@ public class MainScreenView : ExtendedMonoBehaviour
 		Application.LoadLevel("CornStoreScreen");
 	}
 
+	public void OpenItemsStore()
+	{
+		Application.LoadLevel("SmallItemsStoreScreen");
+	}
+
 	public void HideStoreCategoriesPopup()
 	{
 		storePopup.SetActive(false);
