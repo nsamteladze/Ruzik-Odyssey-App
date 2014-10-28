@@ -84,7 +84,12 @@ namespace RuzikOdyssey.UI
 				storeItemSprite.bottomAnchor.target = storeItemsScrollView.transform;
 				storeItemSprite.topAnchor.absolute = 0;
 				
-				if (previousStoreItem != null) 
+				if (previousStoreItem == null) 
+				{
+					currentItemImage.spriteName = item.SpriteName;
+					currentItemCaption.text = item.Name;
+				}
+				else
 				{
 					storeItemSprite.leftAnchor.target = previousStoreItem.transform;
 					storeItemSprite.leftAnchor.absolute = 0;
