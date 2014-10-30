@@ -544,7 +544,7 @@
 'Assets/Scripts/Global/PropertyChangedEventArgs.cs'
 'Assets/Scripts/Level/ActivateShieldButton.cs'
 'Assets/Scripts/Level/BoundsExtensions.cs'
-'Assets/Scripts/Level/Chapter1MapScreenUI.cs'
+'Assets/Scripts/Level/Chapter1MapView.cs'
 'Assets/Scripts/Level/EventBroker.cs'
 'Assets/Scripts/Level/FireSecondaryWeaponButton.cs'
 'Assets/Scripts/Level/ForceField.cs'

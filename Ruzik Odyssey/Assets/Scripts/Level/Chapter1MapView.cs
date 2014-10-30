@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Chapter1MapScreenUI : MonoBehaviour
+public class Chapter1MapView : MonoBehaviour
 {	
 	public GameObject levelDescriptionPopup;
 

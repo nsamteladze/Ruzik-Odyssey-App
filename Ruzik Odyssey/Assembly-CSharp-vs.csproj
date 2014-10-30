@@ -552,7 +552,7 @@
      <Compile Include="Assets\Scripts\Global\PropertyChangedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Level\ActivateShieldButton.cs" />
      <Compile Include="Assets\Scripts\Level\BoundsExtensions.cs" />
-     <Compile Include="Assets\Scripts\Level\Chapter1MapScreenUI.cs" />
+     <Compile Include="Assets\Scripts\Level\Chapter1MapView.cs" />
      <Compile Include="Assets\Scripts\Level\EventBroker.cs" />
      <Compile Include="Assets\Scripts\Level\FireSecondaryWeaponButton.cs" />
      <Compile Include="Assets\Scripts\Level\ForceField.cs" />
