@@ -166,4 +166,9 @@ public class MainScreenView : ExtendedMonoBehaviour
 	{
 		Log.Debug("HandleInterstitialLeftApplication event received");
 	}
+
+	public void GoToHangarScreen()
+	{
+		Application.LoadLevel("HangarScreen");
+	}
 }

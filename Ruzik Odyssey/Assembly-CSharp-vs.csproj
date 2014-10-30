@@ -623,6 +623,7 @@
      <Compile Include="Assets\Scripts\Sandbox\PlayerWeaponModel.cs" />
      <Compile Include="Assets\Scripts\Sandbox\UserInputProcessor.cs" />
      <Compile Include="Assets\Scripts\UI\CornStoreView.cs" />
+     <Compile Include="Assets\Scripts\UI\HangarView.cs" />
      <Compile Include="Assets\Scripts\UI\ItemsStoreTab.cs" />
      <Compile Include="Assets\Scripts\UI\ItemsStoreView.cs" />
      <Compile Include="Assets\Scripts\UI\StoreItem.cs" />
