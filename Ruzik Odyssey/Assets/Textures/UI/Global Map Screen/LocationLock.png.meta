@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 01e072e309e844209a97f64906b099eb
+guid: 8f538657605cc4f0face3c4349c05c20
 TextureImporter:
   fileIDToRecycleName:
     21300000: LocationLock
@@ -22,13 +22,13 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

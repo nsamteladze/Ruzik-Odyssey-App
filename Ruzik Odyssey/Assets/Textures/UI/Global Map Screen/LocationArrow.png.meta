@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ee3734046994d4e5a829cc52cb0ca1f0
+guid: 0cef13ae310a24d98ab143c84a965fdb
 TextureImporter:
   fileIDToRecycleName:
     21300000: LocationArrow
@@ -38,10 +38,14 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   alphaIsTransparency: 0
   textureType: 8
-  buildTargetSettings: []
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -3
+    compressionQuality: 50
   spriteSheet:
     sprites: []
   spritePackingTag: 
