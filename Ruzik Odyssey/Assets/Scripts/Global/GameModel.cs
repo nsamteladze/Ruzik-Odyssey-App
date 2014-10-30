@@ -3,16 +3,42 @@ using System;
 using RuzikOdyssey.Level;
 using RuzikOdyssey.Common;
 using RuzikOdyssey.Infrastructure;
+using System.Collections.Generic;
 
 namespace RuzikOdyssey
 {
-	public class GameModel
+	public sealed class GameProgress
+	{
+		public IList<GameChapter> Chapters { get; private set; }
+	}
+
+	public sealed class GameChapter
+	{
+		public IList<GameLevel> Levels { get; private set; }
+
+		public int Number { get; set; }
+		public string Name { get; set; }
+		public bool IsLocked { get; set; }
+	}
+
+	public sealed class GameLevel
+	{
+		public string Name { get; set; }
+		public int Number { get; set; }
+		public bool IsLocked { get; set; }
+		public int Medals { get; set; }
+		public int MaxMedals { get; set; }
+	}
+
+	public sealed class GameModel
 	{
 		private GameContext context;
 
 		public Property<int> Gold { get; set; }
 		public Property<int> Corn { get; set; }
 		public Property<int> Gas { get; set; }
+
+		public GameProgress GameProgress { get; set; } 
 
 		private static readonly GameModel instance = new GameModel();
 		public static GameModel Instance { get { return instance; } }

@@ -1,21 +1,30 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/ItemsStoreView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/Chapter1MapView.cs">
     <Files>
-      <File FileName="Assets/Scripts/UI/ItemsStoreView.cs" Line="59" Column="18" />
+      <File FileName="Assets/Scripts/UI/ItemsStoreView.cs" Line="90" Column="42" />
       <File FileName="Assets/Scripts/UI/StoreItemsCategory.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/StoreItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/StoreItem.cs" Line="5" Column="35" />
       <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="114" Column="4" />
+      <File FileName="Assets/NGUI/Scripts/Internal/UIRect.cs" Line="81" Column="35" />
+      <File FileName="Assets/Scripts/Level/GameObjectExtensions.cs" Line="27" Column="41" />
+      <File FileName="Assets/Scripts/Level/GlobalMapScreenUI.cs" Line="20" Column="3" />
+      <File FileName="Assets/Scripts/Level/Chapter1MapView.cs" Line="25" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="Level" expanded="True" />
-              <Node name="UI" expanded="True">
-                <Node name="ItemsStoreView.cs" selected="True" />
+            <Node name="NGUI" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Internal" expanded="True" />
               </Node>
+            </Node>
+            <Node name="Scripts" expanded="True">
+              <Node name="Level" expanded="True">
+                <Node name="Chapter1MapView.cs" selected="True" />
+              </Node>
+              <Node name="UI" expanded="True" />
             </Node>
           </Node>
           <Node name="Assembly-CSharp-Editor" expanded="True" />
