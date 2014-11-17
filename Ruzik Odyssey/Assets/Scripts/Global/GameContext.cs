@@ -3,6 +3,8 @@ using RuzikOdyssey;
 using Newtonsoft.Json;
 using System;
 using RuzikOdyssey.Common;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace RuzikOdyssey.Infrastructure
 {
@@ -34,16 +36,19 @@ namespace RuzikOdyssey.Infrastructure
 			this.valueFactory = valueFactory;
 		}
 	}
-
+	
 	public sealed class GameContext
 	{
 		public const string GameModelKey = "GameModel";
-		public const string GameProgressKey = "GameProgress";
 
-		public const string GameProgressDefaultsFile = "GameProgressDefaults.json";
+		private static Dictionary<string, Lazy<TextAsset>> defaultsAssets = new Dictionary<string, Lazy<TextAsset>>();
 
-		public static Lazy<TextAsset> gameProgressDefaults = 
-			new Lazy<TextAsset>(() => Resources.Load(GameProgressDefaultsFile) as TextAsset);
+		static GameContext()
+		{
+			Log.Debug("Deleting Player Preferences");
+
+			PlayerPrefs.DeleteAll();
+		}
 
 		public void Save()
 		{
@@ -52,9 +57,9 @@ namespace RuzikOdyssey.Infrastructure
 
 		public T LoadDefauts<T>()
 		{
-			var defaultsFile = GetDefaultsFile<T>();
+			var defaultsFile = GetDefaultsAsset<T>();
 
-			if (defaultsFile == null) throw new UnityException("Failed to load determine defaults file");
+			if (defaultsFile == null) throw new UnityException("Failed to load defaults file");
 
 			var defaults = JsonConvert.DeserializeObject<T>(defaultsFile.text);
 				
@@ -63,52 +68,35 @@ namespace RuzikOdyssey.Infrastructure
 			return defaults;
 		}
 
-		public TextAsset GetDefaultsFile<T>()
+		private TextAsset GetDefaultsAsset<T>()
 		{
-			if (typeof(T) == typeof(GameProgress)) return gameProgressDefaults.Value;
-			else return null;
-		}
-
-		public GameModelEntity LoadGameModelEntity()
-		{
-			var json = PlayerPrefs.GetString(GameModelKey);
-
-			if (String.IsNullOrEmpty(json))
+			if (!defaultsAssets.ContainsKey(typeof(T).FullName))
 			{
-				Log.Error("Failed to load {0} from persistence storage", GameModelKey);
-				return null;
+				defaultsAssets.Add(
+					typeof(T).FullName, 
+					new Lazy<TextAsset>(() => Resources.Load(typeof(T).Name + "Defaults") as TextAsset));
 			}
 
-			var entity = JsonConvert.DeserializeObject<GameModelEntity>(json);
+			var defaultsAsset = defaultsAssets[typeof(T).FullName].Value; 
 
-			if (entity == null)
-			{
-				Log.Error("Failed to parse {0}", GameModelKey);
-				return null;
-			}
-
-			return entity;
+			return defaultsAsset;
 		}
 
-		public void SaveGameModelEntity(GameModelEntity entity)
+		public void SaveEntity<T>(T entity)
 		{
 			var json = JsonConvert.SerializeObject(entity);
-			PlayerPrefs.SetString(GameModelKey, json);
+			PlayerPrefs.SetString(typeof(T).FullName, json);
 		}
 
-		public void SaveWithKey<T>(string key, T entity)
+		public T LoadEntity<T>() where T : class
 		{
-			var json = JsonConvert.SerializeObject(entity);
-			PlayerPrefs.SetString(key, json);
-		}
+			var key = typeof(T).FullName;
 
-		public T LoadForKey<T>(string key) where T : class
-		{
 			var json = PlayerPrefs.GetString(key);
-			
+
 			if (String.IsNullOrEmpty(json))
 			{
-				Log.Warning("Failed to load {0} from persistence storage", key);
+				Log.Warning("Failed to load {0} from persistence storage. Loading defaults.", key);
 				return LoadDefauts<T>();
 			}
 			
@@ -119,15 +107,8 @@ namespace RuzikOdyssey.Infrastructure
 				Log.Error("Failed to parse {0}", key);
 				return LoadDefauts<T>();
 			}
-			
+
 			return entity;
 		}
-	}
-
-	public sealed class GameModelEntity
-	{
-		public int Gold { get; set; }
-		public int Corn { get; set; }
-		public int Gas { get; set; }
 	}
 }

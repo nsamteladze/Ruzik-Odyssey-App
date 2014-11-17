@@ -4,27 +4,65 @@ using RuzikOdyssey.Level;
 using RuzikOdyssey.Common;
 using RuzikOdyssey.Infrastructure;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RuzikOdyssey
 {
 	public sealed class GameProgress
 	{
-		public IList<GameChapter> Chapters { get; private set; }
+		public int Gold { get; set; }
+		public int Corn { get; set; }
+		public int Gas { get; set; }
+
+		public int CurrentChapterIndex { get; set; }
+		public int CurrentLevelIndex { get; set; }
+
+		public int CurrentLevelDifficulty { get; set; }
+
+		public IList<GameChapter> Chapters { get; set; }
+
+		public GameChapter CurrentChapter
+		{
+			get 
+			{ 
+				return CurrentChapterIndex < Chapters.Count 
+					? Chapters[CurrentChapterIndex] 
+					: null;
+			}
+		}
+
+		public GameLevel CurrentLevel
+		{
+			get 
+			{
+				var currentChapter = CurrentChapter;
+
+				if (currentChapter == null) return null;
+				if (CurrentLevelIndex >= currentChapter.Levels.Count) return null;
+
+				return currentChapter.Levels[CurrentLevelIndex]; 
+			}
+		}
+
+		public override string ToString ()
+		{
+			return string.Format ("[GameProgress: Gold={0}, Corn={1}, Gas={2}, CurrentChapterIndex={3}, CurrentLevelIndex={4}, CurrentLevelDifficulty={5}, Chapters={6}, CurrentChapter={7}, CurrentLevel={8}]", Gold, Corn, Gas, CurrentChapterIndex, CurrentLevelIndex, CurrentLevelDifficulty, Chapters, CurrentChapter, CurrentLevel);
+		}
 	}
 
 	public sealed class GameChapter
 	{
-		public IList<GameLevel> Levels { get; private set; }
-
 		public int Number { get; set; }
 		public string Name { get; set; }
 		public bool IsLocked { get; set; }
+
+		public IList<GameLevel> Levels { get; set; }
 	}
 
 	public sealed class GameLevel
 	{
-		public string Name { get; set; }
 		public int Number { get; set; }
+		public string Name { get; set; }
 		public bool IsLocked { get; set; }
 		public int Medals { get; set; }
 		public int MaxMedals { get; set; }
@@ -34,11 +72,18 @@ namespace RuzikOdyssey
 	{
 		private GameContext context;
 
-		public Property<int> Gold { get; set; }
+		public Property<int> Gold 
+		{ 
+			get; 
+			set; 
+		}
 		public Property<int> Corn { get; set; }
 		public Property<int> Gas { get; set; }
 
-		public GameProgress GameProgress { get; set; } 
+		public Property<int> CurrentLevelIndex { get; set; }
+		public Property<int> CurrentLevelDifficulty { get; set; }
+
+		public GameProgress Progress { get; set; } 
 
 		private static readonly GameModel instance = new GameModel();
 		public static GameModel Instance { get { return instance; } }
@@ -54,50 +99,50 @@ namespace RuzikOdyssey
 
 		public void Save()
 		{
-			var entity = new GameModelEntity
-			{
-				Gold = Gold.Value,
-				Corn = Corn.Value,
-				Gas = Gas.Value,
-			};
+			Progress.Gold = Gold.Value;
+			Progress.Corn = Corn.Value;
+			Progress.Gas = Gas.Value;
+			Progress.CurrentLevelIndex = CurrentLevelIndex.Value;
+			Progress.CurrentLevelDifficulty = CurrentLevelDifficulty.Value;
 
-			context.SaveGameModelEntity(entity);
+			context.SaveEntity<GameProgress>(Progress);
 		}
 
 		private void Initialize()
 		{
-			Gold = new Property<int>("Global_Gold");
-			Corn = new Property<int>("Global_Corn");
-			Gas = new Property<int>("Global_Gas");
+			Gold = new Property<int>(Properties.Global.Gold);
+			Corn = new Property<int>(Properties.Global.Corn);
+			Gas = new Property<int>(Properties.Global.Gas);
 
-			Gold.PublishEvents();
-			Corn.PublishEvents();
-			Gas.PublishEvents();
+			CurrentLevelIndex = new Property<int>(Properties.Global.CurrentLevelIndex);
+			CurrentLevelDifficulty = new Property<int>(Properties.Global.CurrentLevelDifficulty);
 		}
 
 		private void Load()
 		{
-			Log.Debug("Loading GameModel");
+			this.Progress = context.LoadEntity<GameProgress>();
 
-			var entity = context.LoadGameModelEntity();
-
-			if (entity == null) 
+			if (Progress == null)
 			{
-				Log.Warning("Failed to load game model");
-				Gold.Value = 0;
-				Corn.Value = 0;
-				Gas.Value = 10;
-
-				Save();
+				Log.Error("Failed to load Game Progress into game model");
 				return;
 			}
 
-			Gold.Value = entity.Gold;
-			Corn.Value = entity.Corn;
-			Gas.Value = entity.Gas;
+			Gold.Value = Progress.Gold;
+			Corn.Value = Progress.Corn;
+			Gas.Value = Progress.Gas;
+			CurrentLevelIndex.Value = Progress.CurrentLevelIndex;
+			CurrentLevelDifficulty.Value = Progress.CurrentLevelDifficulty;
 		}
 
-		public void Connect() { }
+		public void Connect() 
+		{ 
+			/* REMARK
+			 * This method is not doing anything.
+			 * It is used just to properly instantiate GameModel from the 
+			 * first loaded MonoBehaviour component.
+			 */
+		}
 	}
 
 

@@ -1,90 +1,96 @@
 {
+	"gold": 0,
+	"corn": 0,
+	"gas": 10,
+	"currentChapterIndex": 0,
+	"currentLevelIndex": 0,
+	"currentLevelDifficulty": 0,
 	"chapters": [
 		{
-			"nubmer": 1,
+			"number": 0,
 			"name": "The Beginning",
 			"isLocked": false,
-			"levels": [
+			"levels": [ 
 				{
-					"nubmer": 1,
+					"number": 0,
+					"name": "Level 0",
+					"isLocked": false,
+					"medals": 5,
+					"maxMedals": 12
+				},
+				{
+					"number": 1,
 					"name": "Level 1",
+					"isLocked": false,
+					"medals": 3,
+					"maxMedals": 12
+				},
+				{
+					"number": 2,
+					"name": "Level 2",
 					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
-					"nubmer": 2,
-					"name": "Level 2",
-					"isLocked": true,
-					"medals": 0,
-					"maxMedals": 12
-				},
-				{
-					"nubmer": 3,
+					"number": 3,
 					"name": "Level 3",
 					"isLocked": true,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
-					"nubmer": 4,
+					"number": 4,
 					"name": "Level 4",
 					"isLocked": true,
 					"medals": 0,
-					"maxMedals": 12
+					"maxMedals": 6
 				},
 				{
-					"nubmer": 5,
+					"number": 5,
 					"name": "Level 5",
 					"isLocked": true,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
-					"nubmer": 6,
+					"number": 6,
 					"name": "Level 6",
 					"isLocked": true,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
-					"nubmer": 7,
+					"number": 7,
 					"name": "Level 7",
 					"isLocked": true,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
-					"nubmer": 8,
+					"number": 8,
 					"name": "Level 8",
 					"isLocked": true,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
-					"nubmer": 9,
+					"number": 9,
 					"name": "Level 9",
 					"isLocked": true,
 					"medals": 0,
 					"maxMedals": 12
-				},
-				{
-					"nubmer": 10,
-					"name": "Level 10",
-					"isLocked": true,
-					"medals": 0,
-					"maxMedals": 12
-				},
+				}
 			]
 		},
 		{
-			"nubmer": 2,
+			"number": 1,
 			"name": "Urban Flight",
-			"isLocked": true,
+			"isLocked": false,
 			"levels": [
 				{
-					"nubmer": 1,
-					"name": "Level 1",
+					"number": 0,
+					"name": "Level 0",
 					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
@@ -92,13 +98,13 @@
 			]
 		},	
 		{
-			"nubmer": 3,
+			"number": 2,
 			"name": "Evil Place",
 			"isLocked": true,
 			"levels": [
 				{
-					"nubmer": 1,
-					"name": "Level 1",
+					"number": 0,
+					"name": "Level 0",
 					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12

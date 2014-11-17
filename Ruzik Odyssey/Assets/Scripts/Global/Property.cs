@@ -5,7 +5,6 @@ using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey
 {
-
 	public class Property<T>
 	{
 		private T value;
@@ -13,10 +12,7 @@ namespace RuzikOdyssey
 
 		public T Value 
 		{ 
-			get 
-			{ 
-				return this.value; 
-			}
+			get { return this.value; }
 			set 
 			{
 				this.value = value;
@@ -35,11 +31,7 @@ namespace RuzikOdyssey
 
 		protected virtual void OnPropertyChanged()
 		{
-			if (PropertyChanged != null) 
-			{
-				Log.Debug("OnPropertyChanged {0}", Value);
-				PropertyChanged(this, new PropertyChangedEventArgs<T>(Value));
-			}
+			if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs<T>(Value));
 		}
 
 		public void PublishEvents()
@@ -47,6 +39,18 @@ namespace RuzikOdyssey
 			EventBroker.Publish<PropertyChangedEventArgs<T>>(
 				String.Format("{0}_PropertyChanged", this.name), 
 				ref PropertyChanged);
+		}
+	}
+
+	public static class Properties
+	{
+		public static class Global
+		{
+			public const string Gold = "Global_Gold";
+			public const string Corn = "Global_Corn";
+			public const string Gas = "Global_Gas";
+			public const string CurrentLevelIndex = "Global_CurrentLevelIndex";
+			public const string CurrentLevelDifficulty = "Global_CurrentLevelDifficulty";
 		}
 	}
 
