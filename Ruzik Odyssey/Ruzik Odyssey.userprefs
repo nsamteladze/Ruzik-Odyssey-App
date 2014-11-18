@@ -1,16 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/LevelViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/GameObjectsGroupDesign.cs">
     <Files>
-      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="242" Column="8" />
+      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="91" Column="38" />
       <File FileName="Assets/Scripts/Level/ObstaclesAndItemsLevelDesign.cs" Line="11" Column="2" />
-      <File FileName="Assets/Scripts/Level/LevelDesign.cs" Line="11" Column="1" />
-      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="196" Column="17" />
+      <File FileName="Assets/Scripts/Level/LevelDesign.cs" Line="8" Column="20" />
+      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="57" Column="1" />
       <File FileName="Assets/Scripts/Global/GameModel.cs" Line="131" Column="1" />
       <File FileName="Assets/Scripts/Global/GameContext.cs" Line="98" Column="5" />
-      <File FileName="Assets/Scripts/Level/WaveTemplatesCollectionIterator.cs" Line="34" Column="27" />
+      <File FileName="Assets/Scripts/Level/WaveTemplatesCollectionIterator.cs" Line="27" Column="5" />
       <File FileName="Assets/Scripts/Level/LevelModel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/GameObjectsGroupDesign.cs" Line="36" Column="40" />
+      <File FileName="Assets/Scripts/Level/GameObjectsGroupDesign.cs" Line="16" Column="8" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +18,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="Level" expanded="True">
-                <Node name="LevelViewModel.cs" selected="True" />
+                <Node name="GameObjectsGroupDesign.cs" selected="True" />
               </Node>
             </Node>
           </Node>
