@@ -86,7 +86,7 @@
 		{
 			"number": 1,
 			"name": "Urban Flight",
-			"isLocked": false,
+			"isLocked": true,
 			"levels": [
 				{
 					"number": 0,

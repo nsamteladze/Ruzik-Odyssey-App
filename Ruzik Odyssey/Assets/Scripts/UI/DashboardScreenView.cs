@@ -14,7 +14,7 @@ namespace RuzikOdyssey.UI
 		#elif UNITY_ANDROID
 		private string adUnitId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
 		#elif UNITY_IPHONE
-		private string adUnitId = "ca-app-pub-7907261852954179/3530751844";
+		private string adUnitId = "ca-app-pub-1384659154698612/7265813883";
 		#else
 		private string adUnitId = "unexpected_platform";
 		#endif

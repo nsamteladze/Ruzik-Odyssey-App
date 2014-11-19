@@ -8,8 +8,6 @@ namespace RuzikOdyssey.UI
 {
 	public class GlobalMapView : ExtendedMonoBehaviour
 	{
-		public GameObject chapterDescriptionPopup;
-
 		public GameObject[] chapters;
 		public GameObject[] currentLocationArrows;
 		public GameObject[] locationLocks;
@@ -47,16 +45,6 @@ namespace RuzikOdyssey.UI
 		public void LoadMainScreen()
 		{
 			Application.LoadLevel("main_screen");
-		}
-
-		public void ShowLevelDescriptionPopup()
-		{
-			chapterDescriptionPopup.SetActive(true);
-		}
-
-		public void HideLevelDescriptionPopup()
-		{
-			chapterDescriptionPopup.SetActive(false);
 		}
 	}
 

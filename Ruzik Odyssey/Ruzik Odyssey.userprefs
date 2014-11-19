@@ -1,25 +1,31 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/GameObjectsGroupDesign.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Global/GameContext.cs">
     <Files>
-      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="91" Column="38" />
-      <File FileName="Assets/Scripts/Level/ObstaclesAndItemsLevelDesign.cs" Line="11" Column="2" />
-      <File FileName="Assets/Scripts/Level/LevelDesign.cs" Line="8" Column="20" />
-      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="57" Column="1" />
-      <File FileName="Assets/Scripts/Global/GameModel.cs" Line="131" Column="1" />
-      <File FileName="Assets/Scripts/Global/GameContext.cs" Line="98" Column="5" />
-      <File FileName="Assets/Scripts/Level/WaveTemplatesCollectionIterator.cs" Line="27" Column="5" />
+      <File FileName="Assets/Scripts/Level/LevelViewModel.cs" Line="86" Column="5" />
+      <File FileName="Assets/Scripts/Level/ObstaclesAndItemsLevelDesign.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelDesign.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelEnemiesDesign.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Global/GameModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Global/GameContext.cs" Line="45" Column="3" />
+      <File FileName="Assets/Scripts/Level/WaveTemplatesCollectionIterator.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Level/LevelModel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Level/GameObjectsGroupDesign.cs" Line="16" Column="8" />
+      <File FileName="Assets/Scripts/Level/GameObjectsGroupDesign.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/DashboardScreenView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/StartView.cs" Line="28" Column="3" />
+      <File FileName="Assets/Scripts/UI/ItemsStoreView.cs" Line="82" Column="44" />
+      <File FileName="Assets/Scripts/UI/CornStoreView.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="Level" expanded="True">
-                <Node name="GameObjectsGroupDesign.cs" selected="True" />
+              <Node name="Global" expanded="True">
+                <Node name="GameContext.cs" selected="True" />
               </Node>
+              <Node name="UI" expanded="True" />
             </Node>
           </Node>
         </State>

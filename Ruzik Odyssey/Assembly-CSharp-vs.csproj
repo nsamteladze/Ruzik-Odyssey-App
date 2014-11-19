@@ -593,7 +593,6 @@
      <Compile Include="Assets\Scripts\Level\Shield.cs" />
      <Compile Include="Assets\Scripts\Level\SlowDownEffect.cs" />
      <Compile Include="Assets\Scripts\Level\SoundEffectsController.cs" />
-     <Compile Include="Assets\Scripts\Level\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Level\Tags.cs" />
      <Compile Include="Assets\Scripts\Level\TextResize.cs" />
      <Compile Include="Assets\Scripts\Level\ToggleStateChangedEventArgs.cs" />
@@ -630,6 +629,7 @@
      <Compile Include="Assets\Scripts\UI\ItemsStoreTab.cs" />
      <Compile Include="Assets\Scripts\UI\ItemsStoreView.cs" />
      <Compile Include="Assets\Scripts\UI\MapLocation.cs" />
+     <Compile Include="Assets\Scripts\UI\StartView.cs" />
      <Compile Include="Assets\Scripts\UI\StoreItem.cs" />
      <Compile Include="Assets\Scripts\UI\StoreItemsCategory.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
