@@ -542,14 +542,17 @@
      <Compile Include="Assets\Scripts\Common\EssenceController.cs" />
      <Compile Include="Assets\Scripts\Common\ExtendedMonoBehaviour.cs" />
      <Compile Include="Assets\Scripts\Common\Label.cs" />
+     <Compile Include="Assets\Scripts\Common\Lazy.cs" />
      <Compile Include="Assets\Scripts\Common\Log.cs" />
      <Compile Include="Assets\Scripts\Common\LogMessageType.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyDiedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Global\Events.cs" />
+     <Compile Include="Assets\Scripts\Global\GameConfig.cs" />
      <Compile Include="Assets\Scripts\Global\GameContext.cs" />
      <Compile Include="Assets\Scripts\Global\GameModel.cs" />
      <Compile Include="Assets\Scripts\Global\Property.cs" />
      <Compile Include="Assets\Scripts\Global\PropertyChangedEventArgs.cs" />
+     <Compile Include="Assets\Scripts\Global\Scenes.cs" />
      <Compile Include="Assets\Scripts\Level\ActivateShieldButton.cs" />
      <Compile Include="Assets\Scripts\Level\BoundsExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\EventBroker.cs" />
@@ -629,6 +632,7 @@
      <Compile Include="Assets\Scripts\UI\ItemsStoreTab.cs" />
      <Compile Include="Assets\Scripts\UI\ItemsStoreView.cs" />
      <Compile Include="Assets\Scripts\UI\MapLocation.cs" />
+     <Compile Include="Assets\Scripts\UI\OptionsScreenView.cs" />
      <Compile Include="Assets\Scripts\UI\StartView.cs" />
      <Compile Include="Assets\Scripts\UI\StoreItem.cs" />
      <Compile Include="Assets\Scripts\UI\StoreItemsCategory.cs" />
@@ -663,6 +667,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Resources\LevelsContent.txt" />
      <None Include="Assets\JsonDotNet\ReadMe.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />

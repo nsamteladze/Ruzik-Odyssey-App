@@ -35,7 +35,7 @@ namespace RuzikOdyssey.UI
 
 		public void SelectLevel(int index)
 		{
-			if (GlobalModel.Progress.CurrentChapter.Levels[index].IsLocked) return;
+			if (GlobalModel.Progress.GetCurrentChapter().Levels[index].IsLocked) return;
 
 			GlobalModel.CurrentLevelIndex.Value = index;
 			GlobalModel.Save();

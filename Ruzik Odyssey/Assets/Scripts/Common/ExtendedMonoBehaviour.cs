@@ -14,5 +14,25 @@ namespace RuzikOdyssey.Common
 		{
 			get { return GameModel.Instance; }
 		}
+
+		public void LoadStartScene()
+		{
+			LoadScene(Scenes.Start);
+		}
+
+		public void LoadDashboardScene()
+		{
+			LoadScene(Scenes.Dashboard);
+		}
+
+		public void LoadOptionsScene()
+		{
+			LoadScene(Scenes.Options);
+		}
+
+		public void LoadScene(string sceneName)
+		{
+			Application.LoadLevel(sceneName);
+		}
 	}
 }

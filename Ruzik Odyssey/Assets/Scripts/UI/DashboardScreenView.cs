@@ -66,7 +66,7 @@ namespace RuzikOdyssey.UI
 			cornAmountLabel.text = GlobalModel.Corn.Value.ToString();
 			gasAmountLabel.text = String.Format("{0}/10", GlobalModel.Gas.Value);
 
-			currentLevelNameLabel.text = GlobalModel.Progress.CurrentLevel.Name;
+			currentLevelNameLabel.text = GlobalModel.Progress.GetCurrentLevel().Name;
 		}
 
 		private void SubscribeToEvent()
@@ -111,7 +111,7 @@ namespace RuzikOdyssey.UI
 			 */
 			if (GlobalModel == null) return;
 
-			var currentLevelName = GlobalModel.Progress.CurrentLevel.Name;
+			var currentLevelName = GlobalModel.Progress.GetCurrentLevel().Name;
 			this.currentLevelNameLabel.text = currentLevelName;
 		}
 

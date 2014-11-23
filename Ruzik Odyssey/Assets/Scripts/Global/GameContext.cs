@@ -5,38 +5,10 @@ using System;
 using RuzikOdyssey.Common;
 using System.Linq;
 using System.Collections.Generic;
+using RuzikOdyssey.Level;
 
 namespace RuzikOdyssey.Infrastructure
 {
-	public sealed class Lazy<T>
-	{
-		private T backingField;
-		private bool isInitialized;
-		private readonly Func<T> valueFactory;
-
-		public T Value
-		{
-			get
-			{
-				if (!isInitialized)
-				{
-					backingField = valueFactory();
-					isInitialized = true;
-				}
-				return backingField;
-			}
-			private set 
-			{ 
-				backingField = value; 
-			}
-		}
-
-		public Lazy(Func<T> valueFactory)
-		{
-			this.valueFactory = valueFactory;
-		}
-	}
-	
 	public sealed class GameContext
 	{
 		public const string GameModelKey = "GameModel";
@@ -102,6 +74,34 @@ namespace RuzikOdyssey.Infrastructure
 			}
 
 			return entity;
+		}
+
+		public GameContent LoadGameContent()
+		{
+			var contentAsset = Resources.Load(GameConfig.GameContentFilePath) as TextAsset;
+
+			if (contentAsset == null)
+			{
+				Log.Error("Failed to load game content from {0}", GameConfig.GameContentFilePath);
+				return null;
+			}
+
+			GameContent content = null;
+			try
+			{
+				content = JsonConvert.DeserializeObject<GameContent>(contentAsset.text);
+			}
+			catch (Exception ex)
+			{
+				Log.Error("An exeption occured while deserializing game content. Exception: {0}", ex.Message);
+			}
+
+			if (content == null) 
+			{
+				Log.Error("Failed to desirialize game content");
+			}
+
+			return content;
 		}
 	}
 }

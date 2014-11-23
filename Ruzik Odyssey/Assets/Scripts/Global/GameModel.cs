@@ -8,6 +8,26 @@ using System.Linq;
 
 namespace RuzikOdyssey
 {
+	public static class GameProgressExtensions
+	{
+		public static GameChapter GetCurrentChapter(this GameProgress progress)
+		{
+			return progress.CurrentChapterIndex < progress.Chapters.Count 
+				? progress.Chapters[progress.CurrentChapterIndex] 
+				: null; 
+		}
+
+		public static GameLevel GetCurrentLevel(this GameProgress progress)
+		{
+			var currentChapter = progress.GetCurrentChapter();
+			
+			if (currentChapter == null) return null;
+			if (progress.CurrentLevelIndex >= currentChapter.Levels.Count) return null;
+
+			return currentChapter.Levels[progress.CurrentLevelIndex]; 
+		}
+	}
+
 	public sealed class GameProgress
 	{
 		public int Gold { get; set; }
@@ -21,32 +41,9 @@ namespace RuzikOdyssey
 
 		public IList<GameChapter> Chapters { get; set; }
 
-		public GameChapter CurrentChapter
-		{
-			get 
-			{ 
-				return CurrentChapterIndex < Chapters.Count 
-					? Chapters[CurrentChapterIndex] 
-					: null;
-			}
-		}
-
-		public GameLevel CurrentLevel
-		{
-			get 
-			{
-				var currentChapter = CurrentChapter;
-
-				if (currentChapter == null) return null;
-				if (CurrentLevelIndex >= currentChapter.Levels.Count) return null;
-
-				return currentChapter.Levels[CurrentLevelIndex]; 
-			}
-		}
-
 		public override string ToString ()
 		{
-			return string.Format ("[GameProgress: Gold={0}, Corn={1}, Gas={2}, CurrentChapterIndex={3}, CurrentLevelIndex={4}, CurrentLevelDifficulty={5}, Chapters={6}, CurrentChapter={7}, CurrentLevel={8}]", Gold, Corn, Gas, CurrentChapterIndex, CurrentLevelIndex, CurrentLevelDifficulty, Chapters, CurrentChapter, CurrentLevel);
+			return string.Format ("[GameProgress: Gold={0}, Corn={1}, Gas={2}, CurrentChapterIndex={3}, CurrentLevelIndex={4}, CurrentLevelDifficulty={5}, Chapters={6}]", Gold, Corn, Gas, CurrentChapterIndex, CurrentLevelIndex, CurrentLevelDifficulty, Chapters);
 		}
 	}
 
@@ -85,6 +82,19 @@ namespace RuzikOdyssey
 
 		public GameProgress Progress { get; set; } 
 
+		public LevelDesign CurrentLevelDesign
+		{
+			get
+			{
+				return Content.Value
+					.Chapters[Progress.CurrentChapterIndex]
+					.Levels[Progress.CurrentLevelIndex]
+					.Design;
+			}
+		}
+
+		public Lazy<GameContent> Content { get; private set; }
+
 		private static readonly GameModel instance = new GameModel();
 		public static GameModel Instance { get { return instance; } }
 			
@@ -116,6 +126,8 @@ namespace RuzikOdyssey
 
 			CurrentLevelIndex = new Property<int>(Properties.Global.CurrentLevelIndex);
 			CurrentLevelDifficulty = new Property<int>(Properties.Global.CurrentLevelDifficulty);
+
+			Content = new Lazy<GameContent>(() => context.LoadGameContent());
 		}
 
 		private void Load()

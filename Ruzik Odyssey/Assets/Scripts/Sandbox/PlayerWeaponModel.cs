@@ -19,8 +19,8 @@ namespace Sandbox.RuzikOdyssey.Player
 		public float mainWeaponSoundEffectVolume = 1.0f;
 		public float secondWeaponSoundEffectVolume = 1.0f;
 		
-		private float mainWeaponCooldown = 0.25f;
-		private float secondaryWeaponCooldown = 0.5f;
+//		private float mainWeaponCooldown = 0.25f;
+//		private float secondaryWeaponCooldown = 0.5f;
 	}
 
 	public abstract class Model : Component

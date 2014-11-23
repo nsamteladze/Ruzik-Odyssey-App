@@ -20,6 +20,24 @@ namespace RuzikOdyssey.Level
 		}
 	}
 
+	public class GameContent
+	{
+		public string Version { get; set; }
+		public IList<ChapterContent> Chapters { get; set; }
+	}
+
+	public class ChapterContent
+	{
+		public int Number { get; set; }
+		public IList<LevelContent> Levels { get; set; }
+	}
+
+	public class LevelContent
+	{
+		public int Number { get; set; }
+		public LevelDesign Design { get; set; }
+	}
+
 	public sealed class LevelViewModel : ExtendedMonoBehaviour
 	{
 		public GameObject[] enemiesSource;
@@ -34,7 +52,6 @@ namespace RuzikOdyssey.Level
 		private WaveTemplatesCollectionIterator obstaclesIterator;
 
 		private LevelEnemiesDesign enemiesLevelDesign; 
-//		private ObstaclesAndItemsLevelDesign obstaclesItemsLevelDesign;
 		private bool isFinalEnemiesWave = false;
 		private bool isLevelFinished = false;
 		private int finalEnemiesCouter = 0;
@@ -44,8 +61,6 @@ namespace RuzikOdyssey.Level
 		private void Awake()
 		{
 			model = new LevelModel();
-
-//			obstaclesItemsLevelDesign = new ObstaclesAndItemsLevelDesign(obstaclesAndItemsSource.ToList());
 
 			enemiesLevelDesign = this.gameObject.GetComponentOrThrow<LevelEnemiesDesign>();
 
@@ -73,15 +88,12 @@ namespace RuzikOdyssey.Level
 
 		private void LoadLevelDesign()
 		{
-			var levelDesignResPath = String.Format("Chapter{0}Level{1}Design",
-			                                       GlobalModel.Progress.CurrentChapterIndex,
-			                                       GlobalModel.Progress.CurrentLevelIndex);
-			var levelDesignRes = Resources.Load(levelDesignResPath) as TextAsset;
-			levelDesign = JsonConvert.DeserializeObject<LevelDesign>(levelDesignRes.text);
+			var levelDesign = GlobalModel.CurrentLevelDesign;
 
 			if (levelDesign == null)
 			{
-				Log.Error("Failed to load level design from {0}", levelDesignResPath);
+				Log.Error("Global Model returned NULL for current level design. Chapter: {0}, Level: {1}.",
+				          GlobalModel.Progress.CurrentChapterIndex, GlobalModel.Progress.CurrentLevelIndex);
 				return;
 			}
 
@@ -160,57 +172,6 @@ namespace RuzikOdyssey.Level
 			Application.LoadLevel("main_screen");
 		}
 
-
-//		private void StartSpawningLevelFromDesign()
-//		{
-//			Invoke("SpawnNextEnemyFromLevelDesign", enemiesSpawningDelay);
-//		}
-
-//		private void SpawnNextEnemyFromLevelDesign()
-//		{
-//			if (isFinalEnemiesWave) return;
-//
-//			var enemyPack = enemiesLevelDesign.GetNext();
-//			
-//			InstantiateGroupDesign(enemyPack)
-//				.ForEach(item =>
-//          		{
-//					var alienController = item.GetComponentOrThrow<AlienController>();
-//					alienController.Died += Enemy_Died;
-//					alienController.Destroyed += Enemy_Destroyed;
-//				});
-//			
-//			Invoke("SpawnNextEnemyFromLevelDesign", enemyPack.NextGroupInterval);
-//		}
-
-//		private IEnumerator SpawnLevelDesign(ObstaclesAndItemsLevelDesign levelDesign)
-//		{
-//			var groupDesign = levelDesign.GetNextGroup();
-//
-//			while (!isLevelFinished && groupDesign != null)
-//			{
-//				InstantiateGroupDesign(groupDesign);
-//
-//				yield return new WaitForSeconds(groupDesign.NextGroupInterval);
-//
-//				groupDesign = levelDesign.GetNextGroup();
-//			}
-//		}
-
-//		private IEnumerator SpawnLevelFromIterator(GroupDesignsCollectionIterator iterator)
-//		{
-//			var groupDesign = iterator.GetNext();
-//			
-//			while (!isLevelFinished && groupDesign != null)
-//			{
-//				InstantiateGroupDesign(groupDesign);
-//				
-//				yield return new WaitForSeconds(groupDesign.NextGroupInterval);
-//				
-//				groupDesign = iterator.GetNext();
-//			}
-//		}
-
 		private IEnumerator SpawnLevelFromIterator(WaveTemplatesCollectionIterator iterator, 
 		                                           IList<GameObject> objectsSource,
 		                                           Action<GameObject> action = null)
@@ -234,18 +195,6 @@ namespace RuzikOdyssey.Level
 				yield return new WaitForSeconds(waveTemplate.NextWaveInterval);
 			}
 		}
-		
-//		private List<GameObject> InstantiateGroupDesign(GameObjectsGroupDesign design)
-//		{
-//			return design.Objects
-//				.Select(item =>
-//		        {
-//					var position = new Vector2(Game.WarzoneBounds.Right() + Random.Range(3, 20), 
-//					                           Game.WarzoneBounds.RandomVerticalPositionWithinBounds(item));
-//					return Instantiate(item, position, transform.rotation) as GameObject;
-//				})
-//				.ToList();
-//		}
 
 		private List<GameObject> InstantiateMany(IList<GameObject> objects)
 		{
@@ -258,24 +207,5 @@ namespace RuzikOdyssey.Level
 				})
 				.ToList();
 		}
-
-//		[Obsolete]
-//		private void InstantiateEnemiesGroupDesign(GameObjectsGroupDesign design)
-//		{
-//			foreach (var enemy in design.Objects)
-//			{
-//				var position = new Vector2(Game.WarzoneBounds.Right() + Random.Range(3, 20), 
-//				                           Random.Range(Game.WarzoneBounds.Bottom() + enemy.RendererSize().y / 2, 
-//				             							Game.WarzoneBounds.Top() - enemy.RendererSize().y / 2));
-//
-//				var instance = Instantiate(enemy, position, transform.rotation) as GameObject;
-//
-//				var alienController = instance.GetComponentOrThrow<AlienController>();
-//
-//				alienController.Died += Enemy_Died;
-//			}
-//		}
-
-
 	}
 }
