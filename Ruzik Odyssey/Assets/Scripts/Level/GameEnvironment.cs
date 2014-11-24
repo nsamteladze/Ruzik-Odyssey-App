@@ -46,7 +46,7 @@ namespace RuzikOdyssey.Common
 		public static void StartMission()
 		{
 			IsGameOver = false;
-			EventBroker.ClearSubscribtions();
+			EventsBroker.ClearSubscribtions();
 		}
 
 		public static void GameOver()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using RuzikOdyssey.Common;
+using RuzikOdyssey.Domain;
 
 namespace RuzikOdyssey.Level
 {

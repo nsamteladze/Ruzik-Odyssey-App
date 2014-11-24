@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using RuzikOdyssey.Level;
+using RuzikOdyssey.Common;
 
 namespace RuzikOdyssey.Player
 {
@@ -19,7 +20,8 @@ namespace RuzikOdyssey.Player
 			                                                      gameObject.transform.position + (Vector3)shieldAdjustment, 
 			                                                      transform.rotation);
 			shieldEffectGameObject.transform.parent = gameObject.transform;
-			shieldEffectBehavior = shieldEffectGameObject.GetComponent<Shield>();
+			shieldEffectBehavior = shieldEffectGameObject.GetComponentOrThrow<Shield>();
+
 			ChangeShieldVisibility(false);
 		}
 
@@ -34,6 +36,12 @@ namespace RuzikOdyssey.Player
 
 		public void ChangeShieldVisibility(bool isVisible)
 		{
+			if (shieldEffectBehavior == null) 
+			{
+				Log.Warning("ChangeShieldVisibility was called before ShieldController finished initialization");
+				return;
+			}
+
 			shieldEffectBehavior.gameObject.renderer.enabled = isVisible;
 		}
 	}

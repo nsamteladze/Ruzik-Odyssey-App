@@ -10,24 +10,24 @@ namespace RuzikOdyssey
 {
 	public class GameInputController : MonoBehaviour 
 	{
-		private IList<ITouchControl> buttons;
-		private RuzikController playerController;
+//		private IList<ITouchControl> buttons;
+		public RuzikController playerController;
 
-		private int movementTouchId;
+		private int movementTouchId = -1;
 
 		private void Start()
 		{
-			buttons = GameObject.FindGameObjectsWithTag("TouchControl")
-				.Select(x => (ITouchControl)x.GetComponent(typeof(ITouchControl)))
-				.ToList();
-
-			Debug.Log("Found touch controls: " + buttons.Count);
-
-			playerController = GameObject.FindGameObjectWithTag("Player")
-				.GetComponent<RuzikController>();
-			if (playerController == null) throw new UnityException("Failed to initialize player controller");
-
-			movementTouchId = -1;
+//			buttons = GameObject.FindGameObjectsWithTag("TouchControl")
+//				.Select(x => (ITouchControl)x.GetComponent(typeof(ITouchControl)))
+//				.ToList();
+//
+//			Debug.Log("Found touch controls: " + buttons.Count);
+//
+//			playerController = GameObject.FindGameObjectWithTag("Player")
+//				.GetComponent<RuzikController>();
+//			if (playerController == null) throw new UnityException("Failed to initialize player controller");
+//
+//			movementTouchId = -1;
 		}
 
 		private void Update() 
@@ -41,18 +41,18 @@ namespace RuzikOdyssey
 			foreach (var touch in Input.touches)
 			{
 				var isButtonTouch = false;
-				foreach (var button in buttons)
-				{
-					if (button.HitTest(touch.position)) 
-					{
-						isButtonTouch = true;
-						if (touch.phase == TouchPhase.Began)
-						{
-							button.TriggerTouch();
-						}
-						else if (touch.fingerId == movementTouchId) ProcessMovementTouch(touch);
-					}
-				}
+//				foreach (var button in buttons)
+//				{
+//					if (button.HitTest(touch.position)) 
+//					{
+//						isButtonTouch = true;
+//						if (touch.phase == TouchPhase.Began)
+//						{
+//							button.TriggerTouch();
+//						}
+//						else if (touch.fingerId == movementTouchId) ProcessMovementTouch(touch);
+//					}
+//				}
 
 				if (isButtonTouch && Input.touchCount == 1) playerController.Stop();
 				if (isButtonTouch || GameEnvironment.IsGameOver) continue;

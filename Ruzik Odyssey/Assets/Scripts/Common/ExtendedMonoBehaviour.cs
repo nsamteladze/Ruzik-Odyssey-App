@@ -1,9 +1,11 @@
 using UnityEngine;
+using RuzikOdyssey.Domain;
 using RuzikOdyssey.Level;
+using RuzikOdyssey.Models;
 
 namespace RuzikOdyssey.Common
 {
-	public class ExtendedMonoBehaviour : MonoBehaviour
+	public abstract class ExtendedMonoBehaviour : MonoBehaviour
 	{
 		protected GameHelper Game
 		{
@@ -13,6 +15,11 @@ namespace RuzikOdyssey.Common
 		protected GameModel GlobalModel
 		{
 			get { return GameModel.Instance; }
+		}
+
+		protected void LoadScene(string sceneName)
+		{
+			Application.LoadLevel(sceneName);
 		}
 
 		public void LoadStartScene()
@@ -25,14 +32,49 @@ namespace RuzikOdyssey.Common
 			LoadScene(Scenes.Dashboard);
 		}
 
-		public void LoadOptionsScene()
+		public void LoadSettingsScene()
 		{
-			LoadScene(Scenes.Options);
+			LoadScene(Scenes.Settings);
 		}
 
-		public void LoadScene(string sceneName)
+		public void LoadGlobalMapScene()
 		{
-			Application.LoadLevel(sceneName);
+			LoadScene(Scenes.GlobalMap);
+		}
+
+		public void LoadChapter1MapScene()
+		{
+			LoadScene(Scenes.Chapter1Map);
+		}
+
+		public void LoadLevelScene()
+		{
+			LoadScene(Scenes.LevelScene);
+		}
+
+		public void LoadAircraftStoreScene()
+		{
+			LoadScene(Scenes.LargeItemsStoreScene);
+		}
+		
+		public void LoadGoldStoreScene()
+		{
+			LoadScene(Scenes.LargeItemsStoreScene);
+		}
+
+		public void LoadCornStoreScene()
+		{
+			LoadScene(Scenes.LargeItemsStoreScene);
+		}
+
+		public void LoadUpgradesStoreScene()
+		{
+			LoadScene(Scenes.SmallItemsStoreScene);
+		}
+
+		public void LoadHangarScene()
+		{
+			LoadScene(Scenes.HangarScene);
 		}
 	}
 }

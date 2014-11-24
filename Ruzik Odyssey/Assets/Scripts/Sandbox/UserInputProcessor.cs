@@ -1,9 +1,10 @@
-using UnityEngine;
-using System.Collections.Generic;
-using RuzikOdyssey.Level;
-using RuzikOdyssey;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using RuzikOdyssey;
+using RuzikOdyssey.Common;
+using RuzikOdyssey.Level;
 
 namespace Sandbox.RuzikOdyssey.Player
 {
@@ -29,8 +30,8 @@ namespace Sandbox.RuzikOdyssey.Player
 
 		private void RegisterEvents()
 		{
-			EventBroker.Publish(Events.Input.InputChanged, ref InputChanged);
-			EventBroker.Publish(Events.Input.NoInput, ref NoInput);
+			EventsBroker.Publish(Events.Input.InputChanged, ref InputChanged);
+			EventsBroker.Publish(Events.Input.NoInput, ref NoInput);
 		}
 
 		private void Awake()

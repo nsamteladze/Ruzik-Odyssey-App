@@ -4,6 +4,11 @@ using RuzikOdyssey.Level;
 
 namespace RuzikOdyssey.Player
 {
+	public class AmmoChangedEventArgs : EventArgs
+	{
+		public int NewValue { get; set; }
+	}
+
 	public class WeaponController : MonoBehaviour
 	{
 		public Transform mainWeaponPrefab;
@@ -58,7 +63,15 @@ namespace RuzikOdyssey.Player
 			if (!hasAmmo) return;
 
 			missileAmmo += delta;
-			GameHelper.Instance.DisplayMissileAmmo(missileAmmo);
+
+			OnMissileAmmoChanged(missileAmmo);
+		}
+
+		public event EventHandler<AmmoChangedEventArgs> MissileAmmoChanged;
+
+		private void OnMissileAmmoChanged(int newValue)
+		{
+			if (MissileAmmoChanged != null) MissileAmmoChanged(this, new AmmoChangedEventArgs { NewValue = newValue });
 		}
 
 		public void AttackWithMainWeapon()

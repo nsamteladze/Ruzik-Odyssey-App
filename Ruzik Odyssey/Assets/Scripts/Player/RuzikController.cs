@@ -12,43 +12,28 @@ namespace RuzikOdyssey.Player
 
 		public AudioClip explosionSfx;
 
-		private MovementController movementController;
-		private WeaponController weaponController;
+		public MovementController movementController;
+		public WeaponController weaponController;
 
-		private HealthController healthController;
-		private EnergyController energyController;
-		private ShieldController shieldController;
+		public HealthController healthController;
+		public EnergyController energyController;
+		public ShieldController shieldController;
 
 		private bool shieldEnabled = false;
 
 		private void Start()
 		{
-			movementController = gameObject.GetComponentOrThrow<MovementController>();
-			weaponController = gameObject.GetComponentOrThrow<WeaponController>();
-			healthController = gameObject.GetComponentOrThrow<HealthController>();
-			energyController = gameObject.GetComponentOrThrow<EnergyController>();
-			shieldController = gameObject.GetComponentOrThrow<ShieldController>();
-
-			GameHelper.Instance.DisplayMissileAmmo(weaponController.missileAmmo);
-
-			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
-		{
-			EventBroker.Subscribe<EventArgs>("FireSecondaryWeaponButton_Touch", FireSecondaryWeaponButton_Touch);
-			EventBroker.Subscribe<ToggleStateChangedEventArgs>("ShieldToggle_StateChanged", ShieldToggle_StateChanged);
-		}
-
-		private void ShieldToggle_StateChanged(object sender, ToggleStateChangedEventArgs e)
-		{
-			shieldEnabled = e.ToggleIsOn;  
-			shieldController.ChangeShieldVisibility(shieldEnabled);
-		}
-
-		private void FireSecondaryWeaponButton_Touch(object sender, EventArgs e)
+		public void FireMissile()
 		{
 			weaponController.AttackWithSecondaryWeapon();
+		}
+
+		public void SetShieldActive(bool shieldActive)
+		{
+			this.shieldEnabled = shieldActive;
+			shieldController.ChangeShieldVisibility(shieldEnabled);
 		}
 
 		private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -122,7 +107,13 @@ namespace RuzikOdyssey.Player
 		private void Die()
 		{
 			Destroy (gameObject);
-			MenuController.Instance.ShowGameOverMenu();
+			OnDied();
+		}
+
+		public event EventHandler<EventArgs> Died;
+		private void OnDied()
+		{
+			if (Died != null) Died(this, EventArgs.Empty);
 		}
 
 		public void SlowDown(float speedDecrease)

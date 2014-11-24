@@ -28,7 +28,7 @@ public class TouchButton : MonoBehaviour, ITouchControl
 
 	protected virtual void RegisterEvents()
 	{
-		EventBroker.Publish(String.Format("{0}_Touch", buttonName), ref Touch);
+		EventsBroker.Publish(String.Format("{0}_Touch", buttonName), ref Touch);
 	}
 
 	public event EventHandler<EventArgs> Touch;

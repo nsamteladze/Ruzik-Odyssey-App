@@ -45,7 +45,7 @@ public class TouchToggle : MonoBehaviour, ITouchControl
 	
 	protected virtual void RegisterEvents()
 	{
-		EventBroker.Publish(String.Format("{0}_StateChanged", toggleName), ref StateChanged);
+		EventsBroker.Publish(String.Format("{0}_StateChanged", toggleName), ref StateChanged);
 	}
 	
 	public event EventHandler<ToggleStateChangedEventArgs> StateChanged;

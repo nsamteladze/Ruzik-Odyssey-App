@@ -4,6 +4,7 @@ using RuzikOdyssey.Level;
 using RuzikOdyssey;
 using System;
 using System.Linq;
+using RuzikOdyssey.Common;
 
 namespace Sandbox.RuzikOdyssey.Player
 {
@@ -21,8 +22,8 @@ namespace Sandbox.RuzikOdyssey.Player
 
 		private void RegisterEvents()
 		{
-			EventBroker.Subscribe<InputChangedEventArgs>(Events.Input.InputChanged, UserInput_InputChanged);
-			EventBroker.Subscribe<EventArgs>(Events.Input.NoInput, UserInput_NoInput);
+			EventsBroker.Subscribe<InputChangedEventArgs>(Events.Input.InputChanged, UserInput_InputChanged);
+			EventsBroker.Subscribe<EventArgs>(Events.Input.NoInput, UserInput_NoInput);
 		}
 
 		private void UserInput_InputChanged(object sender, InputChangedEventArgs e)

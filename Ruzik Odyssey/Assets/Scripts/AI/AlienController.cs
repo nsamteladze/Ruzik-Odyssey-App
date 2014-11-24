@@ -107,7 +107,6 @@ namespace RuzikOdyssey.Ai
 			DropEnergy();
 
 			SoundEffectsController.Instance.PlayPlayerTaunt();
-			GameHelper.Instance.AddScore(scoreForKill);
 
 			if (deathExplosion != null) 
 			{
