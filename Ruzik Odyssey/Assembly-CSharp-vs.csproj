@@ -589,6 +589,7 @@
      <Compile Include="Assets\Scripts\Level\PickUp.cs" />
      <Compile Include="Assets\Scripts\Level\PickUpType.cs" />
      <Compile Include="Assets\Scripts\Level\PickUpsSpawnController.cs" />
+     <Compile Include="Assets\Scripts\Level\PlayerLostEventArgs.cs" />
      <Compile Include="Assets\Scripts\Level\PlayerWonLevelEventArgs.cs" />
      <Compile Include="Assets\Scripts\Level\RandomExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\Range.cs" />

@@ -224,5 +224,25 @@ namespace RuzikOdyssey.ViewModels
 		{
 			playerController.SetShieldActive(e.ToggleIsOn);
 		}
+
+		public void View_LevelExited(object sender, EventArgs e)
+		{
+			Log.Debug("LevelSceneViewModel - View_LevelExited");
+		}
+
+		public void View_LevelResumed(object sender, EventArgs e)
+		{
+			Log.Debug("LevelSceneViewModel - View_LevelResumed");
+		}
+
+		public void View_LevelRestarted(object sender, EventArgs e)
+		{
+			Log.Debug("LevelSceneViewModel - View_LevelRestarted");
+		}
+
+		public void View_LevelPaused(object sender, EventArgs e)
+		{
+			Log.Debug("LevelSceneViewModel - View_LevelPaused");
+		}
 	}
 }
