@@ -4,6 +4,7 @@ namespace RuzikOdyssey.Level
 {
 	public sealed class PlayerLostEventArgs : EventArgs
 	{
-		public int LevelScore { get; set; }
+		public int GoldEarned { get; set; }
+		public int CornEarned { get; set; }
 	}
 }

@@ -23,6 +23,14 @@ namespace RuzikOdyssey.Views
 		public UILabel scoreLabel;
 		public UILabel missileAmmoLabel;
 
+		public UILabel playerWonPopupGoldLabel;
+		public UILabel playerWonPopupCornLabel;
+		public UILabel playerWonPopupEnemiesKilledLabel;
+
+		public UILabel playerLostPopupGoldLabel;
+		public UILabel playerLostPopupCornLabel;
+		public UILabel playerLostPopupEnemiesKilledLabel;
+
 		public event EventHandler<EventArgs> FireMissileButtonClicked;
 		public event EventHandler<ToggleStateChangedEventArgs> ShieldToggleStateChanged;
 
@@ -64,6 +72,10 @@ namespace RuzikOdyssey.Views
 		{
 			Log.Info("Player Won!!!!!");
 
+			playerWonPopupGoldLabel.text = e.GoldEarned.ToString();
+			playerWonPopupCornLabel.text = e.CornEarned.ToString();
+			playerWonPopupEnemiesKilledLabel.text = 100 + "%";
+
 			popupsContainer.SetActive(true);
 			playerWonPopup.SetActive(true);
 		}
@@ -71,6 +83,10 @@ namespace RuzikOdyssey.Views
 		private void ViewModel_PlayerLost(object sender, PlayerLostEventArgs e)
 		{
 			Log.Info("Player lost level!");
+
+			playerLostPopupGoldLabel.text = e.GoldEarned.ToString();
+			playerLostPopupCornLabel.text = e.CornEarned.ToString();
+			playerLostPopupEnemiesKilledLabel.text = 0 + "%";
 
 			popupsContainer.SetActive(true);
 			playerLostPopup.SetActive(true);

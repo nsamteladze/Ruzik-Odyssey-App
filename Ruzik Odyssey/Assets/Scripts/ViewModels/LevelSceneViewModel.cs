@@ -143,8 +143,9 @@ namespace RuzikOdyssey.ViewModels
 			GlobalModel.Corn.Value += cornForCompletedLevel;
 			GlobalModel.Save();
 
-			var e = new PlayerWonLevelEventArgs { TotalLevelScore = Score.Value };
-			if (PlayerWonLevel != null) PlayerWonLevel(this, e); 
+			var args = new PlayerWonLevelEventArgs { GoldEarned = Score.Value, CornEarned = cornForCompletedLevel };
+
+			if (PlayerWonLevel != null) PlayerWonLevel(this, args); 
 		}
 
 		private void OnPlayerLost()
@@ -155,7 +156,9 @@ namespace RuzikOdyssey.ViewModels
 			GlobalModel.Gold.Value += Score.Value;
 			GlobalModel.Save();
 
-			if (PlayerLost != null) PlayerLost(this, new PlayerLostEventArgs { LevelScore = this.Score.Value });
+			var args = new PlayerLostEventArgs { GoldEarned = Score.Value, CornEarned = 0 };
+
+			if (PlayerLost != null) PlayerLost(this, args);
 		}
 
 		private IEnumerator SpawnLevelFromIterator(WaveTemplatesCollectionIterator iterator, 
