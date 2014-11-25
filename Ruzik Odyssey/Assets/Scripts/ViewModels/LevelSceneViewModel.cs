@@ -31,17 +31,24 @@ namespace RuzikOdyssey.ViewModels
 		private WaveTemplatesCollectionIterator obstaclesIterator;
 
 		private bool isFinalEnemiesWave = false;
+
+		/// <summary>
+		/// Indicates whether player finished level (won OR lost).
+		/// </summary>
+		/// <remarks>
+		/// Used to control spawning.
+		/// </remarks>
 		private bool isLevelFinished = false;
 		private int finalEnemiesCouter = 0;
 
 		public Property<int> Score { get; private set; }
 		public Property<int> MissileAmmo { get; private set; }
 
+		public event EventHandler<PlayerWonLevelEventArgs> PlayerWonLevel;
+		public event EventHandler<PlayerLostEventArgs> PlayerLost;
+
 		private void Awake()
 		{
-//			this.Score = new Property<int>(0);
-//			this.MissileAmmo = new Property<int>(playerController.weaponController.missileAmmo);
-
 			this.Score = new Property<int>();
 			this.MissileAmmo = new Property<int>();
 
@@ -67,19 +74,6 @@ namespace RuzikOdyssey.ViewModels
 			
 			StartCoroutine(SpawnLevelFromIterator(obstaclesIterator, obstaclesSource));
 		}
-
-		#region DEBUG
-
-		public event EventHandler<PropertyChangedEventArgs<int>> ScorePropertyChanged;
-		public void OnScorePropertyChanged(int newValue)
-		{
-			Log.Debug("LevelSceneViewModel - Player_MissileAmmoChanged - Raising MissileAmmoChanged event");
-			
-			if (ScorePropertyChanged != null) 
-				ScorePropertyChanged(this, new PropertyChangedEventArgs<int> { PropertyValue = newValue });
-		}
-
-		#endregion
 
 		private void LoadLevelDesign()
 		{
@@ -113,42 +107,26 @@ namespace RuzikOdyssey.ViewModels
 
 			finalEnemiesCouter = GameObject.FindGameObjectsWithTag(Tags.Enemy).Count();
 
-			Log.Debug("finalEnemiesCouter = {0}", finalEnemiesCouter);
-
 			if (finalEnemiesCouter == 0) OnPlayerWonLevel();
 		}
 
 		private void Enemy_Died(object sender, EnemyDiedEventArgs e)
 		{
-			Log.Debug("{0} is dead. Adding {1} to score.", sender.ToString(), e.ScoreForKill);
-
 			this.Score.Value += e.ScoreForKill;
-
-//			Log.Debug("New level score is {0}", Score.Value);
-//
-//			Log.Debug("Calling OnScorePropertyChanged");
-//			OnScorePropertyChanged(Score.Value);
 		}
 
 		private void Enemy_Destroyed(object sender, EventArgs e)
 		{
-			Log.Debug("Destroyed {0}", sender.ToString());
-
 			if (isFinalEnemiesWave)
 			{
 				finalEnemiesCouter--;
-				
-				Log.Debug("finalEnemiesCouter = {0}", finalEnemiesCouter);
-				
 				if (finalEnemiesCouter == 0) OnPlayerWonLevel();
 			}
 		}
 
 		private void Player_Died(object sender, EventArgs e)
 		{
-			Log.Info("Player died!!!");
-
-			LoadDashboardScene();
+			OnPlayerLost();
 		}
 
 		private void Player_MissileAmmoChanged(object sender, AmmoChangedEventArgs e)
@@ -156,27 +134,28 @@ namespace RuzikOdyssey.ViewModels
 			this.MissileAmmo.Value = e.NewValue;
 		}
 
-		public event EventHandler<PlayerWonLevelEventArgs> PlayerWonLevel;
-
 		private void OnPlayerWonLevel()
 		{
 			isLevelFinished = true;
+
+			// Earn gold and corn
+			GlobalModel.Gold.Value += Score.Value;
+			GlobalModel.Corn.Value += cornForCompletedLevel;
+			GlobalModel.Save();
 
 			var e = new PlayerWonLevelEventArgs { TotalLevelScore = Score.Value };
 			if (PlayerWonLevel != null) PlayerWonLevel(this, e); 
 		}
 
-		public void ExitLevel()
+		private void OnPlayerLost()
 		{
-			if (isLevelFinished) 
-			{
-				GlobalModel.Gold.Value += Score.Value;
-				GlobalModel.Corn.Value += cornForCompletedLevel;
+			isLevelFinished = true;
 
-				GlobalModel.Save();
-			}
+			// Earn gold only
+			GlobalModel.Gold.Value += Score.Value;
+			GlobalModel.Save();
 
-			LoadDashboardScene();
+			if (PlayerLost != null) PlayerLost(this, new PlayerLostEventArgs { LevelScore = this.Score.Value });
 		}
 
 		private IEnumerator SpawnLevelFromIterator(WaveTemplatesCollectionIterator iterator, 
@@ -228,21 +207,32 @@ namespace RuzikOdyssey.ViewModels
 		public void View_LevelExited(object sender, EventArgs e)
 		{
 			Log.Debug("LevelSceneViewModel - View_LevelExited");
+
+			GameEnvironment.Resume();
+			LoadDashboardScene();
 		}
 
 		public void View_LevelResumed(object sender, EventArgs e)
 		{
 			Log.Debug("LevelSceneViewModel - View_LevelResumed");
+
+			GameEnvironment.Resume();
 		}
 
 		public void View_LevelRestarted(object sender, EventArgs e)
 		{
 			Log.Debug("LevelSceneViewModel - View_LevelRestarted");
+
+			GameEnvironment.Resume();
+			GameEnvironment.StartMission();
+			LoadLevelScene();
 		}
 
 		public void View_LevelPaused(object sender, EventArgs e)
 		{
 			Log.Debug("LevelSceneViewModel - View_LevelPaused");
+
+			GameEnvironment.Pause();
 		}
 	}
 }
