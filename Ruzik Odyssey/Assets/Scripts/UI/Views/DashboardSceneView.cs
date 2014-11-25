@@ -156,17 +156,12 @@ namespace RuzikOdyssey.UI.Views
 			}
 		}
 
-		public void ShowStoreCategoriesPopup()
+		public void Game_OnStoreButtonClicked()
 		{
 			storeGoldAmountLabel.text = GlobalModel.Gold.Value.ToString();
 			storeCornAmountLabel.text = GlobalModel.Corn.Value.ToString();
 
 			storePopup.SetActive(true);
-		}
-
-		public void HideStoreCategoriesPopup()
-		{
-			storePopup.SetActive(false);
 		}
 
 		public void IncreaseMissionDifficulty()
@@ -183,6 +178,11 @@ namespace RuzikOdyssey.UI.Views
 			 * This logic does not belong to the view. Move to ViewModel.
 			 */
 			if (GlobalModel.CurrentLevelDifficulty.Value > 0) GlobalModel.CurrentLevelDifficulty.Value--;
+		}
+
+		public void Game_OnCloseStorePopupButtonClicked()
+		{
+			storePopup.SetActive(false);
 		}
 
 		private AdRequest CreateAdRequest()

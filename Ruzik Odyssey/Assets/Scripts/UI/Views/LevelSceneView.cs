@@ -57,7 +57,7 @@ namespace RuzikOdyssey.Views
 
 		private void Start()
 		{
-
+			CloseAllPopups();
 		}
 
 		private void CloseAllPopups()
