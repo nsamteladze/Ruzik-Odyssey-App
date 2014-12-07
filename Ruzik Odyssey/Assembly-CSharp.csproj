@@ -556,6 +556,14 @@
      <Compile Include="Assets\Scripts\Domain\GameContent.cs" />
      <Compile Include="Assets\Scripts\Domain\GameLevel.cs" />
      <Compile Include="Assets\Scripts\Domain\GameProgress.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\AmmoInventoryItem.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\ArmorInventoryItem.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\GameInventory.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItem.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemCategory.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemPrice.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemRarity.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\WeaponInventoryItem.cs" />
      <Compile Include="Assets\Scripts\Domain\LevelContent.cs" />
      <Compile Include="Assets\Scripts\Domain\LevelDesign.cs" />
      <Compile Include="Assets\Scripts\Domain\LinqExtensions.cs" />
@@ -564,6 +572,8 @@
      <Compile Include="Assets\Scripts\Domain\WaveTemplate.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyDiedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Infrastructure\GameContext.cs" />
+     <Compile Include="Assets\Scripts\Infrastructure\InventoryItemConverter.cs" />
+     <Compile Include="Assets\Scripts\Infrastructure\JsonCreationConverter.cs" />
      <Compile Include="Assets\Scripts\Level\ActivateShieldButton.cs" />
      <Compile Include="Assets\Scripts\Level\BoundsExtensions.cs" />
      <Compile Include="Assets\Scripts\Level\FireSecondaryWeaponButton.cs" />
@@ -653,6 +663,7 @@
      <None Include="Assets\NGUI\ReadMe - 3.7.0.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+     <None Include="Assets\Resources\GameInventoryDefaults.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />

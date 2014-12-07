@@ -22,13 +22,15 @@ namespace RuzikOdyssey.Infrastructure
 			PlayerPrefs.Save();
 		}
 
-		public T LoadDefauts<T>()
+		public T LoadDefauts<T>(JsonConverter customConverter = null)
 		{
 			var defaultsFile = GetDefaultsAsset<T>();
 
 			if (defaultsFile == null) throw new UnityException("Failed to load defaults file");
 
-			var defaults = JsonConvert.DeserializeObject<T>(defaultsFile.text);
+			var defaults = customConverter == null 
+				? JsonConvert.DeserializeObject<T>(defaultsFile.text)
+				: JsonConvert.DeserializeObject<T>(defaultsFile.text, customConverter);
 				
 			if (defaults == null) throw new UnityException("Failed to deserialize defaults from the config file.");
 
@@ -55,7 +57,7 @@ namespace RuzikOdyssey.Infrastructure
 			PlayerPrefs.SetString(typeof(T).FullName, json);
 		}
 
-		public T LoadEntity<T>() where T : class
+		public T LoadEntity<T>(JsonConverter customConverter = null) where T : class
 		{
 			var key = typeof(T).FullName;
 
@@ -64,10 +66,12 @@ namespace RuzikOdyssey.Infrastructure
 			if (String.IsNullOrEmpty(json))
 			{
 				Log.Warning("Failed to load {0} from persistence storage. Loading defaults.", key);
-				return LoadDefauts<T>();
+				return LoadDefauts<T>(customConverter);
 			}
-			
-			var entity = JsonConvert.DeserializeObject<T>(json);
+
+			var entity = customConverter == null 
+				? JsonConvert.DeserializeObject<T>(json)
+				: JsonConvert.DeserializeObject<T>(json, customConverter);
 			
 			if (entity == null)
 			{

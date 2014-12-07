@@ -143,6 +143,8 @@ namespace RuzikOdyssey.ViewModels
 			GlobalModel.Corn.Value += cornForCompletedLevel;
 			GlobalModel.Save();
 
+			GameEnvironment.Pause();
+
 			var args = new PlayerWonLevelEventArgs { GoldEarned = Score.Value, CornEarned = cornForCompletedLevel };
 
 			if (PlayerWonLevel != null) PlayerWonLevel(this, args); 
@@ -155,6 +157,8 @@ namespace RuzikOdyssey.ViewModels
 			// Earn gold only
 			GlobalModel.Gold.Value += Score.Value;
 			GlobalModel.Save();
+
+			GameEnvironment.Pause();
 
 			var args = new PlayerLostEventArgs { GoldEarned = Score.Value, CornEarned = 0 };
 

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using RuzikOdyssey.Domain;
+using RuzikOdyssey.Domain.Inventory;
 
 namespace RuzikOdyssey.Models
 {
@@ -28,6 +29,7 @@ namespace RuzikOdyssey.Models
 
 		public GameProgress Progress { get; private set; } 
 		public GameContent Content { get; private set; }
+		public GameInventory Inventory { get; private set; }
 
 		public LevelDesign CurrentLevelDesign
 		{
@@ -81,6 +83,8 @@ namespace RuzikOdyssey.Models
 				yield break;
 			}
 
+			// Load game progress
+
 			OnLoadingProgressUpdated("Loading game progress", 0);
 
 			this.Progress = context.LoadEntity<GameProgress>();
@@ -95,7 +99,7 @@ namespace RuzikOdyssey.Models
 			CurrentLevelIndex = new Property<int>(Progress.CurrentLevelIndex, Properties.Global.CurrentLevelIndex, true);
 			CurrentLevelDifficulty = new Property<int>(Progress.CurrentLevelDifficulty, Properties.Global.CurrentLevelDifficulty, true);
 
-			OnLoadingProgressUpdated("Loading game progress", 100);
+			// Load game content
 
 			OnLoadingProgressUpdated("Loading game content", 0);
 
@@ -104,6 +108,16 @@ namespace RuzikOdyssey.Models
 				(x) => OnLoadingProgressUpdated("Loading game content", x));
 
 			while (iterator.MoveNext()) yield return null;
+
+			// Load inventory
+
+			OnLoadingProgressUpdated("Loading inventory", 0);
+			
+			this.Inventory = context.LoadEntity<GameInventory>(new InventoryItemConverter());
+			
+			if (this.Inventory == null) throw new Exception("Failed to load inventory into game model");
+
+			OnLoadingProgressUpdated("Loading inventory", 95);
 
 			Log.Info("Fisnihed initializing game model");
 
@@ -130,7 +144,8 @@ namespace RuzikOdyssey.Models
 			Progress.CurrentLevelIndex = CurrentLevelIndex.Value;
 			Progress.CurrentLevelDifficulty = CurrentLevelDifficulty.Value;
 			
-			context.SaveEntity<GameProgress>(Progress);
+			context.SaveEntity<GameProgress>(this.Progress);
+			context.SaveEntity<GameInventory>(this.Inventory);
 		}
 	}
 

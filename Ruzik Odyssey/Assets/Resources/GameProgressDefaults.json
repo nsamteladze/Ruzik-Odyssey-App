@@ -13,16 +13,16 @@
 			"levels": [ 
 				{
 					"number": 0,
-					"name": "Level 0",
+					"name": "Defending Home",
 					"isLocked": false,
-					"medals": 5,
+					"medals": 0,
 					"maxMedals": 12
 				},
 				{
 					"number": 1,
-					"name": "Level 1",
+					"name": "What's Up Neighbor",
 					"isLocked": false,
-					"medals": 3,
+					"medals": 0,
 					"maxMedals": 12
 				},
 				{
@@ -35,49 +35,49 @@
 				{
 					"number": 3,
 					"name": "Level 3",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
 					"number": 4,
 					"name": "Level 4",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 6
 				},
 				{
 					"number": 5,
 					"name": "Level 5",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
 					"number": 6,
 					"name": "Level 6",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
 					"number": 7,
 					"name": "Level 7",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
 					"number": 8,
 					"name": "Level 8",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				},
 				{
 					"number": 9,
 					"name": "Level 9",
-					"isLocked": true,
+					"isLocked": false,
 					"medals": 0,
 					"maxMedals": 12
 				}

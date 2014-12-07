@@ -42,6 +42,7 @@ namespace RuzikOdyssey.Views
 		private void Awake()
 		{
 			viewModel.PlayerWonLevel += ViewModel_PlayerWon;
+			viewModel.PlayerLost += ViewModel_PlayerLost;
 
 			this.FireMissileButtonClicked += viewModel.View_FireMissileButtonClicked;
 			this.ShieldToggleStateChanged += viewModel.View_ShieldToggleStateChanged;

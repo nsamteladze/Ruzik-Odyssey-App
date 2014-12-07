@@ -1,0 +1,108 @@
+{
+	"availableItems": [
+		{
+			"name": "Hispano Suiza HS404 Cannon",
+			"shortName": "HS404",
+			"description": "Hispano Suiza HS404 Cannon is cool!",
+			"spriteName": "HispanoSuizaHS404Cannon",
+			"thumbnailName": "HispanoSuizaHS404Cannon_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1200,
+				"corn": 10
+			},
+			"rarity": 0,
+			"fireRate": 1
+		},
+		{
+			"name": "M2 Machine Gun",
+			"shortName": "M2",
+			"description": "M2 Machine Gun is cool!",
+			"spriteName": "M2MachineGun",
+			"thumbnailName": "M2MachineGun_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1200,
+				"corn": 10
+			},
+			"rarity": 0,
+			"fireRate": 1
+		},
+		{
+			"name": "M1919 Machine Gun",
+			"shortName": "M1919",
+			"description": "M1919 Machine Gun is cool!",
+			"spriteName": "M1919MachineGun",
+			"thumbnailName": "M1919MachineGun_Thumbnail",
+			"description": "",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1200,
+				"corn": 10
+			},
+			"rarity": 0,
+			"fireRate": 1
+		},
+		{
+			"name": "ShKAS Machine Gun",
+			"shortName": "ShKAS",
+			"description": "ShKAS Machine Gun is cool!",
+			"spriteName": "ShKASMachineGun",
+			"thumbnailName": "ShKASMachineGun_Thumbnail",
+			"description": "",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1200,
+				"corn": 10
+			},
+			"rarity": 0,
+			"fireRate": 1
+		},
+		{
+			"name": "ShVAK Cannon",
+			"shortName": "ShVAK",
+			"description": "ShVAK Cannon is cool!",
+			"spriteName": "ShVAKCannon",
+			"thumbnailName": "ShVAKCannon_Thumbnail",
+			"description": "",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1200,
+				"corn": 10
+			},
+			"rarity": 0,
+			"fireRate": 1
+		}
+	],
+	"purchasedItems": [
+	
+	],
+	"equippedItems": [
+	
+	]
+}
