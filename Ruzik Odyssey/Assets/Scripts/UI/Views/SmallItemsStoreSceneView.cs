@@ -7,11 +7,21 @@ using RuzikOdyssey.Common;
 using RuzikOdyssey.Domain;
 using RuzikOdyssey.Level;
 using RuzikOdyssey.UI.Elements;
+using RuzikOdyssey.ViewModels;
+using System;
+using RuzikOdyssey.Domain.Inventory;
 
 namespace RuzikOdyssey.UI.Views
 {
 	public sealed class SmallItemsStoreSceneView : ExtendedMonoBehaviour
 	{
+		/// <summary>
+		/// The default inventory items category that is show when the scene starts.
+		/// </summary>
+		private const InventoryItemCategory DefaultCategory = InventoryItemCategory.Weapons;
+
+		public SmallItemsStoreSceneViewModel viewModel;
+
 		public TextAsset storeItemsConfigFile;
 
 		public UILabel goldAmountLabel;
@@ -22,25 +32,61 @@ namespace RuzikOdyssey.UI.Views
 
 		public GameObject storeItemsScrollView;
 		public GameObject storeItemTemplate;
+
 		public UISprite currentItemImage;
 		public UILabel currentItemCaption;
+		public UILabel itemDescription;
+		public UILabel itemRarity;
+		public UILabel itemClass;
+		public UILabel itemStat1Name;
+		public UILabel itemStat1Value;
+		public UILabel itemStat2Name;
+		public UILabel itemStat2Value;
+		public UILabel itemStat3Name;
+		public UILabel itemStat3Value;
+		public UILabel itemStat4Name;
+		public UILabel itemStat4Value;
+		public UILabel itemGoldPrice;
+		public UILabel itemCornPrice;
 
-		private IList<StoreItemsCategory> itemsCategories;
+		private ICollection<InventoryItem> availableItems;
 
-		private int selectedTabIndex = 0;
+		private ItemsStoreTab selectedTab;
 
 		private void Awake()
 		{
-			InitializeUi();
+
 		}
 
 		private void Start()
 		{
-			LoadStoreItems();
+			viewModel.AvailableItemsUpdated += ViewModel_AvailableItemsUpdated;
+			viewModel.Gold.PropertyChanged += ViewModel_GoldPropertyChanged;
+			viewModel.Corn.PropertyChanged += ViewModel_CornPropertyChanged;
+			
+			availableItems = viewModel.AvailableItems;
+			goldAmountLabel.text = viewModel.Gold.Value.ToString();
+			cornAmountLabel.text = viewModel.Corn.Value.ToString();
 
-			Log.Debug("Screen width: {0}", Screen.width);
+			// Show default tab
+			PopulateItemsForTab(null);
+		}
 
-			PopulateItemsForTab(selectedTabIndex);
+		private void ViewModel_AvailableItemsUpdated(object sender, EventArgs e)
+		{
+			availableItems = viewModel.AvailableItems;
+
+			RefreshItemsScrollView();
+		}
+
+		private void ViewModel_GoldPropertyChanged(object sender, PropertyChangedEventArgs<int> e)
+		{
+			goldAmountLabel.text = viewModel.Gold.Value.ToString();
+		}
+
+		private void ViewModel_CornPropertyChanged(object sender, PropertyChangedEventArgs<int> e)
+		{
+			cornAmountLabel.text = viewModel.Corn.Value.ToString();
 		}
 
 		private void ClearItemsScrollView()
@@ -48,34 +94,83 @@ namespace RuzikOdyssey.UI.Views
 			storeItemsScrollView.DestroyAllChildren();
 		}
 
-		private void SelectItemInCurrentCategory(int itemIndex)
+		private void RefreshItemsScrollView()
 		{
-			Log.Debug("Tab: {0}, Element: {1}", selectedTabIndex, itemIndex);
-
-			var item = itemsCategories[selectedTabIndex].Items[itemIndex];
-
-			currentItemImage.spriteName = item.SpriteName;
-
-			currentItemCaption.text = item.Name;
+			ClearItemsScrollView();
+			PopulateItemsForTab(selectedTab);
 		}
 
-		private void PopulateItemsForTab(int tabIndex)
+		private void SelectItem(Guid itemId)
 		{
-			if (itemsCategories.Count < tabIndex + 1) return;
+			var item = availableItems.SingleOrDefault(x => x.Id == itemId);
+
+			if (item == null)
+			{
+				Log.Error("Failed to find an item with ID {0} in available items", itemId);
+				return;
+			}
+
+			currentItemImage.spriteName = item.SpriteName;
+			currentItemCaption.text = item.Name;
+			itemDescription.text = item.Description;
+			itemRarity.text = Enum.GetName(typeof(InventoryItemRarity), item.Rarity);
+			itemClass.text = String.Format("Class {0}", item.Class);
+			itemGoldPrice.text = item.Price.Gold.ToString();
+			itemCornPrice.text = item.Price.Corn.ToString();
+
+			switch (item.Category)
+			{
+				case InventoryItemCategory.Weapons:
+					var weaponItem = (WeaponInventoryItem) item;
+					itemStat1Name.text = "Fire Rate";
+					itemStat1Value.text = weaponItem.FireRate.ToString();
+					itemStat2Name.text = "Weight";
+					itemStat2Value.text = weaponItem.Weight.ToString();
+					itemStat3Name.text = String.Empty;
+					itemStat3Value.text = String.Empty;
+					itemStat4Name.text = String.Empty;
+					itemStat4Value.text = String.Empty;
+					break;
+
+				case InventoryItemCategory.Engines:
+					itemStat1Name.text = "Weight";
+					itemStat1Value.text = item.Weight.ToString();
+					itemStat2Name.text = "Power";
+					itemStat2Value.text = String.Format("{0}{1}", item.Power >= 0 ? "+" : "-", item.Power);
+					itemStat3Name.text = String.Empty;
+					itemStat3Value.text = String.Empty;
+					itemStat4Name.text = String.Empty;
+					itemStat4Value.text = String.Empty;
+					break;
+
+				default:
+					itemStat1Name.text = String.Empty;
+					itemStat1Value.text = String.Empty;
+					itemStat2Name.text = String.Empty;
+					itemStat2Value.text = String.Empty;
+					itemStat3Name.text = String.Empty;
+					itemStat3Value.text = String.Empty;
+					itemStat4Name.text = String.Empty;
+					itemStat4Value.text = String.Empty;
+					break;
+			}
+		}
+
+		private void PopulateItemsForTab(ItemsStoreTab tab)
+		{
+			var selectedCateogry = tab != null ? tab.category : DefaultCategory;
 
 			GameObject previousStoreItem = null;
-			for (int i = 0; i < itemsCategories[tabIndex].Items.Count; i++)
+			foreach (var item in availableItems.Where(x => x.Category == selectedCateogry))
 			{
-				var item = itemsCategories[tabIndex].Items[i];
-
 				var storeItem = NGUITools.AddChild(storeItemsScrollView, storeItemTemplate);
 				storeItem.SingleChild().GetComponentOrThrow<UISprite>().spriteName = item.ThumbnailName;
 
 				// Capture index for the anonimous delegate closure
-				var capturedIndex = i;
+				var capturedId = item.Id;
 				UIEventListener.Get(storeItem.GetComponentOrThrow<UIButton>().gameObject).onClick += (obj) => 
 				{ 
-					SelectItemInCurrentCategory(capturedIndex); 
+					SelectItem(capturedId); 
 				};
 				
 				var storeItemSprite = storeItem.GetComponentOrThrow<UISprite>();
@@ -88,8 +183,7 @@ namespace RuzikOdyssey.UI.Views
 				
 				if (previousStoreItem == null) 
 				{
-					currentItemImage.spriteName = item.SpriteName;
-					currentItemCaption.text = item.Name;
+					SelectItem(item.Id);
 				}
 				else
 				{
@@ -107,43 +201,13 @@ namespace RuzikOdyssey.UI.Views
 			
 			storeItemsScrollView.GetComponentOrThrow<UIScrollView>().ResetPosition();
 		}
-		
-		private void InitializeUi()
-		{
-			goldAmountLabel.text = GlobalModel.Gold.Value.ToString();
-			cornAmountLabel.text = GlobalModel.Corn.Value.ToString();
-		}
-
-		private void LoadStoreItems()
-		{
-			itemsCategories = JsonConvert.DeserializeObject<List<StoreItemsCategory>>(storeItemsConfigFile.text);
-
-			if (itemsCategories == null) throw new UnityException("Failed to deserialize store items from the config file.");
-
-			Log.Info("Loaded {0} categories into the store.", itemsCategories.Count);
-		}
-		
-		private void SubscribeToEvent()
-		{
-			EventsBroker.Subscribe<PropertyChangedEventArgs<int>>(Events.Global.GoldPropertyChanged, Gold_PropertyChanged);
-			EventsBroker.Subscribe<PropertyChangedEventArgs<int>>(Events.Global.CornPropertyChanged, Corn_PropertyChanged);
-		}
-		
-		private void Gold_PropertyChanged(object sender, PropertyChangedEventArgs<int> e)
-		{
-			goldAmountLabel.text = e.PropertyValue.ToString();
-		}
-		
-		private void Corn_PropertyChanged(object sender, PropertyChangedEventArgs<int> e)
-		{
-			cornAmountLabel.text = e.PropertyValue.ToString();
-		}
 
 		public void SelectTab(ItemsStoreTab tab)
 		{
 			ClearItemsScrollView();
 
 			var tabIndex = tab.tabIndex;
+			var selectedTabIndex = selectedTab != null ? selectedTab.tabIndex : 0;
 
 			// De-highlight the currently selected tab
 			highlightedTabs[selectedTabIndex].SetActive(false);
@@ -179,9 +243,9 @@ namespace RuzikOdyssey.UI.Views
 				tabOnRightSprite.leftAnchor.rect = anchorSprite;
 			}
 
-			selectedTabIndex = tabIndex;
+			selectedTab = tab;
 
-			PopulateItemsForTab(selectedTabIndex);
+			PopulateItemsForTab(selectedTab);
 		}
 
 		private void DeselectAllTabs()

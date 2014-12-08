@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d6876775e7974c11b2e187924785d8c
+guid: ebaa45396ae154feba64c3e6f8f54c36
 TextureImporter:
   fileIDToRecycleName:
     21300000: Common_BlueButton
@@ -43,7 +43,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone
-    maxTextureSize: 1024
+    maxTextureSize: 256
     textureFormat: -3
     compressionQuality: 50
   spriteSheet:

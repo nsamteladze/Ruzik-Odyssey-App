@@ -37,6 +37,8 @@ namespace RuzikOdyssey.Common
 
 		public Property() : this(default(T)) { }
 
+		public Property(string name, bool publish = false) : this(default(T), name, publish) { }
+
 		public Property(T value, string name = "", bool publish = false)
 		{
 			this.name = name;

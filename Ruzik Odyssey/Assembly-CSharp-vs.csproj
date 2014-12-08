@@ -656,7 +656,9 @@
      <Compile Include="Assets\Scripts\UI\Views\SmallItemsStoreSceneView.cs" />
      <Compile Include="Assets\Scripts\UI\Views\StartSceneView.cs" />
      <Compile Include="Assets\Scripts\ViewModels\LevelSceneViewModel.cs" />
+     <Compile Include="Assets\Scripts\ViewModels\SmallItemsStoreSceneViewModel.cs" />
      <Compile Include="Assets\Scripts\ViewModels\StartSceneViewModel.cs" />
+     <Compile Include="Assets\Scripts\ViewModels\ViewModel.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />

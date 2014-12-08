@@ -8,7 +8,14 @@ namespace RuzikOdyssey.Infrastructure
 {
 	public class InventoryItemConverter : JsonCreationConverter<InventoryItem>
 	{
+#if UNITY_EDITOR
 		private const string InventoryItemCategoryKey = "category";
+#elif UNITY_IOS
+		private const string InventoryItemCategoryKey = "Category";
+#else
+		private const string InventoryItemCategoryKey = "category";
+#endif
+
 
 		protected override InventoryItem Create(Type objectType, JObject jObject)
 		{
@@ -23,6 +30,13 @@ namespace RuzikOdyssey.Infrastructure
 
 		private InventoryItemCategory RetrieveCategory(JObject jObject)
 		{
+			if (jObject[InventoryItemCategoryKey] == null)
+			{
+				Log.Error("Serialized object misses '{0}' key. Object: \n{1}", 
+				          InventoryItemCategoryKey, jObject.ToString());
+				return default(InventoryItemCategory);
+			}
+
 			return jObject[InventoryItemCategoryKey].ToObject<InventoryItemCategory>();
 		}
 

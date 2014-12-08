@@ -1,7 +1,11 @@
+using System;
+
 namespace RuzikOdyssey.Domain.Inventory
 {
 	public class InventoryItem
 	{
+		public Guid Id { get; set; }
+
 		public string Name { get; set; }
 		public string ShortName { get; set; }
 		public string Description { get; set; }

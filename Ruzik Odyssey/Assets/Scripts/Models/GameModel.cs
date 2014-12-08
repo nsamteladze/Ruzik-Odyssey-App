@@ -50,6 +50,12 @@ namespace RuzikOdyssey.Models
 		{
 			context = new GameContext();
 
+			Gold = new Property<int>(Properties.Global.Gold, true);
+			Corn = new Property<int>(Properties.Global.Corn, true);
+			Gas = new Property<int>(Properties.Global.Gas, true);
+			CurrentLevelIndex = new Property<int>(Properties.Global.CurrentLevelIndex, true);
+			CurrentLevelDifficulty = new Property<int>(Properties.Global.CurrentLevelDifficulty, true);
+
 			PublishEvents();
 		}
 
@@ -93,11 +99,11 @@ namespace RuzikOdyssey.Models
 
 			OnLoadingProgressUpdated("Loading game progress", 95);
 
-			Gold = new Property<int>(Progress.Gold, Properties.Global.Gold, true);
-			Corn = new Property<int>(Progress.Corn, Properties.Global.Corn, true);
-			Gas = new Property<int>(Progress.Gas, Properties.Global.Gas, true);
-			CurrentLevelIndex = new Property<int>(Progress.CurrentLevelIndex, Properties.Global.CurrentLevelIndex, true);
-			CurrentLevelDifficulty = new Property<int>(Progress.CurrentLevelDifficulty, Properties.Global.CurrentLevelDifficulty, true);
+			Gold.Value = Progress.Gold;
+			Corn.Value = Progress.Corn;
+			Gas.Value = Progress.Gas;
+			CurrentLevelIndex.Value = Progress.CurrentLevelIndex;
+			CurrentLevelDifficulty.Value = Progress.CurrentLevelDifficulty;
 
 			// Load game content
 
