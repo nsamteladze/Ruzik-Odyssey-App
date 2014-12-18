@@ -17,6 +17,13 @@ namespace RuzikOdyssey.Infrastructure
 
 		private static Dictionary<string, Lazy<TextAsset>> defaultsAssets = new Dictionary<string, Lazy<TextAsset>>();
 
+		public GameContext()
+		{
+#if UNITY_EDITOR
+			PlayerPrefs.DeleteAll();
+#endif
+		}
+
 		public void Save()
 		{
 			PlayerPrefs.Save();

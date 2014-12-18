@@ -1,6 +1,6 @@
 {
-	"gold": 0,
-	"corn": 0,
+	"gold": 1000,
+	"corn": 100,
 	"gas": 10,
 	"currentChapterIndex": 0,
 	"currentLevelIndex": 0,

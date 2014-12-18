@@ -553,6 +553,7 @@
 'Assets/Scripts/Domain/Inventory/InventoryItemCategory.cs'
 'Assets/Scripts/Domain/Inventory/InventoryItemPrice.cs'
 'Assets/Scripts/Domain/Inventory/InventoryItemRarity.cs'
+'Assets/Scripts/Domain/Inventory/ItemPurchasedEventArgs.cs'
 'Assets/Scripts/Domain/Inventory/WeaponInventoryItem.cs'
 'Assets/Scripts/Domain/LevelContent.cs'
 'Assets/Scripts/Domain/LevelDesign.cs'

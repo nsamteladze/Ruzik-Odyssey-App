@@ -61,6 +61,11 @@ namespace RuzikOdyssey.UI.Views
 			InitializeUI();
 		}
 
+		private void OnDestroy()
+		{
+			UnsubscribeFromEvents();
+		}
+
 		private void InitializeUI()
 		{
 			goldAmountLabel.text = GlobalModel.Gold.Value.ToString();
@@ -83,6 +88,23 @@ namespace RuzikOdyssey.UI.Views
 				CurrentLevelIndex_PropertyChanged);
 
 			EventsBroker.Subscribe<PropertyChangedEventArgs<int>>(
+				Events.Global.CurrentLevelDifficultyPropertyChanged, 
+				CurrentLevelDifficulty_PropertyChanged);
+		}
+
+		public void UnsubscribeFromEvents()
+		{
+			EventsBroker.Unsubscribe<PropertyChangedEventArgs<int>>(Events.Global.GoldPropertyChanged, Gold_PropertyChanged);
+			
+			EventsBroker.Unsubscribe<PropertyChangedEventArgs<int>>(Events.Global.CornPropertyChanged, Corn_PropertyChanged);
+			
+			EventsBroker.Unsubscribe<PropertyChangedEventArgs<int>>(Events.Global.GasPropertyChanged, Gas_PropertyChanged);
+			
+			EventsBroker.Unsubscribe<PropertyChangedEventArgs<int>>(
+				Events.Global.CurrentLevelIndexPropertyChanged, 
+				CurrentLevelIndex_PropertyChanged);
+			
+			EventsBroker.Unsubscribe<PropertyChangedEventArgs<int>>(
 				Events.Global.CurrentLevelDifficultyPropertyChanged, 
 				CurrentLevelDifficulty_PropertyChanged);
 		}

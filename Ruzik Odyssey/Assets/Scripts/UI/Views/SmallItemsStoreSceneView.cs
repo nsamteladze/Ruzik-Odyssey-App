@@ -52,6 +52,7 @@ namespace RuzikOdyssey.UI.Views
 		private ICollection<InventoryItem> availableItems;
 
 		private ItemsStoreTab selectedTab;
+		private Guid selectedItemId;
 
 		private void Awake()
 		{
@@ -63,10 +64,12 @@ namespace RuzikOdyssey.UI.Views
 			viewModel.AvailableItemsUpdated += ViewModel_AvailableItemsUpdated;
 			viewModel.Gold.PropertyChanged += ViewModel_GoldPropertyChanged;
 			viewModel.Corn.PropertyChanged += ViewModel_CornPropertyChanged;
-			
+
 			availableItems = viewModel.AvailableItems;
 			goldAmountLabel.text = viewModel.Gold.Value.ToString();
 			cornAmountLabel.text = viewModel.Corn.Value.ToString();
+
+			this.ItemPurchased += viewModel.View_ItemPurchased;
 
 			// Show default tab
 			PopulateItemsForTab(null);
@@ -102,6 +105,8 @@ namespace RuzikOdyssey.UI.Views
 
 		private void SelectItem(Guid itemId)
 		{
+			selectedItemId = itemId;
+
 			var item = availableItems.SingleOrDefault(x => x.Id == itemId);
 
 			if (item == null)
@@ -260,6 +265,20 @@ namespace RuzikOdyssey.UI.Views
 				tab.SetActive(true);
 			}
 		}
+
+		public event EventHandler<ItemPurchasedEventArgs> ItemPurchased;
+
+		public void OnItemPurchased()
+		{
+			if (ItemPurchased != null) ItemPurchased(this, new ItemPurchasedEventArgs { ItemId = selectedItemId });
+		}
+
+		public void Game_BuyItemButtonClicked()
+		{
+			OnItemPurchased();
+		}
 	}
+
+
 }
 

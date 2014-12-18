@@ -563,6 +563,7 @@
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemCategory.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemPrice.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemRarity.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\ItemPurchasedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\WeaponInventoryItem.cs" />
      <Compile Include="Assets\Scripts\Domain\LevelContent.cs" />
      <Compile Include="Assets\Scripts\Domain\LevelDesign.cs" />

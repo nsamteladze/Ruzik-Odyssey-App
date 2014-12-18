@@ -11,11 +11,10 @@ namespace RuzikOdyssey.Infrastructure
 #if UNITY_EDITOR
 		private const string InventoryItemCategoryKey = "category";
 #elif UNITY_IOS
-		private const string InventoryItemCategoryKey = "Category";
+		private const string InventoryItemCategoryKey = "category";
 #else
 		private const string InventoryItemCategoryKey = "category";
 #endif
-
 
 		protected override InventoryItem Create(Type objectType, JObject jObject)
 		{

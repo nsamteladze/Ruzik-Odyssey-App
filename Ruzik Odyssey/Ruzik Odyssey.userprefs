@@ -1,31 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Infrastructure/InventoryItemConverter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/GameInventoryDefaults.txt">
     <Files>
-      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="179" Column="17" />
-      <File FileName="Assets/Scripts/Infrastructure/InventoryItemConverter.cs" Line="33" Column="46" />
+      <File FileName="Assets/Scripts/ViewModels/SmallItemsStoreSceneViewModel.cs" Line="44" Column="5" />
+      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="90" Column="49" />
+      <File FileName="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs" Line="41" Column="12" />
+      <File FileName="Assets/NGUI/Scripts/Editor/UITextureInspector.cs" Line="18" Column="7" />
+      <File FileName="Assets/Resources/GameInventoryDefaults.txt" Line="96" Column="16" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Resources" expanded="True" />
+            <Node name="Resources" expanded="True">
+              <Node name="GameInventoryDefaults.txt" selected="True" />
+            </Node>
             <Node name="Scripts" expanded="True">
-              <Node name="Common" expanded="True" />
-              <Node name="Domain" expanded="True">
-                <Node name="Inventory" expanded="True" />
-              </Node>
-              <Node name="Infrastructure" expanded="True">
-                <Node name="InventoryItemConverter.cs" selected="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
               <Node name="UI" expanded="True">
-                <Node name="Elements" expanded="True" />
                 <Node name="Views" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
             </Node>
           </Node>
+          <Node name="Assembly-CSharp-Editor" expanded="True" />
         </State>
       </Pad>
     </Pads>
