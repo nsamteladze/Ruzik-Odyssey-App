@@ -1,28 +1,41 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/GameInventoryDefaults.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/Views/HangarSceneView.cs">
     <Files>
-      <File FileName="Assets/Scripts/ViewModels/SmallItemsStoreSceneViewModel.cs" Line="44" Column="5" />
-      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="90" Column="49" />
-      <File FileName="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs" Line="41" Column="12" />
-      <File FileName="Assets/NGUI/Scripts/Editor/UITextureInspector.cs" Line="18" Column="7" />
-      <File FileName="Assets/Resources/GameInventoryDefaults.txt" Line="96" Column="16" />
+      <File FileName="Assets/Scripts/ViewModels/HangarSceneViewModel.cs" Line="179" Column="26" />
+      <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="64" Column="53" />
+      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="161" Column="5" />
+      <File FileName="Assets/Scripts/UI/Elements/LargeInventoryItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Infrastructure/GameContext.cs" Line="78" Column="1" />
+      <File FileName="Assets/Scripts/UI/Elements/ComponentWithIndex.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Elements/InventoryItemDescription.cs" Line="21" Column="37" />
+      <File FileName="Assets/Scripts/UI/Elements/InventoryItemDescriptionFeature.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/UI/Elements/InventoryItemDescriptionPrice.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/LargeItemsStoreSceneView.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Resources" expanded="True">
-              <Node name="GameInventoryDefaults.txt" selected="True" />
+            <Node name="NGUI" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Internal" expanded="True" />
+                <Node name="UI" expanded="True" />
+              </Node>
             </Node>
             <Node name="Scripts" expanded="True">
+              <Node name="Domain" expanded="True">
+                <Node name="Inventory" expanded="True" />
+              </Node>
               <Node name="UI" expanded="True">
-                <Node name="Views" expanded="True" />
+                <Node name="Elements" expanded="True" />
+                <Node name="Views" expanded="True">
+                  <Node name="HangarSceneView.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="ViewModels" expanded="True" />
             </Node>
           </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True" />
         </State>
       </Pad>
     </Pads>

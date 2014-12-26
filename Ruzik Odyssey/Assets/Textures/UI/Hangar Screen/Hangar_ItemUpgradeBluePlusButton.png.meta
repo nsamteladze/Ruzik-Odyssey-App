@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 72debcf6da4cb4d0380b5d90dc62518d
+guid: a8f5fbdbdaaf1496d89c029b2ae5b722
 TextureImporter:
   fileIDToRecycleName:
-    21300000: CloseButton
+    21300000: Hangar_ItemUpgradeBluePlusButton
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -43,7 +43,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone
-    maxTextureSize: 1024
+    maxTextureSize: 128
     textureFormat: -3
     compressionQuality: 50
   spriteSheet:

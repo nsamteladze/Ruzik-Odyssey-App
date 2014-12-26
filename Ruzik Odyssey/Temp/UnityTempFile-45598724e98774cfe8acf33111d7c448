@@ -2,9 +2,8 @@
 -nowarn:0169
 -out:'Temp/Assembly-CSharp.dll'
 -debug
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
+-r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/Managed/UnityEngine.dll'
 -r:'Assets/JsonDotNet/Examples/Tests/TestModels/SampleClassLibrary.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
 -define:UNITY_4_5_3
 -define:UNITY_4_5
 -define:UNITY_IPHONE
@@ -35,9 +34,8 @@
 -define:ENABLE_AUDIO
 -define:ENABLE_NAVMESH_CARVING
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:DEVELOPMENT_BUILD
 -define:ENABLE_PROFILER
--define:UNITY_EDITOR
--define:UNITY_EDITOR_OSX
 'Assets/GoogleMobileAds/Api/AdFailedToLoadEventArgs.cs'
 'Assets/GoogleMobileAds/Api/AdPosition.cs'
 'Assets/GoogleMobileAds/Api/AdRequest.cs'
@@ -555,6 +553,9 @@
 'Assets/Scripts/Domain/Inventory/InventoryItemCategory.cs'
 'Assets/Scripts/Domain/Inventory/InventoryItemPrice.cs'
 'Assets/Scripts/Domain/Inventory/InventoryItemRarity.cs'
+'Assets/Scripts/Domain/Inventory/InventoryItemState.cs'
+'Assets/Scripts/Domain/Inventory/InventoryItemStateChangedEventArgs.cs'
+'Assets/Scripts/Domain/Inventory/InventoryItemUpgradedEventArgs.cs'
 'Assets/Scripts/Domain/Inventory/ItemPurchasedEventArgs.cs'
 'Assets/Scripts/Domain/Inventory/WeaponInventoryItem.cs'
 'Assets/Scripts/Domain/LevelContent.cs'
@@ -634,7 +635,11 @@
 'Assets/Scripts/Sandbox/UserInputProcessor.cs'
 'Assets/Scripts/UI/BindingExtensions.cs'
 'Assets/Scripts/UI/Elements/ComponentWithIndex.cs'
+'Assets/Scripts/UI/Elements/InventoryItemDescription.cs'
+'Assets/Scripts/UI/Elements/InventoryItemDescriptionFeature.cs'
+'Assets/Scripts/UI/Elements/InventoryItemDescriptionPrice.cs'
 'Assets/Scripts/UI/Elements/ItemsStoreTab.cs'
+'Assets/Scripts/UI/Elements/LargeInventoryItem.cs'
 'Assets/Scripts/UI/Elements/MapLocation.cs'
 'Assets/Scripts/UI/Elements/StoreItem.cs'
 'Assets/Scripts/UI/Elements/StoreItemsCategory.cs'
@@ -648,6 +653,7 @@
 'Assets/Scripts/UI/Views/SettingsSceneView.cs'
 'Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs'
 'Assets/Scripts/UI/Views/StartSceneView.cs'
+'Assets/Scripts/ViewModels/HangarSceneViewModel.cs'
 'Assets/Scripts/ViewModels/LevelSceneViewModel.cs'
 'Assets/Scripts/ViewModels/SmallItemsStoreSceneViewModel.cs'
 'Assets/Scripts/ViewModels/StartSceneViewModel.cs'

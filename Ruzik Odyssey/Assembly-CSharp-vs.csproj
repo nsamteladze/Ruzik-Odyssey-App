@@ -563,6 +563,9 @@
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemCategory.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemPrice.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemRarity.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemState.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemStateChangedEventArgs.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemUpgradedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\ItemPurchasedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\WeaponInventoryItem.cs" />
      <Compile Include="Assets\Scripts\Domain\LevelContent.cs" />
@@ -642,7 +645,11 @@
      <Compile Include="Assets\Scripts\Sandbox\UserInputProcessor.cs" />
      <Compile Include="Assets\Scripts\UI\BindingExtensions.cs" />
      <Compile Include="Assets\Scripts\UI\Elements\ComponentWithIndex.cs" />
+     <Compile Include="Assets\Scripts\UI\Elements\InventoryItemDescription.cs" />
+     <Compile Include="Assets\Scripts\UI\Elements\InventoryItemDescriptionFeature.cs" />
+     <Compile Include="Assets\Scripts\UI\Elements\InventoryItemDescriptionPrice.cs" />
      <Compile Include="Assets\Scripts\UI\Elements\ItemsStoreTab.cs" />
+     <Compile Include="Assets\Scripts\UI\Elements\LargeInventoryItem.cs" />
      <Compile Include="Assets\Scripts\UI\Elements\MapLocation.cs" />
      <Compile Include="Assets\Scripts\UI\Elements\StoreItem.cs" />
      <Compile Include="Assets\Scripts\UI\Elements\StoreItemsCategory.cs" />
@@ -656,6 +663,7 @@
      <Compile Include="Assets\Scripts\UI\Views\SettingsSceneView.cs" />
      <Compile Include="Assets\Scripts\UI\Views\SmallItemsStoreSceneView.cs" />
      <Compile Include="Assets\Scripts\UI\Views\StartSceneView.cs" />
+     <Compile Include="Assets\Scripts\ViewModels\HangarSceneViewModel.cs" />
      <Compile Include="Assets\Scripts\ViewModels\LevelSceneViewModel.cs" />
      <Compile Include="Assets\Scripts\ViewModels\SmallItemsStoreSceneViewModel.cs" />
      <Compile Include="Assets\Scripts\ViewModels\StartSceneViewModel.cs" />

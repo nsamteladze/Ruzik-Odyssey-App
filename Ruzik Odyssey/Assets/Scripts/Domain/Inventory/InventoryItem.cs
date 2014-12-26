@@ -23,5 +23,10 @@ namespace RuzikOdyssey.Domain.Inventory
 
 		public InventoryItemPrice Price { get; set; }
 		public InventoryItemRarity Rarity { get; set; }
+
+		public override string ToString ()
+		{
+			return string.Format ("[InventoryItem: Id={0}, Name={1}, ShortName={2}, Description={3}, SpriteName={4}, ThumbnailName={5}, Weight={6}, Power={7}, Energy={8}, Level={9}, Class={10}, Category={11}, Price={12}, Rarity={13}]", Id, Name, ShortName, Description, SpriteName, ThumbnailName, Weight, Power, Energy, Level, Class, Category, Price, Rarity);
+		}
 	}
 }

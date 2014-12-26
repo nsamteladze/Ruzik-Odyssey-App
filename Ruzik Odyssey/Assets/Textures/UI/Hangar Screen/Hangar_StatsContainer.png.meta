@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 660b4f9860c9044c49de875f9fde3f8b
+guid: 3ac1b50fa724146cbb2635143d2663a2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: HangarBackground
+    21300000: Hangar_StatsContainer
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

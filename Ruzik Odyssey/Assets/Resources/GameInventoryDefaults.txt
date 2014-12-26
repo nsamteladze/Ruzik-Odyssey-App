@@ -198,9 +198,124 @@
 		}
 	],
 	"purchasedItems": [
-	
+		{
+			"id": "7CC9F77A-77A9-41B2-830F-4054B078AE20",
+			"name": "ShKAS Machine Gun",
+			"shortName": "ShKAS",
+			"description": "ShKAS Machine Gun is cool!",
+			"spriteName": "ShKASMachineGun",
+			"thumbnailName": "ShKASMachineGun_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1,
+				"corn": 1
+			},
+			"rarity": 0,
+			"fireRate": 1
+		},
+		{
+			"id": "A7DD24EF-8D53-406C-9CAD-7B548803E41C",
+			"name": "ShVAK Cannon",
+			"shortName": "ShVAK",
+			"description": "ShVAK Cannon is cool!",
+			"spriteName": "ShVAKCannon",
+			"thumbnailName": "ShVAKCannon_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1,
+				"corn": 1
+			},
+			"rarity": 0,
+			"fireRate": 1
+		},
+		{
+			"id": "0A7D8102-29B5-4BC9-ABF5-46922826F99A",
+			"name": "Allison V1710",
+			"shortName": "V1710",
+			"description": "Allison V1710 is cool!",
+			"spriteName": "AllisonV1710",
+			"thumbnailName": "AllisonV1710_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 1,
+			"price": {
+				"gold": 1,
+				"corn": 1
+			},
+			"rarity": 0
+		},
+		{
+			"id": "4980CAC0-04E3-4998-A461-CD5480452B76",
+			"name": "Mikulin AM35",
+			"shortName": "AM35",
+			"description": "Mikulin AM35 is cool!",
+			"spriteName": "MikulinAM35",
+			"thumbnailName": "MikulinAM35_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 1,
+			"price": {
+				"gold": 1,
+				"corn": 1
+			},
+			"rarity": 0
+		}	
 	],
 	"equippedItems": [
-	
+		{
+			"id": "f1d300c7-f79f-4764-9790-ca4515862522",
+			"name": "RR Griffon",
+			"shortName": "Griffon",
+			"description": "RR Griffon is cool!",
+			"spriteName": "RRGriffon",
+			"thumbnailName": "RRGriffon_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 1,
+			"price": {
+				"gold": 1,
+				"corn": 1
+			},
+			"rarity": 0
+		},
+		{
+			"id": "A7DD24EF-8D53-406C-9CAD-7B548803E42C",
+			"name": "ShVAK Cannon",
+			"shortName": "ShVAK",
+			"description": "ShVAK Cannon is cool!",
+			"spriteName": "ShVAKCannon",
+			"thumbnailName": "ShVAKCannon_Thumbnail",
+			"weight": 10,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 3,
+			"price": {
+				"gold": 1,
+				"corn": 1
+			},
+			"rarity": 0,
+			"fireRate": 1
+		}
 	]
 }
