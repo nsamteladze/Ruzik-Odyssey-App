@@ -33,7 +33,7 @@ namespace RuzikOdyssey.UI.Views
 		public GameObject itemDescriptionPopup;
 		public InventoryItemDescription itemDescription;
 
-		private IList<StoreItemsCategory> itemsCategories;
+		//private IList<StoreItemsCategory> itemsCategories;
 		
 //		private int selectedTabIndex = 0;
 
@@ -198,15 +198,7 @@ namespace RuzikOdyssey.UI.Views
 			switch (item.Category)
 			{
 				case InventoryItemCategory.Weapons:
-
-				var weaponItem = item as WeaponInventoryItem;
-
-				if (weaponItem == null)
-				{
-					Log.Error("Failed to cast InventoryItem to WeaponInventoryItem.\r\nSource:\r\n{0}", item);
-					HideAllItemDescriptionFeatures();
-					break;
-				}
+					var weaponItem = (WeaponInventoryItem) item;
 
 					itemDescription.feature1.featureName.text = "Fire Rate";
 					itemDescription.feature1.value.text = weaponItem.FireRate.ToString();

@@ -8,7 +8,7 @@ namespace RuzikOdyssey.Domain
 		public const string GlobalMap = "GlobalMapScene";
 		public const string Chapter1Map = "Chapter1MapScene";
 		public const string LevelScene = "LevelScene";
-		public const string LargeItemsStoreScene = "LargeItemsStoreScene";
+		public const string StoreScene = "StoreScene";
 		public const string SmallItemsStoreScene = "SmallITemsStoreScene";
 		public const string HangarScene = "HangarScene";
 	}

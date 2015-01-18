@@ -1,39 +1,37 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/Views/HangarSceneView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ViewModels/StoreSceneViewModel.cs">
     <Files>
-      <File FileName="Assets/Scripts/ViewModels/HangarSceneViewModel.cs" Line="179" Column="26" />
-      <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="64" Column="53" />
-      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="161" Column="5" />
-      <File FileName="Assets/Scripts/UI/Elements/LargeInventoryItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Infrastructure/GameContext.cs" Line="78" Column="1" />
-      <File FileName="Assets/Scripts/UI/Elements/ComponentWithIndex.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/Elements/InventoryItemDescription.cs" Line="21" Column="37" />
-      <File FileName="Assets/Scripts/UI/Elements/InventoryItemDescriptionFeature.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/UI/Elements/InventoryItemDescriptionPrice.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/UI/Views/LargeItemsStoreSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ViewModels/StoreSceneViewModel.cs" Line="31" Column="4" />
+      <File FileName="Assets/Scripts/UI/Views/StoreSceneView.cs" Line="37" Column="24" />
+      <File FileName="Assets/Scripts/UI/Views/LevelSceneView.cs" Line="40" Column="41" />
+      <File FileName="Assets/Scripts/UI/Elements/UIStoreItem.cs" Line="20" Column="30" />
+      <File FileName="Assets/Scripts/ViewModels/ViewModel.cs" Line="5" Column="2" />
+      <File FileName="Assets/Scripts/UI/BindingExtensions.cs" Line="24" Column="2" />
+      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="95" Column="3" />
+      <File FileName="Assets/Scripts/ViewModels/SmallItemsStoreSceneViewModel.cs" Line="22" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="NGUI" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Internal" expanded="True" />
-                <Node name="UI" expanded="True" />
-              </Node>
-            </Node>
+            <Node name="NGUI" expanded="True" />
+            <Node name="Resources" expanded="True" />
             <Node name="Scripts" expanded="True">
+              <Node name="Common" expanded="True" />
               <Node name="Domain" expanded="True">
                 <Node name="Inventory" expanded="True" />
+                <Node name="Store" expanded="True" />
               </Node>
+              <Node name="Infrastructure" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="UI" expanded="True">
                 <Node name="Elements" expanded="True" />
-                <Node name="Views" expanded="True">
-                  <Node name="HangarSceneView.cs" selected="True" />
-                </Node>
+                <Node name="Views" expanded="True" />
               </Node>
-              <Node name="ViewModels" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="StoreSceneViewModel.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

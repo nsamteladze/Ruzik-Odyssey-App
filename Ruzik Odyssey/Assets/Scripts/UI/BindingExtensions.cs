@@ -17,6 +17,7 @@ namespace RuzikOdyssey.UI
 
 		public static void BindTo<TSource>(this UILabel label, Property<TSource> property)
 		{
+			label.text = property.Value.ToString();
 			property.PropertyChanged += (sender, e) => label.text = e.PropertyValue.ToString();
 		}
 	}

@@ -1,7 +1,9 @@
 using UnityEngine;
 using RuzikOdyssey.Domain;
+using RuzikOdyssey.Domain.Store;
 using RuzikOdyssey.Level;
 using RuzikOdyssey.Models;
+using RuzikOdyssey.ViewModels;
 
 namespace RuzikOdyssey.Common
 {
@@ -54,17 +56,20 @@ namespace RuzikOdyssey.Common
 
 		public void LoadAircraftStoreScene()
 		{
-			LoadScene(Scenes.LargeItemsStoreScene);
+			StoreSceneViewModel.StoreCategory = StoreItemCategory.Aircrafts;
+			LoadStoreScene();
 		}
 		
 		public void LoadGoldStoreScene()
 		{
-			LoadScene(Scenes.LargeItemsStoreScene);
+			StoreSceneViewModel.StoreCategory = StoreItemCategory.Gold;
+			LoadStoreScene();
 		}
 
 		public void LoadCornStoreScene()
 		{
-			LoadScene(Scenes.LargeItemsStoreScene);
+			StoreSceneViewModel.StoreCategory = StoreItemCategory.Corn;
+			LoadStoreScene();
 		}
 
 		public void LoadUpgradesStoreScene()
@@ -75,6 +80,11 @@ namespace RuzikOdyssey.Common
 		public void LoadHangarScene()
 		{
 			LoadScene(Scenes.HangarScene);
+		}
+
+		private void LoadStoreScene()
+		{
+			LoadScene(Scenes.StoreScene);
 		}
 	}
 }

@@ -8,6 +8,7 @@ using System.Collections;
 using System.Linq;
 using RuzikOdyssey.Domain;
 using RuzikOdyssey.Domain.Inventory;
+using RuzikOdyssey.Domain.Store;
 
 namespace RuzikOdyssey.Models
 {
@@ -30,6 +31,7 @@ namespace RuzikOdyssey.Models
 		public GameProgress Progress { get; private set; } 
 		public GameContent Content { get; private set; }
 		public GameInventory Inventory { get; private set; }
+		public GameStore Store { get; private set; }
 
 		public LevelDesign CurrentLevelDesign
 		{
@@ -124,6 +126,19 @@ namespace RuzikOdyssey.Models
 			if (this.Inventory == null) throw new Exception("Failed to load inventory into game model");
 
 			OnLoadingProgressUpdated("Loading inventory", 95);
+
+			// Load stores
+			
+			OnLoadingProgressUpdated("Loading stores", 0);
+			
+			this.Store = context.LoadEntity<GameStore>();
+			
+			if (this.Store == null) throw new Exception("Failed to load stores into game model");
+
+			Log.Debug("Gold store: {0}, Corn store: {1}, Aircrafts store: {2}",
+			          Store.Gold.Count, Store.Corn.Count, Store.Aircrafts.Count);
+			
+			OnLoadingProgressUpdated("Loading stores", 95);
 
 			Log.Info("Fisnihed initializing game model");
 
