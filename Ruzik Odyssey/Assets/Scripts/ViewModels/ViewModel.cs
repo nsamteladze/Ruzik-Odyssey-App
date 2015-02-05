@@ -6,11 +6,13 @@ namespace RuzikOdyssey.ViewModels
 	{
 		public Property<int> Gold { get; private set; }
 		public Property<int> Corn { get; private set; }
+		public Property<int> Gas { get; private set; }
 
 		protected virtual void Awake()
 		{
 			Gold = new Property<int>();
 			Corn = new Property<int>();
+			Gas = new Property<int>();
 
 			GlobalModel.Connect();
 		}
@@ -22,6 +24,7 @@ namespace RuzikOdyssey.ViewModels
 
 			Gold.Value = GlobalModel.Gold.Value;
 			Corn.Value = GlobalModel.Corn.Value;
+			Gas.Value = GlobalModel.Gas.Value;
 		}
 
 		private void GlobalModel_GoldPropertyChanged(object sender, PropertyChangedEventArgs<int> e)
@@ -32,6 +35,11 @@ namespace RuzikOdyssey.ViewModels
 		private void GlobalModel_CornPropertyChanged(object sender, PropertyChangedEventArgs<int> e)
 		{
 			Corn.Value = GlobalModel.Corn.Value;
+		}
+
+		private void GlobalModel_GasPropertyChanged(object sender, PropertyChangedEventArgs<int> e)
+		{
+			Gas.Value = GlobalModel.Gas.Value;
 		}
 	}
 }

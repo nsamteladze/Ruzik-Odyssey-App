@@ -34,6 +34,8 @@ namespace RuzikOdyssey.UI.Views
 		public UILabel currentLevelNameLabel;
 		public UILabel currentLevelDifficultyLabel;
 
+		public UISprite aircraftSprite;
+
 		private void Awake()
 		{
 			interstitialAd = new InterstitialAd(adUnitId);
@@ -73,6 +75,8 @@ namespace RuzikOdyssey.UI.Views
 			gasAmountLabel.text = String.Format("{0}/10", GlobalModel.Gas.Value);
 
 			currentLevelNameLabel.text = GlobalModel.Progress.GetCurrentLevel().Name;
+
+			aircraftSprite.spriteName = GlobalModel.Aircraft.Ui.SceneSpriteName;
 		}
 
 		private void SubscribeToEvent()

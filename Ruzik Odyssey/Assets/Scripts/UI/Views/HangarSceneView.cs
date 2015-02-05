@@ -33,6 +33,18 @@ namespace RuzikOdyssey.UI.Views
 		public GameObject itemDescriptionPopup;
 		public InventoryItemDescription itemDescription;
 
+		public GameObject storePopup;
+		public GameObject popupsContainer;
+		
+		public UILabel goldAmountLabel;
+		public UILabel cornAmountLabel;
+		public UILabel gasAmountLabel;
+		
+		public UILabel storeGoldAmountLabel;
+		public UILabel storeCornAmountLabel;
+
+		public UISprite aircraftSprite;
+
 		//private IList<StoreItemsCategory> itemsCategories;
 		
 //		private int selectedTabIndex = 0;
@@ -63,12 +75,22 @@ namespace RuzikOdyssey.UI.Views
 
 			this.ItemStateChanged += viewModel.View_ItemStateChanged;
 			this.ItemUpgraded += viewModel.View_ItemUpgraded;
-			
+
+			goldAmountLabel.BindTo(viewModel.Gold);
+			cornAmountLabel.BindTo(viewModel.Corn);
+			gasAmountLabel.BindTo(viewModel.Gas).WithFormat("{0}/10");
+
+			storeGoldAmountLabel.BindTo(viewModel.Gold);
+			storeCornAmountLabel.BindTo(viewModel.Corn);
+
+			// TODO: Remove reference to GlobalModel
+			aircraftSprite.spriteName = GlobalModel.Aircraft.Ui.SceneSpriteName;
+
 			// Show default tab
 			PopulatePurchasedItemsForTab(null);
 			PopulateEquippedItems();
 
-			itemDescriptionPopup.SetActive(false);
+			popupsContainer.SetActive(false);
 		}
 
 //		public event EventHandler<InventoryItemStateChangedEventArgs> ItemEquipped;
@@ -267,7 +289,10 @@ namespace RuzikOdyssey.UI.Views
 
 		private void SetItemDescriptionVisible(bool isVisible)
 		{
+			popupsContainer.SetActive(isVisible);
 			itemDescriptionPopup.SetActive(isVisible);
+			storePopup.SetActive(!isVisible);
+
 			purchasedItemsScrollView.SetActive(!isVisible);
 			equippedItemsScrollView.SetActive(!isVisible);
 		}
@@ -432,6 +457,26 @@ namespace RuzikOdyssey.UI.Views
 			{
 				tab.SetActive(true);
 			}
+		}
+
+		public void Game_OnCloseStorePopupButtonClicked()
+		{
+			SetStorePopUpVisible(false);
+		}
+
+		public void Game_OnStoreButtonClicked()
+		{
+			SetStorePopUpVisible(true);
+		}
+
+		private void SetStorePopUpVisible(bool isVisible)
+		{
+			popupsContainer.SetActive(isVisible);
+			itemDescriptionPopup.SetActive(!isVisible);
+			storePopup.SetActive(isVisible);
+
+			purchasedItemsScrollView.SetActive(!isVisible);
+			equippedItemsScrollView.SetActive(!isVisible);
 		}
 
 	}

@@ -1,35 +1,38 @@
 using RuzikOdyssey.Common;
+using System;
 
 namespace RuzikOdyssey.UI
 {
 	public static class BindingExtensions
 	{
-		public static UiLabelBindingBuilderSyntax Bind(this UILabel label)
+		public static void WithFormat(this UiLabelBindingBuilderSyntax builderSyntax, string format)
 		{
-			return new UiLabelBindingBuilderSyntax(label);
+			builderSyntax.Format = format;
 		}
 
-		public static void To<TSource>(this UiLabelBindingBuilderSyntax builderSyntax, Property<TSource> property)
+		public static UiLabelBindingBuilderSyntax BindTo<TSource>(this UILabel label, Property<TSource> property)
 		{
-			builderSyntax.target.text = property.Value.ToString();
-			property.PropertyChanged += (sender, e) => builderSyntax.target.text = e.PropertyValue.ToString();
-		}
+			var builder = new UiLabelBindingBuilderSyntax(label);
+			builder.target.text = property.Value.ToString();
+			property.PropertyChanged += 
+				(sender, e) => builder.target.text = String.Format(builder.Format, e.PropertyValue.ToString());
 
-		public static void BindTo<TSource>(this UILabel label, Property<TSource> property)
-		{
-			label.text = property.Value.ToString();
-			property.PropertyChanged += (sender, e) => label.text = e.PropertyValue.ToString();
+			return builder;
 		}
 	}
 
 	public class UiLabelBindingBuilderSyntax
 	{
+		private const string DefaultFormat = "{0}";
+
 		public readonly UILabel target;
+		public string Format { get; set; } 
 
 		public UiLabelBindingBuilderSyntax(UILabel target)
 		{
 			Log.Debug("UiLabelBindingBuilderSyntax constructor");
 			this.target = target;
+			this.Format = DefaultFormat;
 		}
 	}
 }

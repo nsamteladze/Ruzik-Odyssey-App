@@ -17,11 +17,7 @@ namespace RuzikOdyssey.Models
 		private GameContext context;
 		public bool IsInitialized { get; set; }
 
-		public Property<int> Gold 
-		{ 
-			get; 
-			set; 
-		}
+		public Property<int> Gold { get; set; }
 		public Property<int> Corn { get; set; }
 		public Property<int> Gas { get; set; }
 
@@ -32,6 +28,7 @@ namespace RuzikOdyssey.Models
 		public GameContent Content { get; private set; }
 		public GameInventory Inventory { get; private set; }
 		public GameStore Store { get; private set; }
+		public AircraftInfo Aircraft { get; private set; }
 
 		public LevelDesign CurrentLevelDesign
 		{
@@ -91,15 +88,13 @@ namespace RuzikOdyssey.Models
 				yield break;
 			}
 
-			// Load game progress
+			// Load game state
 
-			OnLoadingProgressUpdated("Loading game progress", 0);
+			OnLoadingProgressUpdated("Loading game state", 0);
 
 			this.Progress = context.LoadEntity<GameProgress>();
 			
 			if (Progress == null) throw new Exception("Failed to load Game Progress into game model");
-
-			OnLoadingProgressUpdated("Loading game progress", 95);
 
 			Gold.Value = Progress.Gold;
 			Corn.Value = Progress.Corn;
@@ -107,38 +102,31 @@ namespace RuzikOdyssey.Models
 			CurrentLevelIndex.Value = Progress.CurrentLevelIndex;
 			CurrentLevelDifficulty.Value = Progress.CurrentLevelDifficulty;
 
+			this.Inventory = context.LoadEntity<GameInventory>(new InventoryItemConverter());
+			
+			if (this.Inventory == null) throw new Exception("Failed to load inventory into game model");
+
+			this.Store = context.LoadEntity<GameStore>();
+			
+			if (this.Store == null) throw new Exception("Failed to load stores into game model");
+
+			this.Aircraft = context.LoadEntity<AircraftInfo>();
+
+			if (this.Aircraft == null) throw new Exception("Failed to load AircraftInfo into the game model");
+
+			Log.Debug("Loaded aircrafts info:\r\n{0}", this.Aircraft);
+			
+			OnLoadingProgressUpdated("Loading game state", 95);
+
 			// Load game content
-
+			
 			OnLoadingProgressUpdated("Loading game content", 0);
-
+			
 			var iterator = context.LoadGameContentAsync(
 				(content) => this.Content = content,
 				(x) => OnLoadingProgressUpdated("Loading game content", x));
 
 			while (iterator.MoveNext()) yield return null;
-
-			// Load inventory
-
-			OnLoadingProgressUpdated("Loading inventory", 0);
-			
-			this.Inventory = context.LoadEntity<GameInventory>(new InventoryItemConverter());
-			
-			if (this.Inventory == null) throw new Exception("Failed to load inventory into game model");
-
-			OnLoadingProgressUpdated("Loading inventory", 95);
-
-			// Load stores
-			
-			OnLoadingProgressUpdated("Loading stores", 0);
-			
-			this.Store = context.LoadEntity<GameStore>();
-			
-			if (this.Store == null) throw new Exception("Failed to load stores into game model");
-
-			Log.Debug("Gold store: {0}, Corn store: {1}, Aircrafts store: {2}",
-			          Store.Gold.Count, Store.Corn.Count, Store.Aircrafts.Count);
-			
-			OnLoadingProgressUpdated("Loading stores", 95);
 
 			Log.Info("Fisnihed initializing game model");
 
@@ -167,6 +155,7 @@ namespace RuzikOdyssey.Models
 			
 			context.SaveEntity<GameProgress>(this.Progress);
 			context.SaveEntity<GameInventory>(this.Inventory);
+			context.SaveEntity<AircraftInfo>(this.Aircraft);
 		}
 	}
 
