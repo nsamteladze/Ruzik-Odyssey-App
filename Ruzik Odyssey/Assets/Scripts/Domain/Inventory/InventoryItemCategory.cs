@@ -8,5 +8,6 @@ namespace RuzikOdyssey.Domain.Inventory
 		Weapons = 3,
 		Ammo = 4,
 		Fuselage = 5,
+		Aircraft = 6,
 	}
 }

@@ -3,6 +3,7 @@ using RuzikOdyssey.Domain.Inventory;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using RuzikOdyssey.Domain;
 
 namespace RuzikOdyssey.ViewModels
 {
@@ -30,9 +31,21 @@ namespace RuzikOdyssey.ViewModels
 				OnEquippedItemsUpdated();
 			}
 		}
+
+		private AircraftInfo aircraft = new AircraftInfo();
+		public AircraftInfo Aircraft
+		{
+			get { return aircraft; }
+			private set 
+			{
+				aircraft = value;
+				OnAircraftInfoChanged();
+			}
+		}
 		
 		public event EventHandler PurchasedItemsUpdated;
 		public event EventHandler EquippedItemsUpdated;
+		public event EventHandler AircraftInfoChanged;
 		
 		protected override void Start ()
 		{
@@ -40,11 +53,24 @@ namespace RuzikOdyssey.ViewModels
 			
 			PurchasedItems = GlobalModel.Inventory.PurchasedItems;
 			EquippedItems = GlobalModel.Inventory.EquippedItems;
+			Aircraft = GlobalModel.Aircraft;
+
+			GlobalModel.Aircraft.PropertyChanged += GlobalModel_AircraftInfoPropertyChanged;
 
 			Log.Debug("HangarSceneViewModel - START. Purchased items: {0}, Equipped items: {1}",
 			          PurchasedItems.Count, EquippedItems.Count);
 		}
-		
+
+		private void GlobalModel_AircraftInfoPropertyChanged(object sender, PropertyChangedEventArgs<AircraftInfo> e)
+		{
+			Log.Debug("START - GlobalModel_AircraftInfoPropertyChanged");
+
+			this.Aircraft = e.PropertyValue;
+
+			Log.Debug("Aircraft Info. ViewModel: {0}, GlobalModel: {1}",
+			          this.Aircraft.Ui.SceneSpriteName, GlobalModel.Aircraft.Value.Ui.SceneSpriteName);
+		}
+
 		private void OnPurchasedItemsUpdated()
 		{
 			if (PurchasedItemsUpdated != null) PurchasedItemsUpdated(this, EventArgs.Empty);
@@ -54,72 +80,35 @@ namespace RuzikOdyssey.ViewModels
 		{
 			if (EquippedItemsUpdated != null) EquippedItemsUpdated(this, EventArgs.Empty);
 		}
-		
-//		public void View_ItemEquipped(object sender, InventoryItemStateChangedEventArgs e)
-//		{
-//			Log.Debug("BEFORE - Purchased items: {0}, Equipped items: {1}", 
-//			          GlobalModel.Inventory.PurchasedItems.Count, GlobalModel.Inventory.EquippedItems.Count);
-//			
-//			var item = GlobalModel.Inventory.PurchasedItems.FirstOrDefault(x => x.Id == e.ItemId);
-//			
-//			if (item == null)
-//			{
-//				Log.Error("Failed to equip item with ID {0}. Failed to find item in purchased items.",
-//				          e.ItemId);
-//				return;
-//			}
-//			
-//			var itemRemoved = GlobalModel.Inventory.PurchasedItems.Remove(item);
-//			
-//			if (!itemRemoved)
-//			{
-//				Log.Error("Failed to equip item with ID {0}. Failed to remove item from purchased items.",
-//				          e.ItemId);
-//				return;
-//			}
-//			
-//			OnPurchasedItemsUpdated();
-//			
-//			GlobalModel.Inventory.EquippedItems.Add(item);
-//
-//			OnEquippedItemsUpdated();
-//			
-//			Log.Debug("AFTER - Purchased items: {0}, Equipped items: {1}", 
-//			          GlobalModel.Inventory.PurchasedItems.Count, GlobalModel.Inventory.EquippedItems.Count);
-//		}
-//
-//		public void View_ItemUnequipped(object sender, InventoryItemStateChangedEventArgs e)
-//		{
-//			Log.Debug("BEFORE - Purchased items: {0}, Equipped items: {1}", 
-//						GlobalModel.Inventory.PurchasedItems.Count, GlobalModel.Inventory.EquippedItems.Count);
-//			
-//			var item = GlobalModel.Inventory.EquippedItems.FirstOrDefault(x => x.Id == e.ItemId);
-//			
-//			if (item == null)
-//			{
-//				Log.Error("Failed to unequip item with ID {0}. Failed to find item in equipped items.",
-//				          e.ItemId);
-//				return;
-//			}
-//			
-//			var itemRemoved = GlobalModel.Inventory.EquippedItems.Remove(item);
-//			
-//			if (!itemRemoved)
-//			{
-//				Log.Error("Failed to unequip item with ID {0}. Failed to remove item from equipped items.",
-//				          e.ItemId);
-//				return;
-//			}
-//			
-//			OnEquippedItemsUpdated();
-//			
-//			GlobalModel.Inventory.PurchasedItems.Add(item);
-//			
-//			OnPurchasedItemsUpdated();
-//			
-//			Log.Debug("AFTER - Purchased items: {0}, Equipped items: {1}", 
-//			          GlobalModel.Inventory.PurchasedItems.Count, GlobalModel.Inventory.EquippedItems.Count);
-//		}
+
+		private void OnAircraftInfoChanged()
+		{
+			Log.Debug("START - OnAircraftInfoChanged");
+
+			if (AircraftInfoChanged != null) AircraftInfoChanged(this, EventArgs.Empty);
+		}
+
+		public void View_AircraftSelected(object sender, InventoryItemSelectedEventArgs e)
+		{
+			Log.Debug("START - View_AircraftSelected");
+
+			var selectedAircraftItem = GlobalModel.Inventory.PurchasedItems.SingleOrDefault(x => x.Id == e.ItemId);
+
+			if (selectedAircraftItem == null)
+			{
+				Log.Error("Failed to find an aircraft with ID {0} in the purchased inventory items",
+				          e.ItemId);
+				return;
+			}
+
+			GlobalModel.Aircraft.Value = new AircraftInfo
+			{
+				Ui = new AircraftInfo.AircraftUiInfo
+				{
+					SceneSpriteName = selectedAircraftItem.SpriteName,
+				}
+			};
+		}
 
 		public void View_ItemUpgraded(object sender, InventoryItemUpgradedEventArgs e)
 		{

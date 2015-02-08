@@ -22,6 +22,8 @@ namespace RuzikOdyssey.UI.Views
 		private void Awake()
 		{
 			viewModel.AvailableStoreItemsUpdated += ViewModel_AvailableStoreItemsUpdated;
+
+			this.StoreItemPurchased += viewModel.View_StoreItemPurchased;
 		}
 
 		private void Start()
@@ -60,12 +62,13 @@ namespace RuzikOdyssey.UI.Views
 					.GetComponentOrThrow<UIStoreItem>();
 
 				uiItem.ImageSprite.spriteName = item.SpriteName;
+				uiItem.ItemTitle.text = item.Name;
 				
 				// Capture index for the anonimous delegate closure
 				var capturedId = item.Id;
 				UIEventListener.Get(uiItem.BuyButton.gameObject).onClick += (obj) => 
 				{ 
-					Log.Debug("Buy button clicked for store item id {0}.", capturedId); 
+					Game_BuyItemButtonClicked(capturedId);
 				};
 				
 				uiItem.ContainerSprite.topAnchor.target = storeScrollView.transform;
@@ -93,6 +96,20 @@ namespace RuzikOdyssey.UI.Views
 			}
 			
 			storeScrollView.ResetPosition();
+		}
+
+		private void Game_BuyItemButtonClicked(Guid itemId)
+		{
+			Log.Debug("Buy button clicked for store item id {0}.", itemId);
+
+			OnStoreItemPurchased(itemId);
+		}
+
+		public event EventHandler<ItemActedOnEventArgs> StoreItemPurchased;
+		private void OnStoreItemPurchased(Guid purchasedItemId)
+		{
+			if (StoreItemPurchased != null) 
+				StoreItemPurchased(this, new ItemActedOnEventArgs { ItemId = purchasedItemId });
 		}
 	}
 }

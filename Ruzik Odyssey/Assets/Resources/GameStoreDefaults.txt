@@ -118,34 +118,40 @@
 			"id" : "6f1cd7f5-9358-4a42-8f41-f88359c7de44",
 			"name": "P51",
 			"spriteName": "P51",
+			"thumbnailName": "P51_Thumbnail",
 			"price":  {
 				"money": 12.1,
 				"gold": 120,
 				"corn": 20
 			},
-			"category": 3
+			"category": 3,
+			"weight": 1200
 		},
 		{
 			"id" : "d3f26a1d-5f9e-4141-8196-35534a8bd5b5",
 			"name": "IL 2",
 			"spriteName": "Il2",
+			"thumbnailName": "Il2_Thumbnail",
 			"price":  {
 				"money": 12.1,
 				"gold": 90,
 				"corn": 20
 			},
-			"category": 3
+			"category": 3,
+			"weight": 1300
 		},
 		{
 			"id" : "cb9ff332-f42a-47bc-8f3a-bfa260cb4170",
 			"name": "Spitfire",
 			"spriteName": "Spitfire",
+			"thumbnailName": "Spitfire_Thumbnail",
 			"price":  {
 				"money": 12.1,
 				"gold": 90,
 				"corn": 20
 			},
-			"category": 3
+			"category": 3,
+			"weight": 1100
 		}
 	]
 }

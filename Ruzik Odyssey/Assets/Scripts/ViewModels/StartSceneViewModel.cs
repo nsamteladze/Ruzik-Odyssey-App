@@ -6,7 +6,7 @@ namespace RuzikOdyssey.ViewModels
 {
 	public class StartSceneViewModel : ExtendedMonoBehaviour
 	{
-		public event EventHandler<ProgressUpdatedEventsArgs> LoadingProgressUpdated;
+		public event EventHandler<ProgressUpdatedEventArgs> LoadingProgressUpdated;
 		public event EventHandler<EventArgs> LoadingFinished;
 
 		private void Awake()
@@ -26,7 +26,7 @@ namespace RuzikOdyssey.ViewModels
 
 		private void SubscribeToEvents()
 		{
-			EventsBroker.Subscribe<ProgressUpdatedEventsArgs>(
+			EventsBroker.Subscribe<ProgressUpdatedEventArgs>(
 				Events.Global.ModelLoadingProgressUpdated, 
 				GameModel_LoadingProgressUpdate); 
 
@@ -35,14 +35,14 @@ namespace RuzikOdyssey.ViewModels
 
 		private void UnsubscribeFromEvents()
 		{
-			EventsBroker.Unsubscribe<ProgressUpdatedEventsArgs>(
+			EventsBroker.Unsubscribe<ProgressUpdatedEventArgs>(
 				Events.Global.ModelLoadingProgressUpdated, 
 				GameModel_LoadingProgressUpdate); 
 			
 			EventsBroker.Unsubscribe<EventArgs>(Events.Global.ModelLoadingFinished, GameModel_LoadingFinished);
 		}
 
-		private void OnLoadingProgressUpdated(ProgressUpdatedEventsArgs e)
+		private void OnLoadingProgressUpdated(ProgressUpdatedEventArgs e)
 		{
 			if (LoadingProgressUpdated != null) LoadingProgressUpdated(this, e);
 		}
@@ -52,7 +52,7 @@ namespace RuzikOdyssey.ViewModels
 			if (LoadingFinished != null) LoadingFinished(this, EventArgs.Empty);
 		}
 
-		private void GameModel_LoadingProgressUpdate(object sender, ProgressUpdatedEventsArgs e)
+		private void GameModel_LoadingProgressUpdate(object sender, ProgressUpdatedEventArgs e)
 		{
 			OnLoadingProgressUpdated(e);
 		}

@@ -28,7 +28,7 @@ namespace RuzikOdyssey.Models
 		public GameContent Content { get; private set; }
 		public GameInventory Inventory { get; private set; }
 		public GameStore Store { get; private set; }
-		public AircraftInfo Aircraft { get; private set; }
+		public Property<AircraftInfo> Aircraft { get; private set; }
 
 		public LevelDesign CurrentLevelDesign
 		{
@@ -58,14 +58,14 @@ namespace RuzikOdyssey.Models
 			PublishEvents();
 		}
 
-		public event EventHandler<ProgressUpdatedEventsArgs> LoadingProgressUpdated;
+		public event EventHandler<ProgressUpdatedEventArgs> LoadingProgressUpdated;
 		public event EventHandler<EventArgs> LoadingFinished;
 
 		private void OnLoadingProgressUpdated(string actionName, int actionProgress)
 		{
 			if (LoadingProgressUpdated != null) 
 				LoadingProgressUpdated(this, 
-				                       new ProgressUpdatedEventsArgs 
+				                       new ProgressUpdatedEventArgs 
 				                       { ActionName = actionName, ActionProgress = actionProgress });
 		}
 
@@ -76,7 +76,7 @@ namespace RuzikOdyssey.Models
 
 		private void PublishEvents()
 		{
-			EventsBroker.Publish<ProgressUpdatedEventsArgs>(Events.Global.ModelLoadingProgressUpdated, ref LoadingProgressUpdated);
+			EventsBroker.Publish<ProgressUpdatedEventArgs>(Events.Global.ModelLoadingProgressUpdated, ref LoadingProgressUpdated);
 			EventsBroker.Publish<EventArgs>(Events.Global.ModelLoadingFinished, ref LoadingFinished);
 		}
 
@@ -106,7 +106,7 @@ namespace RuzikOdyssey.Models
 			
 			if (this.Inventory == null) throw new Exception("Failed to load inventory into game model");
 
-			this.Store = context.LoadEntity<GameStore>();
+			this.Store = context.LoadEntity<GameStore>(new StoreItemConverter());
 			
 			if (this.Store == null) throw new Exception("Failed to load stores into game model");
 
@@ -155,7 +155,7 @@ namespace RuzikOdyssey.Models
 			
 			context.SaveEntity<GameProgress>(this.Progress);
 			context.SaveEntity<GameInventory>(this.Inventory);
-			context.SaveEntity<AircraftInfo>(this.Aircraft);
+			context.SaveEntity<AircraftInfo>(this.Aircraft.Value);
 		}
 	}
 

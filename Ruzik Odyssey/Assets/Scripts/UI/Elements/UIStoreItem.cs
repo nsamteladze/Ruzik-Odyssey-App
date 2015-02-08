@@ -17,6 +17,9 @@ namespace RuzikOdyssey.UI.Elements
 		[SerializeField]
 		private int gapBetweenItems;
 
+		[SerializeField]
+		private UILabel itemTitle;
+
 		public int GapBetweenItems 
 		{ 
 			get { return this.gapBetweenItems; }
@@ -25,5 +28,6 @@ namespace RuzikOdyssey.UI.Elements
 		public UISprite ImageSprite { get { return this.imageSprite; } }
 		public UISprite ContainerSprite { get { return this.containerSprite; } }
 		public UIButton BuyButton { get { return this.buyButton; } }
+		public UILabel ItemTitle { get { return this.itemTitle; } }
 	}
 }

@@ -542,11 +542,12 @@
      <Compile Include="Assets\Scripts\Common\EssenceController.cs" />
      <Compile Include="Assets\Scripts\Common\EventsBroker.cs" />
      <Compile Include="Assets\Scripts\Common\ExtendedMonoBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Common\ItemActedOnEventArgs.cs" />
      <Compile Include="Assets\Scripts\Common\Label.cs" />
      <Compile Include="Assets\Scripts\Common\Lazy.cs" />
      <Compile Include="Assets\Scripts\Common\Log.cs" />
      <Compile Include="Assets\Scripts\Common\LogMessageType.cs" />
-     <Compile Include="Assets\Scripts\Common\ProgressUpdatedEventsArgs.cs" />
+     <Compile Include="Assets\Scripts\Common\ProgressUpdatedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Common\Property.cs" />
      <Compile Include="Assets\Scripts\Common\PropertyChangedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Domain\AircraftInfo.cs" />
@@ -564,6 +565,7 @@
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemCategory.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemPrice.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemRarity.cs" />
+     <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemSelectedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemState.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemStateChangedEventArgs.cs" />
      <Compile Include="Assets\Scripts\Domain\Inventory\InventoryItemUpgradedEventArgs.cs" />

@@ -76,7 +76,7 @@ namespace RuzikOdyssey.UI.Views
 
 			currentLevelNameLabel.text = GlobalModel.Progress.GetCurrentLevel().Name;
 
-			aircraftSprite.spriteName = GlobalModel.Aircraft.Ui.SceneSpriteName;
+			aircraftSprite.spriteName = GlobalModel.Aircraft.Value.Ui.SceneSpriteName;
 		}
 
 		private void SubscribeToEvent()

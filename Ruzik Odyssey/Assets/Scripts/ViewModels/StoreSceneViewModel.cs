@@ -2,6 +2,8 @@ using RuzikOdyssey.Domain.Store;
 using System.Collections.Generic;
 using RuzikOdyssey.Common;
 using System;
+using System.Linq;
+using RuzikOdyssey.Domain.Inventory;
 
 namespace RuzikOdyssey.ViewModels
 {
@@ -44,6 +46,37 @@ namespace RuzikOdyssey.ViewModels
 				default:
 					Log.Error("Failed to retrieve store items for category {0}.", EnumUtility.GetName(category));
 					return new List<StoreItem>();
+			}
+		}
+
+		public void View_StoreItemPurchased(object sender, ItemActedOnEventArgs e)
+		{
+			var storeItem = AvailableStoreItems.SingleOrDefault(x => x.Id == e.ItemId);
+
+			if (storeItem == null)
+			{
+				Log.Error("Failed to find an item in {0} store with ID {1}.", StoreCategory, e.ItemId);
+				return;
+			}
+
+			if (storeItem.Category == StoreItemCategory.Aircrafts)
+			{
+				var aircarftStoreItem = (AircraftStoreItem)storeItem;
+
+				var aircraftInventoryItem = new InventoryItem
+				{
+					Id = aircarftStoreItem.Id,
+					Category = InventoryItemCategory.Aircraft,
+					Name = aircarftStoreItem.Name,
+					SpriteName = aircarftStoreItem.SpriteName,
+					ThumbnailName = aircarftStoreItem.ThumbnailName,
+				};
+
+				// TODO: Should not be allowed to purchased in the first place
+				if (!GlobalModel.Inventory.PurchasedItems.Any(x => x.Id == aircarftStoreItem.Id))
+				{
+					GlobalModel.Inventory.PurchasedItems.Add(aircraftInventoryItem);
+				}
 			}
 		}
 	}

@@ -60,6 +60,16 @@ namespace RuzikOdyssey.Common
 				String.Format("{0}_PropertyChanged", this.name), 
 				ref propertyChangedDelegate);
 		}
+
+		public static implicit operator T(Property<T> property)
+		{
+			return property.Value;
+		}
+
+		public static implicit operator Property<T>(T value)
+		{
+			return new Property<T>(value);
+		}
 	}
 
 

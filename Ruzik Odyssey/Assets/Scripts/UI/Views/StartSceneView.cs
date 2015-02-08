@@ -43,7 +43,7 @@ namespace RuzikOdyssey.UI.Views
 			progressInfoContainer.SetActive(true);
 		}
 
-		private void ViewModel_LoadingProgressUpdated(object sender, ProgressUpdatedEventsArgs e)
+		private void ViewModel_LoadingProgressUpdated(object sender, ProgressUpdatedEventArgs e)
 		{
 			actionProgressLabel.text = String.Format("{0}... {1}%", e.ActionName, e.ActionProgress);
 		}

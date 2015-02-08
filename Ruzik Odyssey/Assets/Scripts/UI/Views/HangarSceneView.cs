@@ -45,17 +45,10 @@ namespace RuzikOdyssey.UI.Views
 
 		public UISprite aircraftSprite;
 
-		//private IList<StoreItemsCategory> itemsCategories;
-		
-//		private int selectedTabIndex = 0;
-
 		private ICollection<InventoryItem> purchasedItems;
 		private ICollection<InventoryItem> equippedItems;
 		
 		private ItemsStoreTab selectedTab;
-
-//		private Guid selectedPurchasedItemId;
-//		private Guid selectedEquippedItemId;
 
 		private Guid selectedItemId;
 		private bool equippedItemSelected;
@@ -69,12 +62,14 @@ namespace RuzikOdyssey.UI.Views
 		{
 			viewModel.PurchasedItemsUpdated += ViewModel_PurchasedItemsUpdated;
 			viewModel.EquippedItemsUpdated += ViewModel_EquippedItemsUpdated;
+			viewModel.AircraftInfoChanged += ViewModel_AircraftInfoChanged;
 
 			purchasedItems = viewModel.PurchasedItems;
 			equippedItems = viewModel.EquippedItems;
 
 			this.ItemStateChanged += viewModel.View_ItemStateChanged;
 			this.ItemUpgraded += viewModel.View_ItemUpgraded;
+			this.AircraftSelected += viewModel.View_AircraftSelected;
 
 			goldAmountLabel.BindTo(viewModel.Gold);
 			cornAmountLabel.BindTo(viewModel.Corn);
@@ -83,20 +78,12 @@ namespace RuzikOdyssey.UI.Views
 			storeGoldAmountLabel.BindTo(viewModel.Gold);
 			storeCornAmountLabel.BindTo(viewModel.Corn);
 
-			// TODO: Remove reference to GlobalModel
-			aircraftSprite.spriteName = GlobalModel.Aircraft.Ui.SceneSpriteName;
-
 			// Show default tab
-			PopulatePurchasedItemsForTab(null);
+			PopulatePurchasedItems(null);
 			PopulateEquippedItems();
 
 			popupsContainer.SetActive(false);
 		}
-
-//		public event EventHandler<InventoryItemStateChangedEventArgs> ItemEquipped;
-//		public event EventHandler<InventoryItemStateChangedEventArgs> ItemUnequipped;
-//		public event EventHandler<InventoryItemStateChangedEventArgs> EquippedItemSold;
-//		public event EventHandler<InventoryItemStateChangedEventArgs> PurhcasedItemSold;
 
 		public event EventHandler<InventoryItemStateChangedEventArgs> ItemStateChanged;
 
@@ -110,26 +97,16 @@ namespace RuzikOdyssey.UI.Views
 					NewState = newState
 				});
 		}
-		
-//		public void OnItemEquipped(Guid itemId)
-//		{
-//			if (ItemEquipped != null) ItemEquipped(this, new InventoryItemStateChangedEventArgs(itemId));
-//		}
-//
-//		public void OnItemUnequipped(Guid itemId)
-//		{
-//			if (ItemUnequipped != null) ItemUnequipped(this, new InventoryItemStateChangedEventArgs(itemId));
-//		}
-//
-//		public void OnEquippedItemSold(Guid itemId)
-//		{
-//			if (EquippedItemSold != null) EquippedItemSold(this, new InventoryItemStateChangedEventArgs(itemId));
-//		}
-//
-//		public void OnPurchasedItemSold(Guid itemId)
-//		{
-//			if (PurhcasedItemSold != null) PurhcasedItemSold(this, new InventoryItemStateChangedEventArgs(itemId));
-//		}
+
+		public event EventHandler<InventoryItemSelectedEventArgs> AircraftSelected;
+
+		public void OnAircraftSelected(Guid aircraftItemId)
+		{
+			Log.Debug("START - OnAircraftSelected");
+
+			if (AircraftSelected != null) 
+				AircraftSelected(this, new InventoryItemSelectedEventArgs(aircraftItemId));
+		}
 		
 		public void Game_EquipItemButtonClicked()
 		{
@@ -153,6 +130,13 @@ namespace RuzikOdyssey.UI.Views
 
 			RefreshEquippedItemsScrollView();
 		}
+
+		private void ViewModel_AircraftInfoChanged(object sender, EventArgs e)
+		{
+			Log.Debug("START - ViewModel_AircraftInfoChanged");
+
+			aircraftSprite.spriteName = viewModel.Aircraft.Ui.SceneSpriteName;
+		}
 		
 		private void ClearPurchasedItemsScrollView()
 		{
@@ -167,7 +151,7 @@ namespace RuzikOdyssey.UI.Views
 		private void RefreshPurchasedItemsScrollView()
 		{
 			ClearPurchasedItemsScrollView();
-			PopulatePurchasedItemsForTab(selectedTab);
+			PopulatePurchasedItems(selectedTab);
 		}
 
 		private void RefreshEquippedItemsScrollView()
@@ -297,6 +281,23 @@ namespace RuzikOdyssey.UI.Views
 			equippedItemsScrollView.SetActive(!isVisible);
 		}
 
+		public void Game_AircraftSelected(Guid aircraftItemId)
+		{
+			Log.Debug("START - Game_AircraftSelected");
+
+			var item = purchasedItems
+				.SingleOrDefault(x => x.Category == InventoryItemCategory.Aircraft && x.Id == aircraftItemId);
+			
+			if (item == null)
+			{
+				Log.Error("Failed to select aircraft with ID {0}. Failed to find item in purchased items.",
+				          aircraftItemId);
+				return;
+			}
+
+			OnAircraftSelected(aircraftItemId);
+		}
+
 		private void PopulateEquippedItems()
 		{
 			GameObject previousEquippedItem = null;
@@ -346,29 +347,28 @@ namespace RuzikOdyssey.UI.Views
 			equippedItemsScrollView.GetComponentOrThrow<UIScrollView>().ResetPosition();
 		}
 
-		private void PopulatePurchasedItemsForTab(ItemsStoreTab tab)
+		private void PopulatePurchasedItems(InventoryItemCategory itemsCategory)
 		{
-			var selectedCategory = tab != null ? tab.category : DefaultInventoryCategory;
-
-			Log.Debug("Selected category {0}", Enum.GetName(typeof(InventoryItemCategory), selectedCategory));
-
+			Log.Debug("Selected category {0}", Enum.GetName(typeof(InventoryItemCategory), itemsCategory));
+			
 			Log.Debug("Purchased items of category {0}: {1}",
-			          Enum.GetName(typeof(InventoryItemCategory), selectedCategory), 
-			          purchasedItems.Where(x => x.Category == selectedCategory).Count());
-
+			          Enum.GetName(typeof(InventoryItemCategory), itemsCategory), 
+			          purchasedItems.Where(x => x.Category == itemsCategory).Count());
+			
 			GameObject previousStoreItem = null;
-			foreach (var item in purchasedItems.Where(x => x.Category == selectedCategory))
+			foreach (var item in purchasedItems.Where(x => x.Category == itemsCategory))
 			{
 				var storeItem = NGUITools.AddChild(purchasedItemsScrollView, purchasedItemTemplate);
 				storeItem.SingleChild().GetComponentOrThrow<UISprite>().spriteName = item.ThumbnailName;
-				
+
 				// Capture index for the anonimous delegate closure
 				var capturedId = item.Id;
 				UIEventListener.Get(storeItem.GetComponentOrThrow<UIButton>().gameObject).onClick += (obj) => 
 				{ 
-					Game_PurchasedItemSelected(capturedId); 
+					if (item.Category == InventoryItemCategory.Aircraft) Game_AircraftSelected(capturedId);
+					else Game_PurchasedItemSelected(capturedId); 
 				};
-				
+
 				var storeItemSprite = storeItem.GetComponentOrThrow<UISprite>();
 				
 				storeItemSprite.topAnchor.target = purchasedItemsScrollView.transform;
@@ -396,6 +396,12 @@ namespace RuzikOdyssey.UI.Views
 			}
 			
 			purchasedItemsScrollView.GetComponentOrThrow<UIScrollView>().ResetPosition();
+		}
+
+		private void PopulatePurchasedItems(ItemsStoreTab tab)
+		{
+			var selectedCategory = tab != null ? tab.category : DefaultInventoryCategory;
+			PopulatePurchasedItems(selectedCategory);
 		}
 		
 		public void Game_PurchasedItemsTabSelected(ItemsStoreTab tab)
@@ -443,7 +449,7 @@ namespace RuzikOdyssey.UI.Views
 
 			Log.Debug("Selected tab {0}", selectedTab.tabIndex);
 			
-			PopulatePurchasedItemsForTab(selectedTab);
+			PopulatePurchasedItems(selectedTab);
 		}
 		
 		private void DeselectAllTabs()
@@ -479,6 +485,33 @@ namespace RuzikOdyssey.UI.Views
 			equippedItemsScrollView.SetActive(!isVisible);
 		}
 
+		public void Game_AircraftsTabSelected()
+		{
+			ClearPurchasedItemsScrollView();
+			
+			var selectedTabIndex = selectedTab != null ? selectedTab.tabIndex : 0;
+			
+			// De-highlight the currently selected tab
+			purchasedItemsHighlightedTabs[selectedTabIndex].SetActive(false);
+			purchasedItemsTabs[selectedTabIndex].SetActive(true);
+			
+			// Anchor the tab next to the previously highlighted to the regular version of the tab
+			if (selectedTabIndex < purchasedItemsTabs.Length - 1) 
+			{
+				var tabOnRight = purchasedItemsTabs[selectedTabIndex + 1];
+				var tabOnRightSprite = tabOnRight.GetComponentOrThrow<UISprite>();
+				
+				var anchorSprite = purchasedItemsTabs[selectedTabIndex].GetComponentOrThrow<UISprite>();
+				var anchorTransform = purchasedItemsTabs[selectedTabIndex].transform;
+				
+				tabOnRightSprite.leftAnchor.target = anchorTransform;
+				tabOnRightSprite.leftAnchor.rect = anchorSprite;
+			}
+			
+			Log.Debug("Selected tab {0}", 6);
+			
+			PopulatePurchasedItems(InventoryItemCategory.Aircraft);
+		}
 	}
 }
 

@@ -275,7 +275,26 @@
 				"corn": 1
 			},
 			"rarity": 0
-		}	
+		},
+		{
+			"id": "A7DD24EF-8D53-406C-9BBB-7B548803E42C",
+			"name": "P51",
+			"shortName": "P51",
+			"description": "P51 aircraft is cool!",
+			"spriteName": "P51",
+			"thumbnailName": "P51_Thumbnail",
+			"weight": 1110,
+			"power": 0,
+			"energy": 0,
+			"level": 1,
+			"class": 1,
+			"category": 6,
+			"price": {
+				"gold": 100,
+				"corn": 10
+			},
+			"rarity": 0
+		}
 	],
 	"equippedItems": [
 		{

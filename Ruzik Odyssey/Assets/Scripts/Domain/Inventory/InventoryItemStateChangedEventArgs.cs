@@ -18,4 +18,5 @@ namespace RuzikOdyssey.Domain.Inventory
 			this.NewState = newState;
 		}
 	}
+
 }

@@ -11,4 +11,10 @@ namespace RuzikOdyssey.Domain.Store
 		public StoreItemPrice Price { get; set; }
 		public StoreItemCategory Category { get; set; }
 	}
+
+	public class AircraftStoreItem : StoreItem
+	{
+		public int Weight { get; set; }
+		public string ThumbnailName { get; set; }
+	}
 }
