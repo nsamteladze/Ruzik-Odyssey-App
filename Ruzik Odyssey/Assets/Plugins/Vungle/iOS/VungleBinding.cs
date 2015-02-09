@@ -33,7 +33,10 @@ public class VungleBinding
 	public static void startWithAppId( string appId )
 	{
 		if( Application.platform == RuntimePlatform.IPhonePlayer )
+		{
+			Debug.Log("START - startWithAppId");
 			_vungleStartWithAppId( appId );
+		}
 	}
 
 

@@ -88,6 +88,7 @@ public class Vungle
 	public static void init( string androidAppId, string iosAppId )
 	{
 #if UNITY_IPHONE
+		Debug.Log("START - UNITY_IPHONE - init");
 		VungleBinding.startWithAppId( iosAppId );
 #elif UNITY_ANDROID
 		VungleAndroid.init( androidAppId );

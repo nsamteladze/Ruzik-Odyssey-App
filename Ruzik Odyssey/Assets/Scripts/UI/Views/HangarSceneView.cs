@@ -52,6 +52,8 @@ namespace RuzikOdyssey.UI.Views
 
 		private Guid selectedItemId;
 		private bool equippedItemSelected;
+
+		public GameObject videoAdButton;
 		
 		private void Awake()
 		{
@@ -60,6 +62,9 @@ namespace RuzikOdyssey.UI.Views
 		
 		private void Start()
 		{
+//			videoAdButton.SetActive(Vungle.isAdvertAvailable());
+			Vungle.onCachedAdAvailableEvent += Vungle_OnCachedAdAvailableEventHandler;
+
 			viewModel.PurchasedItemsUpdated += ViewModel_PurchasedItemsUpdated;
 			viewModel.EquippedItemsUpdated += ViewModel_EquippedItemsUpdated;
 			viewModel.AircraftInfoChanged += ViewModel_AircraftInfoChanged;
@@ -511,6 +516,26 @@ namespace RuzikOdyssey.UI.Views
 			Log.Debug("Selected tab {0}", 6);
 			
 			PopulatePurchasedItems(InventoryItemCategory.Aircraft);
+		}
+
+		public void Game_ShowVideoAdButtonClicked()
+		{
+			Log.Debug("START - Game_ShowVideoAdButtonClicked");
+
+			if (Vungle.isAdvertAvailable())
+			{
+				Log.Info("Playing video ad from Vungle.");
+				Vungle.playAd();
+			}
+			else 
+			{
+				Log.Warning("Failed to play video ad. Ad is not available.");
+			}
+		}
+
+		private void Vungle_OnCachedAdAvailableEventHandler()
+		{
+			Log.Debug("START - Vungle_OnCachedAdAvailableEventHandler");
 		}
 	}
 }

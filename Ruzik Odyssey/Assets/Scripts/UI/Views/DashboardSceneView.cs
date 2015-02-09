@@ -36,6 +36,8 @@ namespace RuzikOdyssey.UI.Views
 
 		public UISprite aircraftSprite;
 
+		public GameObject videoAdButton;
+
 		private void Awake()
 		{
 			interstitialAd = new InterstitialAd(adUnitId);
@@ -58,9 +60,19 @@ namespace RuzikOdyssey.UI.Views
 
 		private void Start()
 		{
+			videoAdButton.SetActive(Vungle.isAdvertAvailable());
+			Vungle.onCachedAdAvailableEvent += Vungle_OnCachedAdAvailableEventHandler;
+
 			interstitialAd.LoadAd(CreateAdRequest());
 
 			InitializeUI();
+		}
+
+		private void Vungle_OnCachedAdAvailableEventHandler()
+		{
+			Log.Debug("START - Vungle_OnCachedAdAvailableEventHandler");
+
+			videoAdButton.SetActive(true);
 		}
 
 		private void OnDestroy()
@@ -253,6 +265,21 @@ namespace RuzikOdyssey.UI.Views
 		private void InterstitialAd_LeftApplication(object sender, EventArgs args)
 		{
 			Log.Debug("HandleInterstitialLeftApplication event received");
+		}
+
+		public void Game_ShowVideoAdButtonClicked()
+		{
+			Log.Debug("START - Game_ShowVideoAdButtonClicked");
+
+			if (Vungle.isAdvertAvailable())
+			{
+				Log.Info("Playing incentivized video ad from Vungle.");
+				Vungle.playAd(true, "test-tag");
+			}
+			else 
+			{
+				Log.Warning("Failed to play incentivized video ad. Ad is not available.");
+			}
 		}
 	}
 }
