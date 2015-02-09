@@ -1,19 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Property.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/Views/HangarSceneView.cs">
     <Files>
-      <File FileName="Assets/Scripts/ViewModels/StoreSceneViewModel.cs" Line="75" Column="67" />
+      <File FileName="Assets/Scripts/ViewModels/StoreSceneViewModel.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/ItemActedOnEventArgs.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Domain/Inventory/InventoryItem.cs" Line="1" Column="1" />
       <File FileName="Assets/Resources/GameStoreDefaults.txt" Line="1" Column="1" />
       <File FileName="Assets/Resources/GameInventoryDefaults.txt" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Domain/Store/StoreItem.cs" Line="18" Column="44" />
-      <File FileName="Assets/Scripts/UI/Views/StoreSceneView.cs" Line="105" Column="23" />
-      <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="284" Column="1" />
-      <File FileName="Assets/Scripts/UI/Views/DashboardSceneView.cs" Line="36" Column="3" />
+      <File FileName="Assets/Scripts/Domain/Store/StoreItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/StoreSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="137" Column="4" />
+      <File FileName="Assets/Scripts/UI/Views/DashboardSceneView.cs" Line="81" Column="1" />
       <File FileName="Assets/Scripts/Common/Property.cs" Line="44" Column="21" />
-      <File FileName="Assets/Scripts/Domain/AircraftInfo.cs" Line="23" Column="34" />
-      <File FileName="Assets/Scripts/ViewModels/HangarSceneViewModel.cs" Line="91" Column="28" />
+      <File FileName="Assets/Scripts/Domain/AircraftInfo.cs" Line="23" Column="17" />
+      <File FileName="Assets/Scripts/ViewModels/HangarSceneViewModel.cs" Line="84" Column="3" />
+      <File FileName="Assets/Scripts/ViewModels/ViewModel.cs" Line="5" Column="2" />
+      <File FileName="Assets/Scripts/Common/PropertyChangedEventArgs.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Models/GameModel.cs" Line="31" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,9 +24,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Resources" expanded="True" />
             <Node name="Scripts" expanded="True">
-              <Node name="Common" expanded="True">
-                <Node name="Property.cs" selected="True" />
-              </Node>
+              <Node name="Common" expanded="True" />
               <Node name="Domain" expanded="True">
                 <Node name="Inventory" expanded="True" />
                 <Node name="Store" expanded="True" />
@@ -32,7 +33,9 @@
               <Node name="Models" expanded="True" />
               <Node name="UI" expanded="True">
                 <Node name="Elements" expanded="True" />
-                <Node name="Views" expanded="True" />
+                <Node name="Views" expanded="True">
+                  <Node name="HangarSceneView.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="ViewModels" expanded="True" />
             </Node>
