@@ -90,7 +90,6 @@ namespace RuzikOdyssey.Models
 
 			Log.Debug("Loading video ad from Vungle.");
 			Vungle.init("com.cocosgames.RuzikOdyssey", "com.cocosgames.RuzikOdyssey");
-			Vungle.onCachedAdAvailableEvent += () => Log.Debug("VIDEO AD - Vungle.onCachedAdAvailableEvent");;
 
 			// Load game state
 

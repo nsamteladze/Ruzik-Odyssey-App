@@ -30,7 +30,6 @@ namespace RuzikOdyssey.UI
 
 		public UiLabelBindingBuilderSyntax(UILabel target)
 		{
-			Log.Debug("UiLabelBindingBuilderSyntax constructor");
 			this.target = target;
 			this.Format = DefaultFormat;
 		}

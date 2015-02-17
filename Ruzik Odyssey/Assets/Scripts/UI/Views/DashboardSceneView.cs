@@ -10,17 +10,22 @@ namespace RuzikOdyssey.UI.Views
 {
 	public sealed class DashboardSceneView : ExtendedMonoBehaviour
 	{	
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		private string adUnitId = "unused";
-		#elif UNITY_ANDROID
+		private string videoAdId = "unused";
+#elif UNITY_ANDROID
 		private string adUnitId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
-		#elif UNITY_IPHONE
+		private string videoAdId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
+#elif UNITY_IPHONE
 		private string adUnitId = "ca-app-pub-1384659154698612/7265813883";
-		#else
+		private string videoAdId = "ca-app-pub-1384659154698612/1186655887";
+#else
 		private string adUnitId = "unexpected_platform";
-		#endif
+		private string videoAdId = "unexpected_platform";
+#endif
 
 		private InterstitialAd interstitialAd;
+		private InterstitialAd videoAd;
 
 		public GameObject storePopup;
 
@@ -34,9 +39,11 @@ namespace RuzikOdyssey.UI.Views
 		public UILabel currentLevelNameLabel;
 		public UILabel currentLevelDifficultyLabel;
 
-		public UISprite aircraftSprite;
+		public UITexture aircraftTexture;
 
 		public GameObject videoAdButton;
+
+		private bool showAds = true;
 
 		private void Awake()
 		{
@@ -48,6 +55,9 @@ namespace RuzikOdyssey.UI.Views
 			interstitialAd.AdClosing += InterstitialAd_Closing;
 			interstitialAd.AdClosed += InterstitialAd_Closed;
 			interstitialAd.AdLeftApplication += InterstitialAd_LeftApplication;
+
+			videoAd = new InterstitialAd(videoAdId);
+			videoAd.AdLoaded += AdMob_VideoAdLoaded;
 			
 			SubscribeToEvent();
 
@@ -60,19 +70,13 @@ namespace RuzikOdyssey.UI.Views
 
 		private void Start()
 		{
-			videoAdButton.SetActive(Vungle.isAdvertAvailable());
-			Vungle.onCachedAdAvailableEvent += Vungle_OnCachedAdAvailableEventHandler;
-
-			interstitialAd.LoadAd(CreateAdRequest());
+			if (showAds)
+			{
+				interstitialAd.LoadAd(CreateAdRequest());
+				videoAd.LoadAd(CreateVideoAdRequest());
+			}
 
 			InitializeUI();
-		}
-
-		private void Vungle_OnCachedAdAvailableEventHandler()
-		{
-			Log.Debug("START - Vungle_OnCachedAdAvailableEventHandler");
-
-			videoAdButton.SetActive(true);
 		}
 
 		private void OnDestroy()
@@ -88,7 +92,13 @@ namespace RuzikOdyssey.UI.Views
 
 			currentLevelNameLabel.text = GlobalModel.Progress.GetCurrentLevel().Name;
 
-			aircraftSprite.spriteName = GlobalModel.Aircraft.Value.Ui.SceneSpriteName;
+			if (aircraftTexture.mainTexture != null)
+			{
+				Resources.UnloadAsset(aircraftTexture.mainTexture);
+			}
+
+			var aircraftTexturePath = String.Format("Aircrafts/Aircraft_{0}", GlobalModel.Aircraft.Value.Ui.SceneSpriteName);
+			aircraftTexture.mainTexture = Resources.Load(aircraftTexturePath) as Texture2D;
 		}
 
 		private void SubscribeToEvent()
@@ -182,7 +192,7 @@ namespace RuzikOdyssey.UI.Views
 
 			#endif
 
-			if (interstitialAd.IsLoaded()) 
+			if (interstitialAd.IsLoaded() && showAds) 
 			{
 				interstitialAd.Show();
 			}
@@ -227,37 +237,52 @@ namespace RuzikOdyssey.UI.Views
 		{
 			return new AdRequest.Builder()
 				.AddTestDevice(AdRequest.TestDeviceSimulator)
-					.AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
-					.AddKeyword("game")
-					.SetGender(Gender.Male)
-					.SetBirthday(new DateTime(1985, 1, 1))
-					.TagForChildDirectedTreatment(false)
-					.AddExtra("color_bg", "9B30FF")
-					.Build();	
+				.AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
+				.AddKeyword("game")
+				.SetGender(Gender.Male)
+				.SetBirthday(new DateTime(1985, 1, 1))
+				.TagForChildDirectedTreatment(false)
+				.AddExtra("color_bg", "9B30FF")
+				.Build();	
+		}
+
+		private AdRequest CreateVideoAdRequest()
+		{
+			return new AdRequest.Builder()
+				.AddTestDevice(AdRequest.TestDeviceSimulator)
+				.AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
+				.AddKeyword("game")
+				.SetGender(Gender.Female)
+				.SetBirthday(new DateTime(1985, 1, 1))
+				.TagForChildDirectedTreatment(false)
+				.AddExtra("color_bg", "9B30FF")
+				.Build();	
 		}
 
 		private void InterstitialAd_Loaded(object sender, EventArgs args)
 		{
-			Log.Debug("HandleInterstitialLoaded event received.");
+			Log.Debug("ADS - InterstitialAd_Loaded");
 		}
 		
 		private void InterstitialAd_FailedToLoad(object sender, AdFailedToLoadEventArgs args)
 		{
-			Log.Debug("HandleInterstitialFailedToLoad event received with message: " + args.Message);
+			Log.Debug("InterstitialAd_FailedToLoad event received with message: " + args.Message);
 		}
 		
 		private void InterstitialAd_Opened(object sender, EventArgs args)
 		{
-			Log.Debug("HandleInterstitialOpened event received");
+			Log.Debug("ADS - InterstitialAd_Opened");
 		}
 		
 		private void InterstitialAd_Closing(object sender, EventArgs args)
 		{
-			Log.Debug("HandleInterstitialClosing event received");
+			Log.Debug("ADS - InterstitialAd_Closing");
 		}
 		
 		private void InterstitialAd_Closed(object sender, EventArgs args)
 		{
+			Log.Debug("ADS - InterstitialAd_Closed");
+
 			GameEnvironment.StartMission();
 			LoadLevelScene();
 		}
@@ -269,17 +294,30 @@ namespace RuzikOdyssey.UI.Views
 
 		public void Game_ShowVideoAdButtonClicked()
 		{
+			if (!showAds) return;
+
 			Log.Debug("START - Game_ShowVideoAdButtonClicked");
 
-			if (Vungle.isAdvertAvailable())
+			if (videoAd.IsLoaded())
 			{
-				Log.Info("Playing incentivized video ad from Vungle.");
-				Vungle.playAd(true, "test-tag");
+				Log.Info("Playing video ad from AdMob.");
+				videoAd.Show();
 			}
 			else 
 			{
-				Log.Warning("Failed to play incentivized video ad. Ad is not available.");
+				Log.Warning("Failed to play video ad. Ad is not available.");
 			}
+		}
+
+		private void AdMob_VideoAdLoaded(object sender, EventArgs e)
+		{
+			if (videoAdButton == null) 
+			{
+				Log.Warning("Itended to modify an unloaded element videoAdButton in DashboardSceneView");
+				return;
+			}
+
+			videoAdButton.SetActive(true);
 		}
 	}
 }

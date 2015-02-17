@@ -52,6 +52,10 @@ namespace RuzikOdyssey.UI.Views
 		{
 			SetIsUiEnabled(true);
 			progressInfoContainer.SetActive(false);
+
+			Log.Info("Unloading unused assets");
+
+			Resources.UnloadUnusedAssets();
 		}
 
 		private void SetIsUiEnabled(bool isUiEnabled)

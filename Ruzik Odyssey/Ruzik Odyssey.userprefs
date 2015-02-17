@@ -1,49 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/Views/DashboardSceneView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Models/GameModel.cs">
     <Files>
-      <File FileName="Assets/Scripts/ViewModels/StoreSceneViewModel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/ItemActedOnEventArgs.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Domain/Inventory/InventoryItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Resources/GameStoreDefaults.txt" Line="1" Column="1" />
-      <File FileName="Assets/Resources/GameInventoryDefaults.txt" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Domain/Store/StoreItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/Views/StoreSceneView.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="56" Column="9" />
-      <File FileName="Assets/Scripts/UI/Views/DashboardSceneView.cs" Line="258" Column="4" />
-      <File FileName="Assets/Scripts/Common/Property.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Domain/AircraftInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ViewModels/HangarSceneViewModel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ViewModels/ViewModel.cs" Line="27" Column="38" />
-      <File FileName="Assets/Scripts/Common/PropertyChangedEventArgs.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Models/GameModel.cs" Line="93" Column="1" />
-      <File FileName="Assets/Plugins/Vungle/demo/VungleComboUI.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/Vungle/Vungle.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/Vungle/iOS/VungleBinding.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/Views/StartSceneView.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ViewModels/StartSceneViewModel.cs" Line="31" Column="24" />
-      <File FileName="Assets/Scripts/UI/Views/LevelSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="67" Column="4" />
+      <File FileName="Assets/Scripts/UI/Views/DashboardSceneView.cs" Line="44" Column="29" />
+      <File FileName="Assets/Scripts/Models/GameModel.cs" Line="93" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="NGUI" expanded="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
             <Node name="Scripts" expanded="True">
-              <Node name="Models" expanded="True" />
+              <Node name="Common" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="GameModel.cs" selected="True" />
+              </Node>
               <Node name="UI" expanded="True">
-                <Node name="Views" expanded="True">
-                  <Node name="DashboardSceneView.cs" selected="True" />
-                </Node>
+                <Node name="Elements" expanded="True" />
+                <Node name="Views" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="Plugins" expanded="True">
-              <Node name="Vungle" expanded="True">
-                <Node name="demo" expanded="True" />
-                <Node name="iOS" expanded="True" />
-              </Node>
             </Node>
           </Node>
         </State>

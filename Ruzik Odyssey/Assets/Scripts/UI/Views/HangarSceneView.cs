@@ -43,7 +43,7 @@ namespace RuzikOdyssey.UI.Views
 		public UILabel storeGoldAmountLabel;
 		public UILabel storeCornAmountLabel;
 
-		public UISprite aircraftSprite;
+		public UITexture aircraftTexture;
 
 		private ICollection<InventoryItem> purchasedItems;
 		private ICollection<InventoryItem> equippedItems;
@@ -62,7 +62,7 @@ namespace RuzikOdyssey.UI.Views
 		
 		private void Start()
 		{
-//			videoAdButton.SetActive(Vungle.isAdvertAvailable());
+			videoAdButton.SetActive(Vungle.isAdvertAvailable());
 			Vungle.onCachedAdAvailableEvent += Vungle_OnCachedAdAvailableEventHandler;
 
 			viewModel.PurchasedItemsUpdated += ViewModel_PurchasedItemsUpdated;
@@ -140,7 +140,13 @@ namespace RuzikOdyssey.UI.Views
 		{
 			Log.Debug("START - ViewModel_AircraftInfoChanged");
 
-			aircraftSprite.spriteName = viewModel.Aircraft.Ui.SceneSpriteName;
+			if (aircraftTexture.mainTexture != null)
+			{
+				Resources.UnloadAsset(aircraftTexture.mainTexture);
+			}
+			
+			var aircraftTexturePath = String.Format("Aircrafts/Aircraft_{0}", GlobalModel.Aircraft.Value.Ui.SceneSpriteName);
+			aircraftTexture.mainTexture = Resources.Load(aircraftTexturePath) as Texture2D;
 		}
 		
 		private void ClearPurchasedItemsScrollView()
@@ -323,13 +329,14 @@ namespace RuzikOdyssey.UI.Views
 				largeInventoryItem.levelLabel.text = String.Format("L{0}", item.Level);
 				largeInventoryItem.rarityLabel.text = Enum.GetName(typeof(InventoryItemCategory), item.Rarity);
 
-				var equippedItemSprite = equippedItem.GetComponentOrThrow<UISprite>();
+				// TODO: Use generic UIRect for anchoring
+				var equippedItemTexture = equippedItem.GetComponentOrThrow<UITexture>();
 				
-				equippedItemSprite.leftAnchor.target = equippedItemsScrollView.transform;
-				equippedItemSprite.leftAnchor.absolute = 0;
+				equippedItemTexture.leftAnchor.target = equippedItemsScrollView.transform;
+				equippedItemTexture.leftAnchor.absolute = 0;
 				
-				equippedItemSprite.rightAnchor.target = equippedItemsScrollView.transform;
-				equippedItemSprite.rightAnchor.absolute = 0;
+				equippedItemTexture.rightAnchor.target = equippedItemsScrollView.transform;
+				equippedItemTexture.rightAnchor.absolute = 0;
 				
 				if (previousEquippedItem == null) 
 				{
@@ -337,14 +344,14 @@ namespace RuzikOdyssey.UI.Views
 				}
 				else
 				{
-					equippedItemSprite.topAnchor.target = previousEquippedItem.transform;
-					equippedItemSprite.topAnchor.absolute = 0;
-					equippedItemSprite.topAnchor.relative = 0;
+					equippedItemTexture.topAnchor.target = previousEquippedItem.transform;
+					equippedItemTexture.topAnchor.absolute = 0;
+					equippedItemTexture.topAnchor.relative = 0;
 				}
 				
-				equippedItemSprite.updateAnchors = UIRect.AnchorUpdate.OnUpdate;
+				equippedItemTexture.updateAnchors = UIRect.AnchorUpdate.OnUpdate;
 				
-				equippedItemSprite.ResetAndUpdateAnchors();
+				equippedItemTexture.ResetAndUpdateAnchors();
 				
 				previousEquippedItem = equippedItem;
 			}
@@ -423,14 +430,15 @@ namespace RuzikOdyssey.UI.Views
 			// Anchor the tab next to the previously highlighted to the regular version of the tab
 			if (selectedTabIndex < purchasedItemsTabs.Length - 1) 
 			{
+				// TODO: Use generic UIRect for anchoring
 				var tabOnRight = purchasedItemsTabs[selectedTabIndex + 1];
-				var tabOnRightSprite = tabOnRight.GetComponentOrThrow<UISprite>();
+				var tabOnRightTexture = tabOnRight.GetComponentOrThrow<UITexture>();
 				
-				var anchorSprite = purchasedItemsTabs[selectedTabIndex].GetComponentOrThrow<UISprite>();
+				var anchorTexture = purchasedItemsTabs[selectedTabIndex].GetComponentOrThrow<UITexture>();
 				var anchorTransform = purchasedItemsTabs[selectedTabIndex].transform;
 				
-				tabOnRightSprite.leftAnchor.target = anchorTransform;
-				tabOnRightSprite.leftAnchor.rect = anchorSprite;
+				tabOnRightTexture.leftAnchor.target = anchorTransform;
+				tabOnRightTexture.leftAnchor.rect = anchorTexture;
 			}
 			
 			// Highlight the new tab
@@ -440,14 +448,15 @@ namespace RuzikOdyssey.UI.Views
 			// Anchor the next tab to the highlighted version of the tab
 			if (tabIndex < purchasedItemsTabs.Length - 1) 
 			{
+				// TODO: Use generic UIRect for anchoring
 				var tabOnRight = purchasedItemsTabs[tabIndex + 1];
-				var tabOnRightSprite = tabOnRight.GetComponentOrThrow<UISprite>();
+				var tabOnRightTexture = tabOnRight.GetComponentOrThrow<UITexture>();
 				
-				var anchorSprite = purchasedItemsHighlightedTabs[tabIndex].GetComponentOrThrow<UISprite>();
+				var anchorTexture = purchasedItemsHighlightedTabs[tabIndex].GetComponentOrThrow<UITexture>();
 				var anchorTransform = purchasedItemsHighlightedTabs[tabIndex].transform;
 				
-				tabOnRightSprite.leftAnchor.target = anchorTransform;
-				tabOnRightSprite.leftAnchor.rect = anchorSprite;
+				tabOnRightTexture.leftAnchor.target = anchorTransform;
+				tabOnRightTexture.leftAnchor.rect = anchorTexture;
 			}
 			
 			selectedTab = tab;
@@ -503,14 +512,15 @@ namespace RuzikOdyssey.UI.Views
 			// Anchor the tab next to the previously highlighted to the regular version of the tab
 			if (selectedTabIndex < purchasedItemsTabs.Length - 1) 
 			{
+				// TODO: Use generic UIRect for anchoring
 				var tabOnRight = purchasedItemsTabs[selectedTabIndex + 1];
-				var tabOnRightSprite = tabOnRight.GetComponentOrThrow<UISprite>();
+				var tabOnRightTexture = tabOnRight.GetComponentOrThrow<UITexture>();
 				
-				var anchorSprite = purchasedItemsTabs[selectedTabIndex].GetComponentOrThrow<UISprite>();
+				var anchorTexture = purchasedItemsTabs[selectedTabIndex].GetComponentOrThrow<UITexture>();
 				var anchorTransform = purchasedItemsTabs[selectedTabIndex].transform;
 				
-				tabOnRightSprite.leftAnchor.target = anchorTransform;
-				tabOnRightSprite.leftAnchor.rect = anchorSprite;
+				tabOnRightTexture.leftAnchor.target = anchorTransform;
+				tabOnRightTexture.leftAnchor.rect = anchorTexture;
 			}
 			
 			Log.Debug("Selected tab {0}", 6);
@@ -525,7 +535,7 @@ namespace RuzikOdyssey.UI.Views
 			if (Vungle.isAdvertAvailable())
 			{
 				Log.Info("Playing video ad from Vungle.");
-				Vungle.playAd();
+				Vungle.playAd(true, "generic-user");
 			}
 			else 
 			{
@@ -536,6 +546,7 @@ namespace RuzikOdyssey.UI.Views
 		private void Vungle_OnCachedAdAvailableEventHandler()
 		{
 			Log.Debug("START - Vungle_OnCachedAdAvailableEventHandler");
+			videoAdButton.SetActive(true);
 		}
 	}
 }

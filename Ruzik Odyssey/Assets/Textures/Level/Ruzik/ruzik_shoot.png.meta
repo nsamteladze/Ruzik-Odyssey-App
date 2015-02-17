@@ -1,6 +1,19 @@
 fileFormatVersion: 2
 guid: 9834b849d60c94cfeb09cc6845f05f69
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: ruzik_shoot_0
+    21300002: ruzik_shoot_1
+    21300004: ruzik_shoot_2
+    21300006: ruzik_shoot_3
+    21300008: ruzik_shoot_4
+    21300010: ruzik_shoot_5
+    21300012: ruzik_shoot_6
+    21300014: ruzik_shoot_7
+    21300016: ruzik_shoot_8
+    21300018: ruzik_shoot_9
+    21300020: ruzik_shoot_10
+    21300022: ruzik_shoot_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

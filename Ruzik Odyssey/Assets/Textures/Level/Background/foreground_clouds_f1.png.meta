@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: fd2cb90dfeeeb428e9d57a5bf16a9e52
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: foreground_clouds_f1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -41,7 +43,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone
-    maxTextureSize: 1024
+    maxTextureSize: 512
     textureFormat: -3
     compressionQuality: 50
   spriteSheet:

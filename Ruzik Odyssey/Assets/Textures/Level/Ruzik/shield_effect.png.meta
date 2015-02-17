@@ -1,6 +1,19 @@
 fileFormatVersion: 2
 guid: c3bde6e4d56b344c992ca5ece575b268
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: shield_effect_0
+    21300002: shield_effect_1
+    21300004: shield_effect_2
+    21300006: shield_effect_3
+    21300008: shield_effect_4
+    21300010: shield_effect_5
+    21300012: shield_effect_6
+    21300014: shield_effect_7
+    21300016: shield_effect_8
+    21300018: shield_effect_9
+    21300020: shield_effect_10
+    21300022: shield_effect_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -41,7 +54,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings:
   - buildTarget: iPhone
-    maxTextureSize: 1024
+    maxTextureSize: 512
     textureFormat: -3
     compressionQuality: 50
   spriteSheet:
