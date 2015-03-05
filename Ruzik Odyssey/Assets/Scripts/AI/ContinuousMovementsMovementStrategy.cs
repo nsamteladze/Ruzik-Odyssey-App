@@ -47,4 +47,5 @@ namespace RuzikOdyssey.Ai
 			movementCooldown = Random.Range(1f, 10f);
 		}
 	}
+
 }
