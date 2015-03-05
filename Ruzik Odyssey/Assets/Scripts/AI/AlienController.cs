@@ -34,6 +34,12 @@ namespace RuzikOdyssey.Ai
 
 		public int maxEnergyDrop = 2;
 
+		[SerializeField]
+		private int agression;
+
+		[SerializeField]
+		private int intelligence;
+
 		private AlienWeaponController weaponController;
 		private MovementStrategy movementStrategy;
 
@@ -154,7 +160,11 @@ namespace RuzikOdyssey.Ai
 				return;
 			}
 
-			var movementDirection = movementStrategy.GetMovementDirection(transform.localPosition, isInWarzone);
+			var movementDirection =  
+				movementStrategy.GetMovementDirection(transform.localPosition, 
+				                                      GameHelper.Instance.PlayerPosition, 
+				                                      isInWarzone,
+				                                      Time.fixedDeltaTime);
 			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.AddForce(movementDirection * speed);
 		}

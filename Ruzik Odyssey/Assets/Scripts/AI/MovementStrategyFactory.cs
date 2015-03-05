@@ -25,7 +25,7 @@ namespace RuzikOdyssey.Ai
 			this.random = new Random();
 		}
 
-		public IMovementStrategy Create()
+		public IMovementStrategy Create(QualityLevel intelligence, QualityLevel aggression)
 		{
 			var aggressionLevel = random.Next(1, 11);
 			var intellectLevel = random.Next(1, 11);
@@ -34,7 +34,15 @@ namespace RuzikOdyssey.Ai
 
 		public IMovementStrategy Create(int aggressionLevel, int intellectLevel)
 		{
-			return new HoldPositionMovementStrategy();
+			return new PassByMovementStrategy();
 		}
+	}
+
+	public enum QualityLevel
+	{
+		Other = 0,
+		Low = 1,
+		Average = 2,
+		High = 3
 	}
 }

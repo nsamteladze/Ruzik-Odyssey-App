@@ -521,7 +521,7 @@
 'Assets/ParticleScaler/ParticleScaler.cs'
 'Assets/Scripts/AI/AlienController.cs'
 'Assets/Scripts/AI/AlienWeaponController.cs'
-'Assets/Scripts/AI/HoldPositionMovementStrategy.cs'
+'Assets/Scripts/AI/ContinuousMovementsMovementStrategy.cs'
 'Assets/Scripts/AI/IMovementStrategy.cs'
 'Assets/Scripts/AI/MoveToRandomPositionMovementStrategy.cs'
 'Assets/Scripts/AI/MovementStrategy.cs'

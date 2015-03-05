@@ -528,7 +528,7 @@
      <Compile Include="Assets\ParticleScaler\ParticleScaler.cs" />
      <Compile Include="Assets\Scripts\AI\AlienController.cs" />
      <Compile Include="Assets\Scripts\AI\AlienWeaponController.cs" />
-     <Compile Include="Assets\Scripts\AI\HoldPositionMovementStrategy.cs" />
+     <Compile Include="Assets\Scripts\AI\ContinuousMovementsMovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\IMovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\MoveToRandomPositionMovementStrategy.cs" />
      <Compile Include="Assets\Scripts\AI\MovementStrategy.cs" />

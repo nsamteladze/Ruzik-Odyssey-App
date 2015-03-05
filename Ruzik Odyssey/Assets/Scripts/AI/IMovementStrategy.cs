@@ -1,10 +1,10 @@
 using System;
+using UnityEngine;
 
 namespace RuzikOdyssey.Ai
 {
 	public interface IMovementStrategy
 	{
-		float GetNextPosition(float currentPosition);
+		Vector2 GetMovementDirection(Vector2 currentPosition, Vector2 playerPosition, bool isInWarzone, float deltaTime);
 	}
 }
-
