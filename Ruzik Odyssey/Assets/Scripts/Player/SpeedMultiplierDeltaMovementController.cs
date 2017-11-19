@@ -44,10 +44,10 @@ namespace RuzikOdyssey.Player
 		
 		private void FixedUpdate()
 		{
-			rigidbody2D.velocity = new Vector2(movement.x * speedMutiplier.x, 
+			GetComponent<Rigidbody2D>().velocity = new Vector2(movement.x * speedMutiplier.x, 
 			                                   movement.y * speedMutiplier.y);
 
-			movement -= rigidbody2D.velocity;
+			movement -= GetComponent<Rigidbody2D>().velocity;
 		}
 	}
 }

@@ -40,8 +40,8 @@ namespace Sandbox.RuzikOdyssey.Player
 		{
 			var force = movementStrategy.GetAppliedForce(GetCurrentPosition());
 
-			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.AddForce(model.AccelerationMultiplier * force);
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			GetComponent<Rigidbody2D>().AddForce(model.AccelerationMultiplier * force);
 		}
 
 		private Vector2 GetCurrentPosition()

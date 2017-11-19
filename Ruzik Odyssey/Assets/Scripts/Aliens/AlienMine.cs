@@ -24,7 +24,7 @@ namespace RuzikOdyssey.Aliens
 		
 		private void Start()
 		{
-			rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
+			GetComponent<Rigidbody2D>().velocity = GameEnvironment.ForegroundSpeed;
 
 			animator = this.gameObject.GetComponentOrThrow<Animator>();
 		}
@@ -34,7 +34,7 @@ namespace RuzikOdyssey.Aliens
 			if (otherCollider.CompareTag("Player")) 
 			{
 				var explosion = this.gameObject.InstantiateNearSelf(detonationVfx);
-				explosion.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
+				explosion.GetComponent<Rigidbody2D>().velocity = GameEnvironment.ForegroundSpeed;
 				Destroy(explosion, 5);
 
 				Invoke("Detonate", detonationDelay);
@@ -48,7 +48,7 @@ namespace RuzikOdyssey.Aliens
 
 		private void Explode()
 		{
-			var radiusCollider = (CircleCollider2D) this.collider2D;
+			var radiusCollider = (CircleCollider2D) this.GetComponent<Collider2D>();
 
 			var playerCollider = Physics2D
 				.OverlapCircleAll(this.transform.position, radiusCollider.radius * this.gameObject.Scale2D())

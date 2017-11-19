@@ -12,7 +12,7 @@ namespace RuzikOdyssey.Level
 
 		private void Start()
 		{
-			this.gameObject.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
+			this.gameObject.GetComponent<Rigidbody2D>().velocity = GameEnvironment.ForegroundSpeed;
 		}
 
 		private void OnTriggerEnter2D(Collider2D otherCollider)

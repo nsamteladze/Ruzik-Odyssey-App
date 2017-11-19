@@ -14,8 +14,8 @@ namespace RuzikOdyssey.Level
 		private void Start ()
 		{
 			InvokeRepeating("Spawn", spawnDelay, 1);
-			healthPickUp.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
-			secondaryWeaponPickUp.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
+			healthPickUp.GetComponent<Rigidbody2D>().velocity = GameEnvironment.ForegroundSpeed;
+			secondaryWeaponPickUp.GetComponent<Rigidbody2D>().velocity = GameEnvironment.ForegroundSpeed;
 		}
 		
 		private void Spawn()

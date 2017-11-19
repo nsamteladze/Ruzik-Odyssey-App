@@ -7,18 +7,18 @@ namespace RuzikOdyssey.Common.UI
 	{
 		private void Awake()
 		{
-			if (gameObject.guiText == null) 
+			if (gameObject.GetComponent<GUIText>() == null) 
 				throw new UnityException("Label script can be attached only to a game object with GUIText component.");
 		}
 
 		public string Text
 		{
-			get { return guiText.text; }
+			get { return GetComponent<GUIText>().text; }
 			set 
 			{
 				Log.Debug("Ammo is {0}", value);
 
-				guiText.text = value; 
+				GetComponent<GUIText>().text = value; 
 			}
 		}
 	}

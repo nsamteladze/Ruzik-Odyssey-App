@@ -22,7 +22,7 @@ public class VunglePostBuilder : MonoBehaviour
 				generateAndroidManifest();
 			}
 		}
-		else if( target == BuildTarget.iPhone )
+		else if( target == BuildTarget.iOS )
 		{
 			// grab the path to the postProcessor.py file
 			var scriptPath = Path.Combine( Application.dataPath, "Editor/Vungle/VunglePostProcessor.py" );
@@ -82,7 +82,7 @@ public class VunglePostBuilder : MonoBehaviour
 		var fileContents = File.ReadAllText( baseManifestPath );
 
 		// the only thing we need in there is the package so a simple replace will suffice
-		fileContents = fileContents.Replace( "CURRENT_PACKAGE_NAME", PlayerSettings.bundleIdentifier );
+		fileContents = fileContents.Replace( "CURRENT_PACKAGE_NAME", PlayerSettings.applicationIdentifier );
 
 		File.WriteAllText( androidManifestPath, fileContents );
 		AssetDatabase.Refresh();

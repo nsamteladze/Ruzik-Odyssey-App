@@ -1,9 +1,10 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2017 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// Ever wanted to be able to auto-center on an object within a draggable panel?
@@ -81,14 +82,14 @@ public class UICenterOnChild : MonoBehaviour
 				if (mScrollView)
 				{
 					mScrollView.centerOnChild = this;
-					mScrollView.onDragFinished = OnDragFinished;
+					//mScrollView.onDragFinished += OnDragFinished;
 				}
 
 				if (mScrollView.horizontalScrollBar != null)
-					mScrollView.horizontalScrollBar.onDragFinished = OnDragFinished;
+					mScrollView.horizontalScrollBar.onDragFinished += OnDragFinished;
 
 				if (mScrollView.verticalScrollBar != null)
-					mScrollView.verticalScrollBar.onDragFinished = OnDragFinished;
+					mScrollView.verticalScrollBar.onDragFinished += OnDragFinished;
 			}
 		}
 		if (mScrollView.panel == null) return;
@@ -108,19 +109,48 @@ public class UICenterOnChild : MonoBehaviour
 		float min = float.MaxValue;
 		Transform closest = null;
 		int index = 0;
+		int ignoredIndex = 0;
+
+		UIGrid grid = GetComponent<UIGrid>();
+		List<Transform> list = null;
 
 		// Determine the closest child
-		for (int i = 0, imax = trans.childCount; i < imax; ++i)
+		if (grid != null)
 		{
-			Transform t = trans.GetChild(i);
-			if (!t.gameObject.activeInHierarchy) continue;
-			float sqrDist = Vector3.SqrMagnitude(t.position - pickingPoint);
+			list = grid.GetChildList();
 
-			if (sqrDist < min)
+			for (int i = 0, imax = list.Count, ii = 0; i < imax; ++i)
 			{
-				min = sqrDist;
-				closest = t;
-				index = i;
+				Transform t = list[i];
+				if (!t.gameObject.activeInHierarchy) continue;
+				float sqrDist = Vector3.SqrMagnitude(t.position - pickingPoint);
+
+				if (sqrDist < min)
+				{
+					min = sqrDist;
+					closest = t;
+					index = i;
+					ignoredIndex = ii;
+				}
+				++ii;
+			}
+		}
+		else
+		{
+			for (int i = 0, imax = trans.childCount, ii = 0; i < imax; ++i)
+			{
+				Transform t = trans.GetChild(i);
+				if (!t.gameObject.activeInHierarchy) continue;
+				float sqrDist = Vector3.SqrMagnitude(t.position - pickingPoint);
+
+				if (sqrDist < min)
+				{
+					min = sqrDist;
+					closest = t;
+					index = i;
+					ignoredIndex = ii;
+				}
+				++ii;
 			}
 		}
 
@@ -128,9 +158,10 @@ public class UICenterOnChild : MonoBehaviour
 		if (nextPageThreshold > 0f && UICamera.currentTouch != null)
 		{
 			// If we're still on the same object
-			if (mCenteredObject != null && mCenteredObject.transform == trans.GetChild(index))
+			if (mCenteredObject != null && mCenteredObject.transform == (list != null ? list[index] : trans.GetChild(index)))
 			{
-				Vector2 totalDelta = UICamera.currentTouch.totalDelta;
+				Vector3 totalDelta = UICamera.currentTouch.totalDelta;
+				totalDelta = transform.rotation * totalDelta;
 
 				float delta = 0f;
 
@@ -143,7 +174,7 @@ public class UICenterOnChild : MonoBehaviour
 					}
 					case UIScrollView.Movement.Vertical:
 					{
-						delta = totalDelta.y;
+						delta = -totalDelta.y;
 						break;
 					}
 					default:
@@ -153,17 +184,42 @@ public class UICenterOnChild : MonoBehaviour
 					}
 				}
 
-				if (delta > nextPageThreshold)
+				if (Mathf.Abs(delta) > nextPageThreshold)
 				{
-					// Next page
-					if (index > 0)
-						closest = trans.GetChild(index - 1);
-				}
-				else if (delta < -nextPageThreshold)
-				{
-					// Previous page
-					if (index < trans.childCount - 1)
-						closest = trans.GetChild(index + 1);
+					if (delta > nextPageThreshold)
+					{
+						// Next page
+						if (list != null)
+						{
+							if (ignoredIndex > 0)
+							{
+								closest = list[ignoredIndex - 1];
+							}
+							else closest = (GetComponent<UIWrapContent>() == null) ? list[0] : list[list.Count - 1];
+						}
+						else if (ignoredIndex > 0)
+						{
+							closest = trans.GetChild(ignoredIndex - 1);
+						}
+						else closest = (GetComponent<UIWrapContent>() == null) ? trans.GetChild(0) : trans.GetChild(trans.childCount - 1);
+					}
+					else if (delta < -nextPageThreshold)
+					{
+						// Previous page
+						if (list != null)
+						{
+							if (ignoredIndex < list.Count - 1)
+							{
+								closest = list[ignoredIndex + 1];
+							}
+							else closest = (GetComponent<UIWrapContent>() == null) ? list[list.Count - 1] : list[0];
+						}
+						else if (ignoredIndex < trans.childCount - 1)
+						{
+							closest = trans.GetChild(ignoredIndex + 1);
+						}
+						else closest = (GetComponent<UIWrapContent>() == null) ? trans.GetChild(trans.childCount - 1) : trans.GetChild(0);
+					}
 				}
 			}
 		}

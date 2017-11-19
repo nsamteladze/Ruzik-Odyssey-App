@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2017 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 
@@ -18,6 +18,9 @@ public class TweenAlpha : UITweener
 	bool mCached = false;
 	UIRect mRect;
 	Material mMat;
+	Light mLight;
+	SpriteRenderer mSr;
+	float mBaseIntensity = 1f;
 
 	[System.Obsolete("Use 'value' instead")]
 	public float alpha { get { return this.value; } set { this.value = value; } }
@@ -26,12 +29,19 @@ public class TweenAlpha : UITweener
 	{
 		mCached = true;
 		mRect = GetComponent<UIRect>();
+		mSr = GetComponent<SpriteRenderer>();
 
-		if (mRect == null)
+		if (mRect == null && mSr == null)
 		{
-			Renderer ren = GetComponent<Renderer>();
-			if (ren != null) mMat = ren.material;
-			if (mMat == null) mRect = GetComponentInChildren<UIRect>();
+			mLight = GetComponent<Light>();
+
+			if (mLight == null)
+			{
+				Renderer ren = GetComponent<Renderer>();
+				if (ren != null) mMat = ren.material;
+				if (mMat == null) mRect = GetComponentInChildren<UIRect>();
+			}
+			else mBaseIntensity = mLight.intensity;
 		}
 	}
 
@@ -45,7 +55,8 @@ public class TweenAlpha : UITweener
 		{
 			if (!mCached) Cache();
 			if (mRect != null) return mRect.alpha;
-			return mMat.color.a;
+			if (mSr != null) return mSr.color.a;
+			return mMat != null ? mMat.color.a : 1f;
 		}
 		set
 		{
@@ -55,11 +66,21 @@ public class TweenAlpha : UITweener
 			{
 				mRect.alpha = value;
 			}
-			else
+			else if (mSr != null)
+			{
+				Color c = mSr.color;
+				c.a = value;
+				mSr.color = c;
+			}
+			else if (mMat != null)
 			{
 				Color c = mMat.color;
 				c.a = value;
 				mMat.color = c;
+			}
+			else if (mLight != null)
+			{
+				mLight.intensity = mBaseIntensity * value;
 			}
 		}
 	}
@@ -74,9 +95,9 @@ public class TweenAlpha : UITweener
 	/// Start the tweening operation.
 	/// </summary>
 
-	static public TweenAlpha Begin (GameObject go, float duration, float alpha)
+	static public TweenAlpha Begin (GameObject go, float duration, float alpha, float delay = 0f)
 	{
-		TweenAlpha comp = UITweener.Begin<TweenAlpha>(go, duration);
+		TweenAlpha comp = UITweener.Begin<TweenAlpha>(go, duration, delay);
 		comp.from = comp.value;
 		comp.to = alpha;
 

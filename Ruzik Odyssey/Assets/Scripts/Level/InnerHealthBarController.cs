@@ -21,11 +21,11 @@ public class InnerHealthBarController : MonoBehaviour
 		{
 			if (i < numberOfFragments)
 			{
-				healthBarFragments[i].renderer.enabled = true;
+				healthBarFragments[i].GetComponent<Renderer>().enabled = true;
 			}
 			else 
 			{
-				healthBarFragments[i].renderer.enabled = false;
+				healthBarFragments[i].GetComponent<Renderer>().enabled = false;
 			}
 		}
 	}

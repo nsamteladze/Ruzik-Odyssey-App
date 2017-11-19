@@ -15,14 +15,14 @@ public class TouchToggle : MonoBehaviour, ITouchControl
 
 	protected void Start()
 	{
-		var onStateGameObject = this.gameObject.transform.FindChild("On");
+		var onStateGameObject = this.gameObject.transform.Find("On");
 		if (onStateGameObject == null) throw new UnityException("Failed to find a game object for toggle ON state");
-		var offStateGameObject = this.gameObject.transform.FindChild("Off");
+		var offStateGameObject = this.gameObject.transform.Find("Off");
 		if (offStateGameObject == null) throw new UnityException("Failed to find a game object for toggle OFF state");
 
-		toggleOnTexture = onStateGameObject.guiTexture;
+		toggleOnTexture = onStateGameObject.GetComponent<GUITexture>();
 		if (toggleOnTexture == null) throw new UnityException("Failed to find toggle ON state texture");
-		toggleOffTexture = offStateGameObject.guiTexture;
+		toggleOffTexture = offStateGameObject.GetComponent<GUITexture>();
 		if (toggleOffTexture == null) throw new UnityException("Failed to find toggle OFF state texture");
 		
 		var onStateTextureInitialPixelInset = toggleOnTexture.pixelInset;

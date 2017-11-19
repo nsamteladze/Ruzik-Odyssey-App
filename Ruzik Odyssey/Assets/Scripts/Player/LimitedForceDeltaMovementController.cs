@@ -54,8 +54,8 @@ namespace RuzikOdyssey.Player
 			if (Math.Abs(force.x) > maximumForce) force.x = Math.Sign(force.x) * maximumForce;
 			if (Math.Abs(force.y) > maximumForce) force.y = Math.Sign(force.y) * maximumForce;
 
-			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.AddForce(accelarationMultiplier * force);
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			GetComponent<Rigidbody2D>().AddForce(accelarationMultiplier * force);
 
 			var currentPosition = (Vector2)Camera.main.WorldToScreenPoint(transform.position);
 			var deltaPosition =  currentPosition - lastPosition;

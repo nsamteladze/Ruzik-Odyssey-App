@@ -93,7 +93,7 @@ namespace RuzikOdyssey.Ai
 		{
 			isInWarzone = true;
 			speed = warzoneSpeed;
-			rigidbody2D.velocity = Vector2.zero;
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		}
 
 		private void TakeDamage(float damage)
@@ -156,7 +156,7 @@ namespace RuzikOdyssey.Ai
 		{
 			if (isDying)
 			{
-				rigidbody2D.velocity = Vector2.zero;
+				GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 				return;
 			}
 
@@ -165,8 +165,8 @@ namespace RuzikOdyssey.Ai
 				                                      GameHelper.Instance.PlayerPosition, 
 				                                      isInWarzone,
 				                                      Time.fixedDeltaTime);
-			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.AddForce(movementDirection * speed);
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			GetComponent<Rigidbody2D>().AddForce(movementDirection * speed);
 		}
 
 		private void OnDestroy()

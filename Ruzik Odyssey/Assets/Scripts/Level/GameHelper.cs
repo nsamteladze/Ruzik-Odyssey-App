@@ -22,7 +22,7 @@ namespace RuzikOdyssey.Level
 
 		public Bounds WarzoneBounds 
 		{ 
-			get { return warzoneBoundary.collider2D.bounds; }
+			get { return warzoneBoundary.GetComponent<Collider2D>().bounds; }
 		}
 
 		private void Awake()

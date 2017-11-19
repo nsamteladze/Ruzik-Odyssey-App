@@ -13,7 +13,7 @@ public class TouchButton : MonoBehaviour, ITouchControl
 
 	protected void Start()
 	{
-		buttonTexture = this.gameObject.guiTexture;
+		buttonTexture = this.gameObject.GetComponent<GUITexture>();
 		if (buttonTexture == null) throw new UnityException("Failed to find touch button texture");
 
 		Rect initialPixelInset = buttonTexture.pixelInset;

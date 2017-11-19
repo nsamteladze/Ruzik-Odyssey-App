@@ -42,7 +42,7 @@ namespace RuzikOdyssey.Player
 				return;
 			}
 
-			shieldEffectBehavior.gameObject.renderer.enabled = isVisible;
+			shieldEffectBehavior.gameObject.GetComponent<Renderer>().enabled = isVisible;
 		}
 	}
 }

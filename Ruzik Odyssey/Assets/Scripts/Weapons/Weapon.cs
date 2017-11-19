@@ -16,7 +16,7 @@ namespace RuzikOdyssey.Weapons
 
 		private void Start()
 		{
-			rigidbody2D.velocity = new Vector2(speed.x * direction.x, speed.y * direction.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(speed.x * direction.x, speed.y * direction.y);
 		}
 
 		private void OnTriggerEnter2D(Collider2D otherCollider)

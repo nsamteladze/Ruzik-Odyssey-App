@@ -10,7 +10,7 @@ public class ScoreController : MonoBehaviour
 
 	private void Start()
 	{
-		displayedScore = this.guiText;
+		displayedScore = this.GetComponent<GUIText>();
 		if (displayedScore == null) throw new UnityException("Failed to initialized score GUIText");
 	}
 

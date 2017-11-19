@@ -16,8 +16,8 @@ namespace RuzikOdyssey.Level
 
 		private void MoveWithEnvironment()
 		{
-			gameObject.rigidbody2D.drag = 0.0f;
-			gameObject.rigidbody2D.velocity = GameEnvironment.ForegroundSpeed;
+			gameObject.GetComponent<Rigidbody2D>().drag = 0.0f;
+			gameObject.GetComponent<Rigidbody2D>().velocity = GameEnvironment.ForegroundSpeed;
 		}
 	}
 }

@@ -44,14 +44,14 @@ namespace RuzikOdyssey.Player
 		
 		private void FixedUpdate()
 		{
-			rigidbody2D.velocity = new Vector2(Math.Abs(movement.x) > speed.x 
+			GetComponent<Rigidbody2D>().velocity = new Vector2(Math.Abs(movement.x) > speed.x 
 			                                   ? Math.Sign(movement.x) * speed.x 
 			                                   : movement.x, 
 			                                   Math.Abs(movement.y) > speed.y 
 			                                   ? Math.Sign(movement.y) * speed.y 
 			                                   : movement.y);
 			
-			movement -= rigidbody2D.velocity;
+			movement -= GetComponent<Rigidbody2D>().velocity;
 		}
 	}
 }

@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2017 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 
@@ -21,6 +21,7 @@ public class UIPlaySound : MonoBehaviour
 		OnRelease,
 		Custom,
 		OnEnable,
+		OnDisable,
 	}
 
 	public AudioClip audioClip;
@@ -44,6 +45,12 @@ public class UIPlaySound : MonoBehaviour
 	void OnEnable ()
 	{
 		if (trigger == Trigger.OnEnable)
+			NGUITools.PlaySound(audioClip, volume, pitch);
+	}
+
+	void OnDisable ()
+	{
+		if (trigger == Trigger.OnDisable)
 			NGUITools.PlaySound(audioClip, volume, pitch);
 	}
 

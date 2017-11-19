@@ -14,7 +14,7 @@ namespace RuzikOdyssey.Common
 
 		private void Start()
 		{
-			var innerBarTransform = this.gameObject.transform.FindChild("InnerBar");
+			var innerBarTransform = this.gameObject.transform.Find("InnerBar");
 			if (innerBarTransform == null) throw new UnityException("Failed to get inner bar transform");
 
 			barFragments = new List<GameObject>();
@@ -37,7 +37,7 @@ namespace RuzikOdyssey.Common
 		{
 			for (var i = 0; i < barFragments.Count; i++)
 			{
-				barFragments[i].renderer.enabled = inverseFragments 
+				barFragments[i].GetComponent<Renderer>().enabled = inverseFragments 
 					// Hide the first N fragments if the bar is inversed
 					? (i >= totalFragmentsInBar - numberOfFragments) 
 					// Hide the last N fragments if the bar is in regular order

@@ -43,7 +43,7 @@ namespace Sandbox.RuzikOdyssey.Player
 
 		private void FireCannon()
 		{
-			var shot = (Transform)Instantiate(model.CannonShotPrefab);
+            var shot = Instantiate(model.CannonShotPrefab).transform;
 			shot.position = (Vector2)transform.position + model.CannonShotPosition;
 
 			if (model.CannonFiringSFX != null) 
@@ -63,7 +63,7 @@ namespace Sandbox.RuzikOdyssey.Player
 
 
 
-			var shot = (Transform)Instantiate(model.MissileShotPrefab);
+            var shot = Instantiate(model.MissileShotPrefab).transform;
 			shot.position = (Vector2)transform.position + model.MissileShotPosition;
 
 			if (model.MissileFiringSFX != null) 

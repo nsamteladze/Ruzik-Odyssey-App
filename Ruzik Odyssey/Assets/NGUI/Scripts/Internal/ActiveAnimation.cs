@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2017 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using AnimationOrTween;
@@ -101,6 +101,7 @@ public class ActiveAnimation : MonoBehaviour
 				if (mLastDirection == Direction.Forward) state.time = state.length;
 				else if (mLastDirection == Direction.Reverse) state.time = 0f;
 			}
+			mAnim.Sample();
 		}
 		else if (mAnimator != null)
 		{

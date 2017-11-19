@@ -9,7 +9,7 @@ namespace RuzikOdyssey.Common
 			Vector2 position, float velocity, Vector2 direction)
 		{
 			var instance = (GameObject)Object.Instantiate(gameObject, position, new Quaternion(0, 0, 0, 0));
-			instance.rigidbody2D.velocity = velocity * direction;
+			instance.GetComponent<Rigidbody2D>().velocity = velocity * direction;
 			
 			return instance;
 		}
@@ -21,7 +21,7 @@ namespace RuzikOdyssey.Common
 			ForceMode2D forceMode = ForceMode2D.Force)
 		{
 			var instance = (GameObject)Object.Instantiate(gameObject, position, new Quaternion(0, 0, 0, 0));
-			instance.rigidbody2D.AddForce(force, forceMode);
+			instance.GetComponent<Rigidbody2D>().AddForce(force, forceMode);
 			
 			return instance;
 		}

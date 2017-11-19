@@ -10,7 +10,7 @@ namespace RuzikOdyssey.Common
 		{
 			try
 			{
-				return gameObject.renderer.bounds.size.ToVector2();
+				return gameObject.GetComponent<Renderer>().bounds.size.ToVector2();
 			}
 			catch (Exception ex)
 			{
