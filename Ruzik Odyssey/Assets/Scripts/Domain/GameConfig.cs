@@ -6,7 +6,7 @@ namespace RuzikOdyssey.Domain
 	{
 		public const string GameContentFilePath = "LevelsContent";
 
-		public const string ServerBaseUrl = "http://api-cocosgames.azurewebsites.net";
+        public const string ServerBaseUrl = "https://ruzik-odyssey-api.azurewebsites.net";
 
 		public static string GameContentUrl
 		{
