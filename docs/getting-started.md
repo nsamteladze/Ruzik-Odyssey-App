@@ -10,5 +10,9 @@ You can get the error below when you are trying to build the app in Unity3D. To 
 
 ```
 Win32Exception: ApplicationName='python2.6', 
-CommandLine='"**/Ruzik-Odyssey-App/Ruzik Odyssey/Assets/Editor/Vungle/VunglePostProcessor.py" "**/sadf/sadf" "**/Ruzik-Odyssey-App/Ruzik Odyssey/Assets/Editor/Vungle/VungleSDK"', CurrentDirectory='', Native error= Cannot find the specified file
+CommandLine='
+"**/Ruzik-Odyssey-App/Ruzik Odyssey/Assets/Editor/Vungle/VunglePostProcessor.py" 
+"**/sadf/sadf" 
+"**/Ruzik-Odyssey-App/Ruzik Odyssey/Assets/Editor/Vungle/VungleSDK"', 
+CurrentDirectory='', Native error= Cannot find the specified file
 ```
