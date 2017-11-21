@@ -2,7 +2,7 @@
 
 These will be a doc here on how to start local development.
 
-Unity3D `Library` folder (includes settings, user preferences, caches and more) is not checked in to reduce the repository size. You can get the default settings from `LibraryDefault` folder. This will include the correct Build Settings and Player Settings.
+Unity3D `Library` folder (includes settings, user preferences, caches and more) is not checked in to reduce the repository size. You can get the default settings from `LibraryDefault` folder. This will include the correct Build Settings and Player Settings. Just create a new `Library` folder (same root folder as `LibraryDefault`) and copy all the files from `LibraryDefault` into it.
 
 ## Troubleshooting
 
