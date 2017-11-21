@@ -2,6 +2,8 @@
 
 These will be a doc here on how to start local development.
 
+Unity3D `Library` folder (includes settings, user preferences, caches and more) is not checked in to reduce the repository size. You can get the default settings from `LibraryDefault` folder. This will include the correct Build Settings and Player Settings.
+
 ## Troubleshooting
 
 #### Win32Exception Can't find the specifiled file "python2.6"
