@@ -35,8 +35,6 @@
 
 - (void)dealloc {
   _interstitial.delegate = nil;
-  [_interstitial release];
-  [super dealloc];
 }
 
 - (void)loadRequest:(GADRequest *)request {

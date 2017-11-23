@@ -22,8 +22,7 @@
 }
 
 - (void)dealloc {
-  [_references release];
-  [super dealloc];
+
 }
 
 @end
