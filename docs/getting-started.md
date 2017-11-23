@@ -8,6 +8,8 @@ Unity3D `Library` folder (includes settings, user preferences, caches and more) 
 
 To build the game for a particular platform, go to Build -> Build Settings, switch to the platform you want, and click Build. Once the platform is saved, you can just use `Ctrl + B` command.
 
+Use [Unity Remote](https://docs.unity3d.com/Manual/UnityRemote5.html) app on your phone to control the game. Install the app on your phone, connect your phone using a USB cable and open the app. Next, go to Edit -> Project Settings -> Editor and select your phone under Unity Remote -> Device. Now start the app on the Start Scene and use your phone to play.
+
 ## Troubleshooting
 
 #### Win32Exception Can't find the specifiled file "python2.6"
