@@ -238,25 +238,12 @@
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>/Users/nsamteladze/Library/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="VungleSDKProxy">
-      <HintPath>Assets/Plugins/VungleSDKProxy.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Plugins\Vungle\AdFinishedEventArgs.cs" />
-    <Compile Include="Assets\Plugins\Vungle\Android\VungleAndroid.cs" />
-    <Compile Include="Assets\Plugins\Vungle\iOS\VungleBinding.cs" />
-    <Compile Include="Assets\Plugins\Vungle\MiniJSONV.cs" />
-    <Compile Include="Assets\Plugins\Vungle\Vungle.cs" />
-    <Compile Include="Assets\Plugins\Vungle\VungleManager.cs" />
-    <Compile Include="Assets\Plugins\Vungle\VungleSceneLoom.cs" />
-    <Compile Include="Assets\Plugins\Vungle\win\VungleWin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
@@ -305,7 +292,6 @@
     <None Include="Assets\ParticleScaler\How_to_use.txt" />
     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.59.0.txt" />
     <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
-    <None Include="Assets\Plugins\Android\Vungle_lib\AndroidManifest.xml" />
     <None Include="Assets\Resources\AircraftInfoDefaults.txt" />
     <None Include="Assets\Resources\GameInventoryDefaults.txt" />
     <None Include="Assets\Resources\GameStoreDefaults.txt" />

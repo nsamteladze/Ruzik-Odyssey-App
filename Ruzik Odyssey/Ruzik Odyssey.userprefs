@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{69270705-42C8-AE99-2509-38164F72CB0E}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleMobileAds/Platforms/iOS/AdLoaderClient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI/AlienWeaponController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/EventsBroker.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/EventsBroker.cs" Line="49" Column="41" />
       <File FileName="Assets/Scripts/Common/ExtendedMonoBehaviour.cs" Line="18" Column="4" />
       <File FileName="Assets/Scripts/ViewModels/StartSceneViewModel.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ViewModels/LevelSceneViewModel.cs" Line="186" Column="9" />
@@ -17,6 +17,15 @@
       <File FileName="Assets/Scripts/Level/ScoreController.cs" Line="9" Column="10" />
       <File FileName="Assets/Scripts/Level/PauseMenu.cs" Line="33" Column="43" />
       <File FileName="Assets/GoogleMobileAds/Platforms/iOS/AdLoaderClient.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Weapons/Weapon.cs" Line="6" Column="31" />
+      <File FileName="Assets/Scripts/Level/FireSecondaryWeaponButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/LimitedForceDeltaMovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/WeaponController.cs" Line="114" Column="40" />
+      <File FileName="Assets/Scripts/Aliens/AlienMine.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Sandbox/PlayerWeaponController.cs" Line="71" Column="4" />
+      <File FileName="Assets/Scripts/AI/AlienController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI/AlienWeaponController.cs" Line="7" Column="36" />
+      <File FileName="Assets/Scripts/AI/MovementStrategy.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
