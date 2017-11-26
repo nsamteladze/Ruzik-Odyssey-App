@@ -62,8 +62,7 @@ namespace RuzikOdyssey.UI.Views
 		
 		private void Start()
 		{
-			videoAdButton.SetActive(Vungle.isAdvertAvailable());
-			Vungle.onCachedAdAvailableEvent += Vungle_OnCachedAdAvailableEventHandler;
+			videoAdButton.SetActive(true);
 
 			viewModel.PurchasedItemsUpdated += ViewModel_PurchasedItemsUpdated;
 			viewModel.EquippedItemsUpdated += ViewModel_EquippedItemsUpdated;
@@ -532,15 +531,15 @@ namespace RuzikOdyssey.UI.Views
 		{
 			Log.Debug("START - Game_ShowVideoAdButtonClicked");
 
-			if (Vungle.isAdvertAvailable())
-			{
-				Log.Info("Playing video ad from Vungle.");
-				Vungle.playAd(true, "generic-user");
-			}
-			else 
-			{
-				Log.Warning("Failed to play video ad. Ad is not available.");
-			}
+   //         if (AdMobAdsSer)
+			//{
+			//	Log.Info("Playing video ad from Vungle.");
+   //             Vungle.playAd(true, "generic-user");
+			//}
+			//else 
+			//{
+			//	Log.Warning("Failed to play video ad. Ad is not available.");
+			//}
 		}
 
 		private void Vungle_OnCachedAdAvailableEventHandler()

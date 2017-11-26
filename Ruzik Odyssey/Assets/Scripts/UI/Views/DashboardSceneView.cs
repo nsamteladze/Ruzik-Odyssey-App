@@ -17,8 +17,8 @@ namespace RuzikOdyssey.UI.Views
 		private string adUnitId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
 		private string videoAdId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
 #elif UNITY_IPHONE
-		private string adUnitId = "ca-app-pub-1384659154698612/7265813883";
-		private string videoAdId = "ca-app-pub-1384659154698612/1186655887";
+        private string adUnitId = "ca-app-pub-4299532594227517/1001237124";
+        private string videoAdId = "ca-app-pub-4299532594227517/2931242370";
 #else
 		private string adUnitId = "unexpected_platform";
 		private string videoAdId = "unexpected_platform";
@@ -49,15 +49,14 @@ namespace RuzikOdyssey.UI.Views
 		{
 			interstitialAd = new InterstitialAd(adUnitId);
 			
-			interstitialAd.AdLoaded += InterstitialAd_Loaded;
-			interstitialAd.AdFailedToLoad += InterstitialAd_FailedToLoad;
-			interstitialAd.AdOpened += InterstitialAd_Opened;
-			interstitialAd.AdClosing += InterstitialAd_Closing;
-			interstitialAd.AdClosed += InterstitialAd_Closed;
-			interstitialAd.AdLeftApplication += InterstitialAd_LeftApplication;
+			interstitialAd.OnAdLoaded += InterstitialAd_Loaded;
+			interstitialAd.OnAdFailedToLoad += InterstitialAd_FailedToLoad;
+            interstitialAd.OnAdOpening += InterstitialAd_Opened;
+			interstitialAd.OnAdClosed += InterstitialAd_Closed;
+            interstitialAd.OnAdLeavingApplication += InterstitialAd_LeftApplication;
 
 			videoAd = new InterstitialAd(videoAdId);
-			videoAd.AdLoaded += AdMob_VideoAdLoaded;
+            videoAd.OnAdLoaded += AdMob_VideoAdLoaded;
 			
 			SubscribeToEvent();
 

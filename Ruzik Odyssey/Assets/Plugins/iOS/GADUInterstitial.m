@@ -1,33 +1,24 @@
 // Copyright 2014 Google Inc. All Rights Reserved.
 
-#import <CoreGraphics/CoreGraphics.h>
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 #import "GADUInterstitial.h"
 
-#import "GADAdMobExtras.h"
-#import "GADAdSize.h"
-#import "GADInterstitial.h"
-#import "GADInterstitialDelegate.h"
+#import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
+
+#import "GADUPluginUtil.h"
 #import "UnityAppController.h"
 
-@interface GADUInterstitial ()<GADInterstitialDelegate>
+@interface GADUInterstitial () <GADInterstitialDelegate>
 @end
 
 @implementation GADUInterstitial
-
-+ (UIViewController *)unityGLViewController {
-  return ((UnityAppController *)[UIApplication sharedApplication].delegate).rootViewController;
-}
 
 - (id)initWithInterstitialClientReference:(GADUTypeInterstitialClientRef *)interstitialClient
                                  adUnitID:(NSString *)adUnitID {
   self = [super init];
   if (self) {
     _interstitialClient = interstitialClient;
-    _interstitial = [[GADInterstitial alloc] init];
-    _interstitial.adUnitID = adUnitID;
+    _interstitial = [[GADInterstitial alloc] initWithAdUnitID:adUnitID];
     _interstitial.delegate = self;
   }
   return self;
@@ -47,11 +38,15 @@
 
 - (void)show {
   if (self.interstitial.isReady) {
-    UIViewController *unityController = [GADUInterstitial unityGLViewController];
+    UIViewController *unityController = [GADUPluginUtil unityGLViewController];
     [self.interstitial presentFromRootViewController:unityController];
   } else {
     NSLog(@"GoogleMobileAdsPlugin: Interstitial is not ready to be shown.");
   }
+}
+
+- (NSString *)mediationAdapterClassName {
+  return [self.interstitial adNetworkClassName];
 }
 
 #pragma mark GADInterstitialDelegate implementation
@@ -62,10 +57,12 @@
   }
 }
 - (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error {
-  NSString *errorMsg = [NSString
-      stringWithFormat:@"Failed to receive ad with error: %@", [error localizedFailureReason]];
-  self.adFailedCallback(self.interstitialClient,
-                        [errorMsg cStringUsingEncoding:NSUTF8StringEncoding]);
+  if (self.adFailedCallback) {
+    NSString *errorMsg = [NSString
+        stringWithFormat:@"Failed to receive ad with error: %@", [error localizedFailureReason]];
+    self.adFailedCallback(self.interstitialClient,
+                          [errorMsg cStringUsingEncoding:NSUTF8StringEncoding]);
+  }
 }
 
 - (void)interstitialWillPresentScreen:(GADInterstitial *)ad {
@@ -75,9 +72,7 @@
 }
 
 - (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
-  if (self.willDismissCallback) {
-    self.willDismissCallback(self.interstitialClient);
-  }
+  // Callback is not forwarded to Unity.
 }
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
