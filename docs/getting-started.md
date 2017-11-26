@@ -16,7 +16,7 @@ To build the game for a particular platform, go to `File` -> `Build Settings`, s
 
 #### How to Play
 
-Use [Unity Remote](https://docs.unity3d.com/Manual/UnityRemote5.html) (requires appropriate [setup](https://answers.unity.com/questions/198853/unity-remote-for-android-not-working-solution.html) and [Android SDK]()https://developer.android.com/studio/index.html) app on your phone to control the game. Install the app on your phone, connect your phone using a USB cable and open the app. Next, go to `Edit` -> `Project Settings` -> `Editor` and select your phone under `Unity Remote` -> `Device`. Now start the app on the Start Scene and use your phone to play.
+Use [Unity Remote](https://docs.unity3d.com/Manual/UnityRemote5.html) (requires appropriate [setup](https://answers.unity.com/questions/198853/unity-remote-for-android-not-working-solution.html) and [Android SDK](https://developer.android.com/studio/index.html)) app on your phone to control the game. Install the app on your phone, connect your phone using a USB cable and open the app. Next, go to `Edit` -> `Project Settings` -> `Editor` and select your phone under `Unity Remote` -> `Device`. Now start the app on the Start Scene and use your phone to play.
 
 ## Troubleshooting
 
