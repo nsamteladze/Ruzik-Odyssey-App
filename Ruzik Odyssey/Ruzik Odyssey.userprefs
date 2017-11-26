@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{69270705-42C8-AE99-2509-38164F72CB0E}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI/AlienWeaponController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/Views/DashboardSceneView.cs">
     <Files>
       <File FileName="Assets/Scripts/Common/EventsBroker.cs" Line="49" Column="41" />
       <File FileName="Assets/Scripts/Common/ExtendedMonoBehaviour.cs" Line="18" Column="4" />
@@ -9,7 +9,6 @@
       <File FileName="Assets/Scripts/UI/Views/LevelSceneView.cs" Line="143" Column="2" />
       <File FileName="Assets/Scripts/Models/GameModel.cs" Line="160" Column="3" />
       <File FileName="Assets/Scripts/UI/Views/HangarSceneView.cs" Line="63" Column="23" />
-      <File FileName="Assets/Scripts/UI/Views/DashboardSceneView.cs" Line="20" Column="23" />
       <File FileName="Assets/GoogleMobileAds/Common/DummyClient.cs" Line="111" Column="27" />
       <File FileName="Assets/GoogleMobileAds/Common/IInterstitialClient.cs" Line="33" Column="23" />
       <File FileName="Assets/GoogleMobileAds/Platforms/Android/InterstitialClient.cs" Line="51" Column="27" />
@@ -24,8 +23,36 @@
       <File FileName="Assets/Scripts/Aliens/AlienMine.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Sandbox/PlayerWeaponController.cs" Line="71" Column="4" />
       <File FileName="Assets/Scripts/AI/AlienController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AI/AlienWeaponController.cs" Line="7" Column="36" />
+      <File FileName="Assets/Scripts/AI/AlienWeaponController.cs" Line="19" Column="9" />
       <File FileName="Assets/Scripts/AI/MovementStrategy.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ViewModels/StoreSceneViewModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ViewModels/HangarSceneViewModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Models/LevelModel.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/Domain/AircraftInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Domain/WaveTemplate.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Domain/GameContent.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enemies/EnemyDiedEventArgs.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameInputController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameObjectExtensions.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/GameObjectsGroupDesign.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/ITouchControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/LevelBoundariesController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/RandomExtensions.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Level/SlowDownEffect.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/SpeedMultiplierDeltaMovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/MovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/RuzikController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player/LimitedSpeedDeltaMovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ViewModels/SmallItemsStoreSceneViewModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ViewModels/ViewModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/GlobalMapSceneView.cs" Line="21" Column="9" />
+      <File FileName="Assets/Scripts/UI/Views/CornStoreSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/Chapter1MapSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/StoreSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/StartSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/SmallItemsStoreSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/SettingsSceneView.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Views/DashboardSceneView.cs" Line="38" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -13,18 +13,12 @@ namespace RuzikOdyssey.UI.Views
 #if UNITY_EDITOR
 		private string adUnitId = "unused";
 		private string videoAdId = "unused";
-#elif UNITY_ANDROID
-		private string adUnitId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
-		private string videoAdId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
-#elif UNITY_IPHONE
+#else
         private string adUnitId = "ca-app-pub-4299532594227517/1001237124";
         private string videoAdId = "ca-app-pub-4299532594227517/2931242370";
-#else
-		private string adUnitId = "unexpected_platform";
-		private string videoAdId = "unexpected_platform";
 #endif
 
-		private InterstitialAd interstitialAd;
+        private InterstitialAd interstitialAd;
 		private InterstitialAd videoAd;
 
 		public GameObject storePopup;
