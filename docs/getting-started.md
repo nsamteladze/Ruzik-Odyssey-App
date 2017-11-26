@@ -4,7 +4,7 @@
 
 First of all, dowload [Unity3D](https://unity3d.com/get-unity/download) and [Visual Studio 2017](https://www.visualstudio.com/downloads/). 
 
-Next, checkout this repo and open the project in Unity3D. When you first open the project, Unity will import all the asset, so it will take a little while. Once done, you can select the start scene from `Scenes` -> `Start Scene` and click `Play` to start the game in Unity3D.
+Next, checkout this repo and open the project in __Unity3D__ (not Visual Studio 2017). When you first open the project, Unity will import all the asset, so it will take a little while. Once done, you can select the start scene from `Scenes` -> `Start Scene` and click `Play` to start the game in Unity3D.
 
 Unity3D `Library` folder (includes settings, user preferences, caches and more) is not checked in to reduce the repository size. You can get the default settings from `LibraryDefault` folder. This will include the correct Build Settings and Player Settings. Just create a new `Library` folder (same root folder as `LibraryDefault`) and copy all the files from `LibraryDefault` into it.
 
