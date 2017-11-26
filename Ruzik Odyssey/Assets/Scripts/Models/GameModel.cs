@@ -88,9 +88,6 @@ namespace RuzikOdyssey.Models
 				yield break;
 			}
 
-			Log.Debug("Loading video ad from Vungle.");
-			Vungle.init("com.cocosgames.RuzikOdyssey", "com.cocosgames.RuzikOdyssey");
-
 			// Load game state
 
 			OnLoadingProgressUpdated("Loading game state", 0);
@@ -161,8 +158,4 @@ namespace RuzikOdyssey.Models
 			context.SaveEntity<AircraftInfo>(this.Aircraft.Value);
 		}
 	}
-
-
-
-
 }

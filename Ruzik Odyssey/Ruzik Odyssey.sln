@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio for Mac
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruzik Odyssey", "Ruzik Odyssey.csproj", "{69270705-42C8-AE99-2509-38164F72CB0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruzik Odyssey.Plugins", "Ruzik Odyssey.Plugins.csproj", "{8A608308-9FF8-ACAB-67E5-70E2B9BEB2EC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruzik Odyssey.Editor", "Ruzik Odyssey.Editor.csproj", "{408972AD-C42C-52E2-C660-ED70C75F7836}"
 EndProject
 Global
@@ -17,10 +15,6 @@ Global
 		{69270705-42C8-AE99-2509-38164F72CB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69270705-42C8-AE99-2509-38164F72CB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69270705-42C8-AE99-2509-38164F72CB0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A608308-9FF8-ACAB-67E5-70E2B9BEB2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A608308-9FF8-ACAB-67E5-70E2B9BEB2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A608308-9FF8-ACAB-67E5-70E2B9BEB2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A608308-9FF8-ACAB-67E5-70E2B9BEB2EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{408972AD-C42C-52E2-C660-ED70C75F7836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{408972AD-C42C-52E2-C660-ED70C75F7836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{408972AD-C42C-52E2-C660-ED70C75F7836}.Release|Any CPU.ActiveCfg = Release|Any CPU
