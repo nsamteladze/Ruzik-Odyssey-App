@@ -7,12 +7,12 @@ namespace RuzikOdyssey.Player
 	public class AmmoChangedEventArgs : EventArgs
 	{
 		public int NewValue { get; set; }
-	}
+    }
 
 	public class WeaponController : MonoBehaviour
 	{
-		public Transform mainWeaponPrefab;
-		public Transform secondaryWeaponPrefab;
+        public GameObject mainWeaponPrefab;
+        public GameObject secondaryWeaponPrefab;
 		
 		public float mainWeaponShootingRate = 0.25f;
 		public float secondaryWeaponShootingRate = 0.25f;
@@ -20,11 +20,9 @@ namespace RuzikOdyssey.Player
 		public Vector2 mainWeaponPosition = Vector2.zero;
 		public Vector2 secondaryWeaponPosition = Vector2.zero;
 
-		public bool attackIsControlledFromAnimator = true;
-
 		public AudioClip cannonSFX;
 		public AudioClip missileSFX;
-		public float cannonSfxVolume = 1.0f;
+        public float cannonSfxVolume = 1.0f;
 		public float missileSfxVolume = 1.0f;
 
 		public int cannonSfxRate = 3;
@@ -76,21 +74,18 @@ namespace RuzikOdyssey.Player
 
 		public void AttackWithMainWeapon()
 		{
-			if (!CanAttackWithMainWeapon() || mainWeaponPrefab == null) return;
+            if (!CanAttackWithMainWeapon() || mainWeaponPrefab == null) return;
 
 			if (animator != null) animator.SetBool("IsShooting", true);
 
 			cannonCooldown = mainWeaponShootingRate;
 
-			if (!attackIsControlledFromAnimator) 
-			{
-				ShootMainWeapon();
-			}
+			ShootMainWeapon();
 		}
 
 		private void ShootMainWeapon()
 		{
-			var shot = (Transform)Instantiate(mainWeaponPrefab);
+            var shot = Instantiate(mainWeaponPrefab).transform;
 			shot.position = new Vector2(transform.position.x + mainWeaponPosition.x,
 			                            transform.position.y + mainWeaponPosition.y);
 
@@ -119,7 +114,7 @@ namespace RuzikOdyssey.Player
 
 			ChangeMissileAmmo(-1);
 
-			var shot = (Transform)Instantiate(secondaryWeaponPrefab);
+            var shot = Instantiate(secondaryWeaponPrefab).transform;
 			shot.position = new Vector2(transform.position.x + secondaryWeaponPosition.x,
 			                            transform.position.y + secondaryWeaponPosition.y);
 
